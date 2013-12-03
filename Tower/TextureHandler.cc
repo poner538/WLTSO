@@ -1,6 +1,8 @@
 #include <iostream>
 #include "TextureHandler.h"
 
+TextureHandler TextureHandler::texturehandler;
+
 TextureHandler::TextureHandler()
 {
     if (!EasySheep_Texture.loadFromFile(filenameEasySheep))
@@ -23,7 +25,7 @@ TextureHandler::TextureHandler()
     {
        std::cout << "Tower2 laddades inte! :(" << std::endl;
     }
-    if (!Shot_Texure.loadFromFile(filenameShot))
+    if (!Shot_Texture.loadFromFile(filenameShot))
     {
         std::cout << "Shot laddades inte! :(" << std::endl;
     }

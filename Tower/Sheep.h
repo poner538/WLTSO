@@ -19,9 +19,11 @@ public:
     Sheep(const Sheep& other) = delete; //Kopieringskonstrukotr
     Sheep(const Sheep&& other) = delete; //Kopieringskonstruktor med move
     Sheep& operator=(const Sheep& other) = delete; //Tilldelningspoerator
-    Sheep operator=(const Sheep&& other) = delete; //Tilldelningspoperator med move
+    Sheep& operator=(const Sheep&& other) = delete; //Tilldelningspoperator med move
 
     void hit(int damage);
+
+    /*Virtuella funktioner*/
     virtual pos get_position() = 0; //pos inte ännu definierad
     virtual void set_position(pos new_position)= 0;
 
@@ -47,6 +49,7 @@ private:
     int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
     pos current_position;
+    int current_waypoint = 0;
 };
 
 class MediumSheep: public Sheep
@@ -61,7 +64,7 @@ private:
     int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
     pos current_position;
-
+    int current_waypoint = 0;
 };
 
 class HardSheep: public Sheep
@@ -76,6 +79,7 @@ private:
     int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
     pos current_position;
+    int current_waypoint = 0;
 };
 
 

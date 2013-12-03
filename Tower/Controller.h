@@ -7,8 +7,9 @@ public:
     void change_gold(const int value);
     void change_points(const int value);
     void lives();
+
     static Controller controller;
-    //Vi vill inte ha fel
+
 private:
     int gold = 0;
     int points = 0;

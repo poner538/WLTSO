@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Tower" />
+		<Option title="WLTSO" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -60,7 +60,14 @@
 			<Add library="sfml-system-s" />
 			<Add directory="C:/SFML-2.1/lib" />
 		</Linker>
+		<Unit filename="Controller.cc" />
+		<Unit filename="Controller.h" />
+		<Unit filename="Sheep.cc" />
+		<Unit filename="Sheep.h" />
+		<Unit filename="TextureHandler.cc" />
+		<Unit filename="TextureHandler.h" />
 		<Unit filename="Tower.cc" />
+		<Unit filename="Tower.h" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />

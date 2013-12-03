@@ -13,7 +13,7 @@ void Controller::change_gold(const int value)
 {
     if ((gold + value) < 0)
     {
-        //neeeej, pengar
+        //neeeej, pengar Shop.NotEnoghMoney() någon form av utskrift eller nåt.
     }
     gold = gold + value;
 }
@@ -25,9 +25,9 @@ void Controller::change_points(const int value)
 
 void Controller::lives()
 {
-    if (current_lives = 1)
+    if (current_lives == 1)
     {
-        //game over
+        //Game.GameOver() kanske det kan heta
     }
     current_lives = current_lives - 1;
 }

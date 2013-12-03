@@ -3,6 +3,7 @@
 
 #include "Sheep.h"
 #include "Controller.h"
+#include "TextureHandler.h"
 
 Sheep::Sheep(int new_speed, int new_hp, int new_bounty)
 {
@@ -42,13 +43,14 @@ void EasySheep::set_position(pos new_position)
 {
     current_position = new_position;
     Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
+    current_waypoint = new_position.waypoint_number;
 }
 
 /*MediumSheep*/
 
 MediumSheep::MediumSheep() : Sheep (2/*speed*/, 200/*hp*/, 12/*bounty*/)
 {
-    Sheep_Sprite.getTexture(TextureHandler::texturehandler.getMediumSheep());
+    Sheep_Sprite.setTexture(TextureHandler::texturehandler.getMediumSheep());
 }
 
 pos MediumSheep::get_position()
@@ -60,6 +62,7 @@ void MediumSheep::set_position(pos new_position)
 {
     current_position = new_position;
     Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
+    current_waypoint = new_position.waypoint_number;
 }
 
 /*HardSheep*/
@@ -78,4 +81,5 @@ void HardSheep::set_position(pos new_position)
 {
     current_position = new_position;
     Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
+    current_waypoint = new_position.waypoint_number;
 }

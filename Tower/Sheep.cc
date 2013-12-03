@@ -26,43 +26,56 @@ void Sheep::hit(int damage)
     }
 }
 
-pos Sheep::get_position()
+/*EasySheep*/
+
+EasySheep::EasySheep() : Sheep (1/*speed*/, 100/*hp*/, 6/*bounty*/)
+{
+    Sheep_Sprite.setTexture(TextureHandler::texturehandler.getEasySheep());
+}
+
+pos EasySheep::get_position()
 {
     return current_position;
 }
 
-void Sheep::set_position(pos new_position)
+void EasySheep::set_position(pos new_position)
 {
     current_position = new_position;
-    return;
+    Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
 }
 
-EasySheep::EasySheep() : Sheep (1/*speed*/, 100/*hp*/, 6/*bounty*/)
-{
-    if (!Sheep_Texture.loadFromFile(filename))
-    {
-       std::cout << "Det funka inte! wow omg so förort very latin kings" << std::endl;
-    }
-
-    Sheep_Sprite.setTexture(Sheep_Texture);
-}
+/*MediumSheep*/
 
 MediumSheep::MediumSheep() : Sheep (2/*speed*/, 200/*hp*/, 12/*bounty*/)
 {
-    if (!Sheep_Texture.loadFromFile(filename))
-    {
-        std::cout << "Det funka inte! wow omg so förort very latin kings" << std::endl;
-    }
-
-    Sheep_Sprite.setTexture(Sheep_Texture);
+    Sheep_Sprite.getTexture(TextureHandler::texturehandler.getMediumSheep());
 }
+
+pos MediumSheep::get_position()
+{
+    return current_position;
+}
+
+void MediumSheep::set_position(pos new_position)
+{
+    current_position = new_position;
+    Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
+}
+
+/*HardSheep*/
 
 HardSheep::HardSheep() : Sheep (3/*speed*/, 300/*hp*/, 18/*bounty*/)
 {
-    if (!Sheep_Texture.loadFromFile(filename))
-    {
-        std::cout << "Det funka inte! wow omg so förort very latin kings" << std::endl;
-    }
+    Sheep_Sprite.setTexture(TextureHandler::texturehandler.getHardSheep());
+}
 
-    Sheep_Sprite.setTexture(Sheep_Texture);
+pos HardSheep::get_position()
+{
+    return current_position;
+}
+
+void HardSheep::set_position(pos new_position)
+{
+    current_position = new_position;
+    Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
 }

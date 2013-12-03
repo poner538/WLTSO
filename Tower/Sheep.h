@@ -6,10 +6,9 @@ struct pos
 {
     int x_pos = 0;
     int y_pos = 0;
-    int course_pos = 0;
+    int waypoint_number = 0;
 };
 
-//höhö detta också
 
 
 class Sheep
@@ -23,8 +22,8 @@ public:
     Sheep operator=(const Sheep&& other) = delete; //Tilldelningspoperator med move
 
     void hit(int damage);
-    pos get_position(); //pos inte ännu definierad
-    void set_position(pos new_position);
+    virtual pos get_position() = 0; //pos inte ännu definierad
+    virtual void set_position(pos new_position)= 0;
 
 protected:
     //Datamedlemmar
@@ -32,7 +31,7 @@ protected:
     int hp = 0;
     int speed = 0;
     int bounty = 0;
-    pos current_position;
+
 };
 
 class EasySheep: public Sheep
@@ -40,13 +39,14 @@ class EasySheep: public Sheep
 
 public:
     EasySheep();
+    pos get_position();
+    void set_position(pos new_position);
 
 private:
 
     int current_graphic_state = 1;
-    std::string filename = "EasySheep.jpg";
-    sf::Texture Sheep_Texture;
     sf::Sprite Sheep_Sprite;
+    pos current_position;
 };
 
 class MediumSheep: public Sheep
@@ -54,12 +54,13 @@ class MediumSheep: public Sheep
 
 public:
     MediumSheep();
+    pos get_position();
+    void set_position(pos new_position);
 
 private:
     int current_graphic_state = 1;
-    std::string filename = "MediumSheep.jpg";
-    sf::Texture Sheep_Texture;
     sf::Sprite Sheep_Sprite;
+    pos current_position;
 
 };
 
@@ -68,12 +69,13 @@ class HardSheep: public Sheep
 
 public:
     HardSheep();
+    pos get_position();
+    void set_position(pos new_position);
 
 private:
     int current_graphic_state = 1;
-    std::string filename = "HardSheep.jpg";
-    sf::Texture Sheep_Texture;
     sf::Sprite Sheep_Sprite;
+    pos current_position;
 };
 
 

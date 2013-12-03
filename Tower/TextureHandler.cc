@@ -5,17 +5,28 @@ TextureHandler::TextureHandler()
 {
     if (!EasySheep_Texture.loadFromFile(filenameEasySheep))
     {
-       std::cout << "Det funka inte! wow omg so förort very latin kings" << std::endl;
+       std::cout << "EasySheep laddades inte! :(" << std::endl;
     }
      if (!MediumSheep_Texture.loadFromFile(filenameMediumSheep))
     {
-       std::cout << "Det funka inte! wow omg so förort very latin kings" << std::endl;
+       std::cout << "MediumSheep laddades inte! :(" << std::endl;
     }
      if (!HardSheep_Texture.loadFromFile(filenameHardSheep))
     {
-       std::cout << "Det funka inte! wow omg so förort very latin kings" << std::endl;
+       std::cout << "HardSheep laddades inte! :(" << std::endl;
     }
-
+     if (!Tower1_Texture.loadFromFile(filenameTower1))
+    {
+       std::cout << "Tower1 laddades inte! :(" << std::endl;
+    }
+     if (!Tower2_Texture.loadFromFile(filenameTower2))
+    {
+       std::cout << "Tower2 laddades inte! :(" << std::endl;
+    }
+    if (!Shot_Texure.loadFromFile(filenameShot))
+    {
+        std::cout << "Shot laddades inte! :(" << std::endl;
+    }
 }
 
 sf::Texture TextureHandler::getEasySheep()
@@ -31,4 +42,19 @@ sf::Texture TextureHandler::getMediumSheep()
 sf::Texture TextureHandler::getHardSheep()
 {
     return HardSheep_Texture;
+}
+
+sf::Texture TextureHandler::getTower1()
+{
+    return Tower1_Texture;
+}
+
+sf::Texture TextureHandler::getTower2()
+{
+    return Tower2_Texture;
+}
+
+sf::Texture TextureHandler::getShot()
+{
+    return Shot_Texture;
 }

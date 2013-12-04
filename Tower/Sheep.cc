@@ -61,6 +61,24 @@ sf::Sprite EasySheep::get_Sheep_Sprite()
     return Sheep_Sprite;
 }
 
+void update_position(float time)
+{
+    float x_temp = 0;
+    float y_temp = 0;
+    float norm = 0;
+    pos temp_pos;
+    x_temp = next_position.x_pos - current_position.x_pos;
+    y_temp = next_position.y_pos - current_position.y_pos;
+    norm = sqrt(pwr(x_temp, 2) + pwr(y_temp, 2));
+    x_temp = x_temp / norm;
+    y_temp = y_temp / norm;
+    temp_pos.x_pos = current_position.x_pos + x_temp*time*speed;
+    temp_pos.y_pos = current_position.y_pos + y_temp*time*speed;
+    temp_pos.waypoint_number = current_position.waypoint_number;
+
+    set_position(temp_pos);
+}
+
 /*MediumSheep*/
 
 MediumSheep::MediumSheep() : Sheep (2/*speed*/, 200/*hp*/, 12/*bounty*/)

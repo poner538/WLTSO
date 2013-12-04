@@ -8,7 +8,8 @@
 *
 *
 */
-
+#ifndef SHEEP_H
+#define SHEEP_H
 #include <SFML/Graphics.hpp>
 #include <string>
 
@@ -28,7 +29,7 @@ public:
     /*The big 5*/
     Sheep(int new_speed, int new_hp, int new_bounty);
     virtual ~Sheep() = default;
-    Sheep(const Sheep& other) = delete; //Kopieringskonstrukotr
+    Sheep(const Sheep& other) = delete; //Kopieringskonstruktor
     Sheep(const Sheep&& other) = delete; //Kopieringskonstruktor med move
     Sheep& operator=(const Sheep& other) = delete; //Tilldelningspoerator
     Sheep& operator=(const Sheep&& other) = delete; //Tilldelningspoperator med move
@@ -102,5 +103,4 @@ private:
     int next_waypoint = 0;
 };
 
-
-
+#endif // SHEEP_H

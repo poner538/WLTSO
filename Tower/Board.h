@@ -25,15 +25,15 @@ public:
     Board& operator=(const Board&& other) = delete; //Tilldelningspoperator med move
 
     /*Funktioner*/
-    vector<pos> get_Shot();
-    void set_Shot(Shot, pos);
-    bool exist(pos);
-    vector<pos> get_Course();
-    //void set_Course(Course);
+    vector<Shot> get_Shot();
+    void set_Shot(Shot);
+    //vector<pos> get_Course();
     vector<Tower> get_Tower();
-    void set_Tower(Tower, pos);
+    void set_Tower(Tower);
     vector<Sheep> get_Sheep();
     void set_Sheep(Sheep);
+    bool exist(pos);
+
 
 private:
     /*Datamedlemmar*/

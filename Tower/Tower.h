@@ -1,7 +1,7 @@
 #ifndef TOWER_H
 #define TOWER_H
 #include <SFML/Graphics.hpp>
-
+#include <ctime>
 using namespace std;
 
 /*
@@ -11,16 +11,18 @@ class Tower
 {
 protected:
     int range;
-    int shooting_speed;
+    int shooting_speed; // i sekunder
     int dmg;
-    pos current_pos;
+    int posx;
+    int posy;
    // int current_graphic_state;
 
 public:
+    Tower() = default;
     Tower(int,int,int);
+    void locate_sheep();
+    //void shoot(Sheep);
 
-//virtual void shoot(int dmg,Sheep sheep_target);
-    virtual void locate_sheep(vector<int>,);
 
 };
 
@@ -38,6 +40,13 @@ class Shooting_tower : public Tower
     Shooting_tower();
 };
 
+
+inline void mytimer(clock_t sec) //en funktion som fördröjer skotten i sec-antal sekunder
+{
+    clock_t start_time = clock();
+    clock_t end_time = sec*1000 + start_time;
+    while(clock() != end_time);
+}
 
 
 

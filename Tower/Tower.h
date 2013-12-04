@@ -1,8 +1,31 @@
+/*
+* FILNAMN:          Tower.h
+* PROGRAMMERARE:    Pontus Erlesand   910117-1172, Y3a
+                    Karin Lockowandt  910213-3262, Yi3
+* DATUM:            2013-mm-dd
+*
+* BESKRIVNING
+*
+*
+*/
+
+
+
+
+
 #ifndef TOWER_H
 #define TOWER_H
 #include <SFML/Graphics.hpp>
 #include <ctime>
 using namespace std;
+
+
+struct pos
+{
+    int x_pos = 0;
+    int y_pos = 0;
+};
+
 
 /*
     Basklass för torn
@@ -13,15 +36,14 @@ protected:
     int range;
     int shooting_speed; // i sekunder
     int dmg;
-    int posx;
-    int posy;
+    pos T_pos;
    // int current_graphic_state;
 
 public:
-    Tower() = default;
-    Tower(int,int,int);
-    void locate_sheep();
+    Tower(int,int,int,pos);
+   virtual void locate_sheep();
     //void shoot(Sheep);
+
 
 
 };
@@ -30,14 +52,14 @@ public:
 class Catapult_tower : public Tower
 {
     public:
-    Catapult_tower();
+    Catapult_tower(pos);
 
 };
 
 class Shooting_tower : public Tower
 {
     public:
-    Shooting_tower();
+    Shooting_tower(pos);
 };
 
 

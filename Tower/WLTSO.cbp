@@ -64,6 +64,8 @@
 		<Unit filename="Board.h" />
 		<Unit filename="Controller.cc" />
 		<Unit filename="Controller.h" />
+		<Unit filename="Course.cc" />
+		<Unit filename="Course.h" />
 		<Unit filename="Sheep.cc" />
 		<Unit filename="Sheep.h" />
 		<Unit filename="TextureHandler.cc" />

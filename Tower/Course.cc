@@ -8,11 +8,11 @@
  *
  * Hur fåren ska flytta sig under spelet
  */
- 
+
 #include "Course.h"
 #include <vector>
 
-
+//Skriv in konstruktor!!
 
 
 

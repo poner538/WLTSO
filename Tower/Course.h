@@ -11,8 +11,10 @@
 
  #include <vector> //Det som behövs
  #include <SFML/Graphics.hpp> //Användning av SFMLs rektangelfkn
- 
- 
+
+
+ //Skall skriva konstruktor i .cc
+
  /* (left, top, width, height)
  * (wp(i).x_pos - 1)
  * (wp(i).y_pos - 1)
@@ -20,7 +22,7 @@
  * (wp(i+1).y_pos - wp(i).y_pos +2)
  * Enklast att lägga in punkterna var och en för sig med manuell matematik!!!!!
  */
- 
+
 sf::Rect r0(1,2,3,4);
 sf::Rect r1(1,2,3,4);
 sf::Rect r2(1,2,3,4);
@@ -50,12 +52,12 @@ wp6{70, 120, 0} //120 är utanför den synliga banan banan
  {
  public:
 
-    /* 
+    /*
 	 * Våra waypoints för styrning av får
      * Fördefinerade pos1-posn
      */
-    
-	
+
+
 	Course(vector <pos> waypoints (pos0, pos1, pos2, pos3, pos4, pos5))
 
 
@@ -65,7 +67,7 @@ wp6{70, 120, 0} //120 är utanför den synliga banan banan
 
 
 
-    
+
 
 
     void waypoint_direction(int);

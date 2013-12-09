@@ -33,7 +33,7 @@ public:
     vector<Sheep> get_Sheep();
     void set_Sheep(Sheep);
     bool exist(pos);
-    bool reserved_space(int, int); //Upptaget?
+    bool reserved_space(int, int); //Upptaget? Kommer agera hjälpfkn
 
 private:
     /*Datamedlemmar*/

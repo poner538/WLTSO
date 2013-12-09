@@ -81,9 +81,9 @@ bool Board::exist(pos)
 
     return t;
 }
-
+//Skall in under ovanstående fkn
 bool Board::reserved_space(int x, int y)
 {
-    return Rect::contains(x, y);
+    return Rect::contains(x, y); //Skall kolla i alla rektanglar måste modifieras
 }
 

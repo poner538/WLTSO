@@ -8,7 +8,8 @@
 *
 *
 */
-
+#ifndef SHEEP_H
+#define SHEEP_H
 #include <SFML/Graphics.hpp>
 #include <string>
 
@@ -28,7 +29,7 @@ public:
     /*The big 5*/
     Sheep(int new_speed, int new_hp, int new_bounty);
     virtual ~Sheep() = default;
-    Sheep(const Sheep& other) = delete; //Kopieringskonstrukotr
+    Sheep(const Sheep& other) = delete; //Kopieringskonstruktor
     Sheep(const Sheep&& other) = delete; //Kopieringskonstruktor med move
     Sheep& operator=(const Sheep& other) = delete; //Tilldelningspoerator
     Sheep& operator=(const Sheep&& other) = delete; //Tilldelningspoperator med move
@@ -40,6 +41,7 @@ public:
     virtual pos get_position() = 0; //pos inte ännu definierad
     virtual void set_position(pos new_position)= 0;
     virtual sf::Sprite get_Sheep_Sprite() = 0;
+    virtual void update_position(float time) = 0;
 
 protected:
     //Datamedlemmar
@@ -58,14 +60,17 @@ public:
     pos get_position();
     void set_position(pos new_position);
     sf::Sprite get_Sheep_Sprite();
+    void update_position(float time);
 
 private:
 
     int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
     pos current_position;
+    pos next_position;
     int current_waypoint = 0;
     int next_waypoint = 0;
+
 };
 
 class MediumSheep: public Sheep
@@ -102,5 +107,4 @@ private:
     int next_waypoint = 0;
 };
 
-
-
+#endif // SHEEP_H

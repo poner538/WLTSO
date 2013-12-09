@@ -1,21 +1,18 @@
 /*
- * FILNAMN:       Course.cpp
+ * FILNAMN:       Course.cc
  * PROGRAMMERARE: Daniel Brattgård 900926-3394, Y3a
  *                Marie Ekbrant 890401-2740, Y3a
- * DATUM:         2013-mm-dd
+ * DATUM:         2013-12-09
  *
  * BESKRIVNING
  *
  * Hur fåren ska flytta sig under spelet
  */
 
+#include "Course.h"
+#include <vector>
 
-void reserve_space()
-{
-    for (alla rutor mellan waypoint 0 och 1)
-        rutan = byggförbud
-}
-
+//Skriv in konstruktor!!
 
 
 

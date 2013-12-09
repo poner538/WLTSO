@@ -8,14 +8,22 @@
 *
 *
 */
-
+#ifndef TEXTUREHANDLER_H
+#define TEXTUREHANDLER_H
 #include <string>
 #include <SFML/Graphics.hpp>
 
 class TextureHandler
 {
 public:
+    /*The big 5*/
     TextureHandler();
+    ~TextureHandler() = default;
+    TextureHandler(const TextureHandler& other) = delete; //Kopieringskonstruktor
+    TextureHandler(const TextureHandler&& other) = delete; //Kopieringskonstruktor med move
+    TextureHandler& operator=(const TextureHandler& other) = delete; //Tilldelningspoerator
+    TextureHandler& operator=(const TextureHandler&& other) = delete; //Tilldelningspoperator med move
+
     sf::Texture getEasySheep();
     sf::Texture getMediumSheep();
     sf::Texture getHardSheep();
@@ -41,3 +49,5 @@ private:
     sf::Texture Tower2_Texture;
     sf::Texture Shot_Texture;
 };
+
+#endif // TEXTUREHANDLER_H

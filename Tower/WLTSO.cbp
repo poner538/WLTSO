@@ -60,8 +60,12 @@
 			<Add library="sfml-system-s" />
 			<Add directory="C:/SFML-2.1/lib" />
 		</Linker>
+		<Unit filename="Board.cc" />
+		<Unit filename="Board.h" />
 		<Unit filename="Controller.cc" />
 		<Unit filename="Controller.h" />
+		<Unit filename="Course.cc" />
+		<Unit filename="Course.h" />
 		<Unit filename="Sheep.cc" />
 		<Unit filename="Sheep.h" />
 		<Unit filename="TextureHandler.cc" />

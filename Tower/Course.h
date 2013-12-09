@@ -13,7 +13,13 @@
  #include <SFML/Graphics.hpp> //Användning av SFMLs rektangelfkn
  
  
- 
+ /* (left, top, width, height)
+ * (wp(i).x_pos - 1)
+ * (wp(i).y_pos - 1)
+ * (wp(i+1).x_pos - wp(i).x_pos +2)
+ * (wp(i+1).y_pos - wp(i).y_pos +2)
+ * Enklast att lägga in punkterna var och en för sig med manuell matematik!!!!!
+ */
  
 sf::Rect r0(1,2,3,4);
 sf::Rect r1(1,2,3,4);
@@ -22,15 +28,9 @@ sf::Rect r3(1,2,3,4);
 sf::Rect r4(1,2,3,4);
 sf::Rect r5(1,2,3,4);
 
-/* (left, top, width, height)
- * (wp(i).x_pos - 1)
- * (wp(i).y_pos - 1)
- * (wp(i+1).x_pos - wp(i).x_pos +2)
- * (wp(i+1).y_pos - wp(i).y_pos +2)
- * Enklast att lägga in punkterna var och en för sig med manuel matematik!!!!!
- */
 
 
+//Struct för waypoint
  struct waypoint{
     int x_pos;
     int y_pos;
@@ -49,29 +49,28 @@ wp6{70, 120, 0} //120 är utanför den synliga banan banan
  class Course
  {
  public:
-    Course() = default; //Konstruktor(default), bara så länge
 
-    /* Våra waypoints för styrning av får
+    /* 
+	 * Våra waypoints för styrning av får
      * Fördefinerade pos1-posn
-     *
      */
-    Course(vector <pos> waypoints (pos0, pos1, pos2, pos3, pos4, pos5))
+    
+	
+	Course(vector <pos> waypoints (pos0, pos1, pos2, pos3, pos4, pos5))
 
 
     ~Course(); //Destruktor
 
 
-    fkntyp_oklar loadbackground();//Bör finnas i main()
 
 
 
-    void reserve_space(): //Skall den finnas? Inte kunna sätta tornen på banan.
+    
 
 
     void waypoint_direction(int);
 
-    //sf::image Courseimage("... .jpg")
+
     //sf::Sprite CourseSprite(CourseImage)
 
-     //private
  };

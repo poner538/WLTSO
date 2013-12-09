@@ -82,3 +82,8 @@ bool Board::exist(pos)
     return t;
 }
 
+bool Board::reserved_space(int x, int y)
+{
+    return Rect::contains(x, y);
+}
+

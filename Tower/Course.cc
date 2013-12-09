@@ -13,12 +13,6 @@
 #include <vector>
 
 
-void reserve_space()
-{
-    for (alla rutor mellan waypoint 0 och 1)
-        rutan = byggförbud
-}
-
 
 
 

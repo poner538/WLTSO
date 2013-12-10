@@ -12,21 +12,53 @@
 #ifndef SHOT_H
 #define SHOT_H
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
-struct pos
+
+
+
+  struct pos
+    {
+        int x_pos = 0;
+        int y_pos = 0;
+        int waypoint_number = 0;
+    };
+
+
+//dummyfår för att testa shot
+/*
+class Sheep
 {
-    int x_pos = 0;
-    int y_pos = 0;
-    int waypoint_number = 0;
+    pos current_position;
+
+   public:
+       Sheep();
+       int dmg;
+    pos get_position()
+    {
+        return current_position;
+    }
+
+   void hit(int);
 };
+
+/*
+
+Klassen Shot ska tilldelas ett får, en skada den ska göra och en startposition
+
+*/
 
 
 class Shot
 {
     public:
-    Shot(Sheep , int);
+    Shot(Sheep,int,pos);
     ~Shot();
-    ~Shot(Sheep);
+//    ~Shot(Sheep);
+    int get_dmg();
+    void hunt_sheep();
+
+
     private:
     int dmg;
     pos shot_pos;
@@ -34,8 +66,15 @@ class Shot
     //sf::Image ShotImage(".jpg");
     //sf::Sprite ShotSprite(ShotImage);
     void hit_sheep();
-    void hunt_sheep();
+
 };
+
+
+
+
+
+
+
 
 
 

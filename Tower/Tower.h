@@ -19,7 +19,7 @@
 #include <ctime>
 using namespace std;
 
-
+/*
 struct pos
 {
     int x_pos = 0;
@@ -42,7 +42,7 @@ protected:
 public:
     Tower(int,int,int,pos);
    virtual void locate_sheep();
-    //void shoot(Sheep);
+    void shoot(Sheep);
 
 
 

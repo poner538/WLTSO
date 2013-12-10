@@ -9,7 +9,7 @@
 *
 */
 
-
+#include "Shot.h"
 #include <SFML/Graphics.hpp>
 #include "Tower.h"
 #include <iostream>
@@ -26,11 +26,13 @@ Tower::Tower(int new_range,int new_shooting_speed,int new_dmg,pos new_pos)
     T_pos = new_pos;
 }
 
-Catapult_tower::Catapult_tower(pos new_pos) :Tower(10,10,5,new_pos)
+Catapult_tower::Catapult_tower(pos new_pos)
+    : Tower(10,2,10,new_pos)
 {
 }
 
-Shooting_tower::Shooting_tower(pos new_pos) :Tower(15,29,32,new_pos)
+Shooting_tower::Shooting_tower(pos new_pos)
+    : Tower(15,1,5,new_pos)
 {
 }
 
@@ -43,7 +45,7 @@ void Tower::locate_sheep()
         if ( pow(range, 2) >= pow((x - T_pos.x_pos),2) + pow((y + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
         {
 
-            //shoot();
+            //shoot(sheep_target);
             cout << "hittade fåret\n";
 
         }
@@ -55,12 +57,12 @@ void Tower::locate_sheep()
 
 }
 
-/*
+
 void Tower::shoot(Sheep sheep_target)
 {
-    Shot a_shot(sheep_target,dmg,);
+    Shot a_shot(sheep_target,dmg,T_pos);
     a_shot.hunt_sheep();
     mytimer(shooting_speed);
 }
-*/
+
 

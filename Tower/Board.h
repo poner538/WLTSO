@@ -27,15 +27,18 @@ public:
     /*Funktioner*/
     vector<Shot> get_Shot();
     void set_Shot(Shot);
-    //vector<pos> get_Course();
+    Course get_Course();
     vector<Tower> get_Tower();
     void set_Tower(Tower);
     vector<Sheep> get_Sheep();
     void set_Sheep(Sheep);
     bool exist(pos);
-    bool reserved_space(int, int); //Upptaget? Kommer agera hjälpfkn
 
 private:
+    /*Privata funktioner*/
+    bool reserved_space(int, int); //Upptaget? Kommer agera hjälpfkn
+
+
     /*Datamedlemmar*/
     Course Board_Course;
     vector<Sheep> Sheep_list = 0;

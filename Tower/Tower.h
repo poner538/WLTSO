@@ -17,6 +17,8 @@
 #define TOWER_H
 #include <SFML/Graphics.hpp>
 #include <ctime>
+#include "Sheep.h"
+#include "Shot.h"
 using namespace std;
 
 /*
@@ -37,13 +39,14 @@ protected:
     int shooting_speed; // i sekunder
     int dmg;
     pos T_pos;
-   // int current_graphic_state;
+    int current_graphic_state;
 
 public:
     Tower(int,int,int,pos);
-   virtual void locate_sheep();
+    virtual void locate_sheep(Sheep);
     void shoot(Sheep);
-
+    pos get_position();
+    virtual sf::Sprite get_Tower_Sprite() = 0;
 
 
 };
@@ -51,15 +54,25 @@ public:
 
 class Catapult_tower : public Tower
 {
-    public:
+public:
     Catapult_tower(pos);
+    sf::Sprite get_Tower_Sprite();
+
+private:
+    sf::Sprite Tower_Sprite;
+    int current_graphic_state = 1;
 
 };
 
 class Shooting_tower : public Tower
 {
-    public:
+public:
     Shooting_tower(pos);
+    sf::Sprite get_Tower_Sprite();
+
+private:
+    sf::Sprite Tower_Sprite;
+    int current_graphic_state = 1;
 };
 
 

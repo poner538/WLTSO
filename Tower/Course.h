@@ -67,12 +67,13 @@ public:
     pos wp5{70, 60};
     pos wp6{70, 120}; //120 är utanför den synliga banan banan
 
-    sf::Rect<float> r0(1,2,3,4);
-    sf::Rect<float> r1(1,2,3,4);
-    sf::Rect<float> r2(1,2,3,4);
-    sf::Rect<float> r3(1,2,3,4);
-    sf::Rect<float> r4(1,2,3,4);
-    sf::Rect<float> r5(1,2,3,4);
+    sf::Rect<float> r0{sf::Rect<float>(1,2,3,4)};
+    sf::Rect<float> r1{sf::Rect<float>(1,2,3,4)};
+    sf::Rect<float> r2{sf::Rect<float>(1,2,3,4)};
+    sf::Rect<float> r3{sf::Rect<float>(1,2,3,4)};
+    sf::Rect<float> r4{sf::Rect<float>(1,2,3,4)};
+    sf::Rect<float> r5{sf::Rect<float>(1,2,3,4)};
+
 
     //sf::Sprite CourseSprite(CourseImage)
 

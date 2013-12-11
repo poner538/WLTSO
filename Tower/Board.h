@@ -12,6 +12,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include <vector>
+#include "Course.h"
 
 class Board
 {
@@ -25,12 +26,12 @@ public:
     Board& operator=(const Board&& other) = delete; //Tilldelningspoperator med move
 
     /*Funktioner*/
-    vector<Shot> get_Shot();
-    void set_Shot(Shot);
+    vector<Shot*> get_Shot();
+    void set_Shot(Shot&);
     Course get_Course();
-    vector<Tower> get_Tower();
+    vector<Tower*> get_Tower();
     void set_Tower(Tower&);
-    vector<Sheep> get_Sheep();
+    vector<Sheep*> get_Sheep();
     void set_Sheep(Sheep&);
     bool exist(pos);
 
@@ -41,9 +42,9 @@ private:
 
     /*Datamedlemmar*/
     Course Board_Course;
-    vector<Sheep> Sheep_list;
-    vector<Tower> Tower_list;
-    vector<Shot> Shot_list;
+    vector<Sheep*> Sheep_list;
+    vector<Tower*> Tower_list;
+    vector<Shot*> Shot_list;
 
 };
 

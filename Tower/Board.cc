@@ -20,12 +20,12 @@ Board::Board(Course new_Board_Course)
     Board_Course = new_Board_Course;
 }
 
-vector<Shot> Board::get_Shot()
+vector<Shot*> Board::get_Shot()
 {
     return Shot_list;
 }
 
-void Board::set_Shot(Shot new_Shot)
+void Board::set_Shot(Shot* new_Shot)
 {
     Shot_list.push_back(new_Shot);
 }
@@ -35,7 +35,7 @@ Course Board::get_Course()
     return Board_Course;
 }
 
-vector<Tower> Board::get_Tower()
+vector<Tower*> Board::get_Tower()
 {
     return Tower_list;
 }
@@ -45,7 +45,7 @@ void Board::set_Tower(Tower& new_Tower)
     Tower_list.push_back(new_Tower);
 }
 
-vector<Sheep> Board::get_Sheep()
+vector<Sheep*> Board::get_Sheep()
 {
     return Sheep_list;
 }
@@ -109,5 +109,3 @@ bool Board::reserved_space(int x, int y)
     }
     return t;
 }
-
-distance = distance + time*

@@ -30,10 +30,10 @@ void Board::set_Shot(Shot new_Shot)
     Shot_list.pushback(new_Shot);
 }
 
-/*vector<pos> Board::get_Course()
+Course Board::get_Course()
 {
-    return Board_Course.return_positions();
-}*/
+    return Board_Course;
+}
 
 vector<Tower> Board::get_Tower()
 {
@@ -62,7 +62,7 @@ bool Board::exist(pos)
     {
         if ((Sheep_list.at(i)).get_position() == pos)
         {
-            t = true;
+            return true;
         }
     }
 
@@ -70,20 +70,43 @@ bool Board::exist(pos)
     {
         if ((Tower_list.at(i)).get_position() == pos)
         {
-            t = true;
+            return true;
         }
     }
 
-    /*for (int i = 0, i < (Board_Course.get_positions()).size(), i++)
-    {
-
-    }*/
+    t = reserved_space(pos.x_pos, pos.y_pos);
 
     return t;
 }
-//Skall in under ovanstående fkn
+
 bool Board::reserved_space(int x, int y)
 {
-    return Rect::contains(x, y); //Skall kolla i alla rektanglar måste modifieras
+    bool t = false;
+    if ((Board_Course.r0).contains(x, y))
+    {
+        t = true;
+    }
+    else if ((Board_Course.r1).contains(x, y))
+    {
+        t = true;
+    }
+    else if ((Board_Course.r2).contains(x, y))
+    {
+        t = true;
+    }
+    else if ((Board_Course.r3).contains(x, y))
+    {
+        t = true;
+    }
+    else if ((Board_Course.r4).contains(x, y))
+    {
+        t = true;
+    }
+    else if ((Board_Course.r5).contains(x, y))
+    {
+        t = true;
+    }
+    return t;
 }
 
+distance = distance + time*

@@ -13,12 +13,12 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
+
 //höhö hittepå
 struct pos
 {
     int x_pos = 0;
     int y_pos = 0;
-    int waypoint_number = 0;
 };
 
 
@@ -27,7 +27,7 @@ class Sheep
 {
 public:
     /*The big 5*/
-    Sheep(int new_speed, int new_hp, int new_bounty);
+    Sheep(int new_speed, int new_hp, int new_bounty, Course new_Course);
     virtual ~Sheep() = default;
     Sheep(const Sheep& other) = delete; //Kopieringskonstruktor
     Sheep(const Sheep&& other) = delete; //Kopieringskonstruktor med move
@@ -36,6 +36,8 @@ public:
 
     /*Funktioner*/
     void hit(int damage);
+    float get_distance();
+
 
     /*Virtuella funktioner*/
     virtual pos get_position() = 0; //pos inte ännu definierad
@@ -49,6 +51,8 @@ protected:
     int hp = 0;
     int speed = 0;
     int bounty = 0;
+    float distance = 0;
+    Course current_Course;
 
 };
 
@@ -56,7 +60,7 @@ class EasySheep: public Sheep
 {
 
 public:
-    EasySheep();
+    EasySheep(Course new_Course);
     pos get_position();
     void set_position(pos new_position);
     sf::Sprite get_Sheep_Sprite();
@@ -66,10 +70,9 @@ private:
 
     int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
-    pos current_position;
-    pos next_position;
-    int current_waypoint = 0;
-    int next_waypoint = 0;
+    pos current_position{-5, 10};
+    pos next_position{20, 10};
+    int next_waypoint = 1;
 
 };
 
@@ -77,7 +80,7 @@ class MediumSheep: public Sheep
 {
 
 public:
-    MediumSheep();
+    MediumSheep(Course new_Course);
     pos get_position();
     void set_position(pos new_position);
     sf::Sprite get_Sheep_Sprite();
@@ -85,16 +88,16 @@ public:
 private:
     int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
-    pos current_position;
-    int current_waypoint = 0;
-    int next_waypoint = 0;
+    pos current_position{-5, 10};
+    pos next_position{20, 10};
+    int next_waypoint = 1;
 };
 
 class HardSheep: public Sheep
 {
 
 public:
-    HardSheep();
+    HardSheep(Course new_Course);
     pos get_position();
     void set_position(pos new_position);
     sf::Sprite get_Sheep_Sprite();
@@ -102,9 +105,9 @@ public:
 private:
     int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
-    pos current_position;
-    int current_waypoint = 0;
-    int next_waypoint = 0;
+    pos current_position{-5, 10};
+    pos next_position{20, 10};
+    int next_waypoint = 1;
 };
 
 #endif // SHEEP_H

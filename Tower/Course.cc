@@ -14,7 +14,10 @@
 
 //Skriv in konstruktor!!
 
+Course::Course()
+{
 
+}
 
 void waypoint_direction(int Sheep::heading_to)
 {
@@ -33,4 +36,36 @@ void waypoint_direction(int Sheep::heading_to)
         dx = 0
         dy = -(Sheep::speed)
      }
-};
+}
+
+pos Course::get_waypoint(int number)
+{
+    if (number == 0)
+    {
+        return wp0;
+    }
+    else if (number == 1)
+    {
+        return wp1;
+    }
+    else if (number == 2)
+    {
+        return wp2;
+    }
+    else if (number == 3)
+    {
+        return wp3;
+    }
+    else if (number == 4)
+    {
+        return wp4;
+    }
+    else if (number == 5)
+    {
+        return wp5;
+    }
+    else
+    {
+        //vi borde ha en felklass
+    }
+}

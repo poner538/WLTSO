@@ -15,38 +15,6 @@
 #include <iostream>
 #include "Sheep.h"
 
-
-<<<<<<< HEAD
-
-
-/*  struct pos
-=======
-/*
-  struct pos
->>>>>>> 8f263b5a4bbab335fd61068219ec2dff058f4214
-    {
-        int x_pos = 0;
-        int y_pos = 0;
-    };*/
-
-
-//dummyfår för att testa shot
-/*
-class Sheep
-{
-    pos current_position;
-
-   public:
-       Sheep();
-       int hp;
-    pos get_position()
-    {
-        return current_position;
-    }
-
-   void hit(int);
-};
-
 /*
 
 Klassen Shot ska tilldelas ett får, en skada den ska göra och en startposition
@@ -59,7 +27,7 @@ class Shot
     public:
     Shot(Sheep&,int,pos);
     ~Shot();
-//    ~Shot(Sheep);
+
     int get_dmg();
     void hunt_sheep();
 
@@ -73,16 +41,6 @@ class Shot
     void hit_sheep();
 
 };
-
-
-
-
-
-
-
-
-
-
 
 
 #endif

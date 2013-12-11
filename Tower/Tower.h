@@ -21,13 +21,6 @@
 #include "Shot.h"
 using namespace std;
 
-/*
-struct pos
-{
-    int x_pos = 0;
-    int y_pos = 0;
-};
-
 
 /*
     Basklass för torn
@@ -43,16 +36,12 @@ protected:
 
 public:
     Tower(int,int,int,pos);
-<<<<<<< HEAD
-   virtual void locate_sheep();
-    void shoot(Sheep&);
 
-=======
-    virtual void locate_sheep(Sheep);
-    void shoot(Sheep);
+    virtual void locate_sheep(Sheep&);
+    void shoot(Sheep&);
     pos get_position();
     virtual sf::Sprite get_Tower_Sprite() = 0;
->>>>>>> 8f263b5a4bbab335fd61068219ec2dff058f4214
+
 
 
 };

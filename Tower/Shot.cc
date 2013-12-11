@@ -17,7 +17,7 @@
 #include <math.h>
 //#include "Sheep.h"
 
-Shot::Shot(Sheep sheep_target,const int new_dmg,pos start_pos)
+Shot::Shot(Sheep& sheep_target,const int new_dmg,pos start_pos)
 {
     target = sheep_target;
     dmg = new_dmg;

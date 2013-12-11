@@ -10,11 +10,12 @@
 */
 
 
-//#include "Sheep.h"
+
 #include <SFML/Graphics.hpp>
 #include "Tower.h"
 #include <iostream>
 #include <math.h>
+#include <vector>
 
 
 using namespace std;
@@ -47,12 +48,12 @@ sf::Sprite Shooting_tower::get_Tower_Sprite()
     return Tower_Sprite;
 }
 
-void Tower::locate_sheep(Sheep vec_sheep)
+void Tower::locate_sheep(vector<Sheep*> vec_sheep)
 {
+for(int i = 1 ; i <= vec_sheep.size() ; i++)
 
 
-
-        if ( pow(range, 2) >= pow((vec_sheep.get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
+        if ( pow(range, 2) >= pow((vec_sheep.at(i).get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(i).get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
         {
              cout << "hittade fåret\n";
             shoot(vec_sheep);

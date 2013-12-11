@@ -9,11 +9,8 @@
 *
 */
 
-#include "Sheep.h"
-#include "Tower.h"
-#include "Shot.h"
-#include "Course.h"
 #include "Board.h"
+#include <vector>
 
 Board::Board(Course new_Board_Course)
 {

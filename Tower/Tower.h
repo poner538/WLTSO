@@ -19,6 +19,8 @@
 #include <ctime>
 #include "Sheep.h"
 #include "Shot.h"
+#include "Board.h"
+#include <vector>
 using namespace std;
 
 
@@ -37,7 +39,7 @@ protected:
 public:
     Tower(int,int,int,pos);
 
-    virtual void locate_sheep(Sheep&);
+    virtual void locate_sheep(vector<Sheep*>);
     void shoot(Sheep&);
     pos get_position();
     virtual sf::Sprite get_Tower_Sprite() = 0;

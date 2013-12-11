@@ -25,12 +25,7 @@
  * Enklast att lägga in punkterna var och en för sig med manuell matematik!!!!!
  */
 
-sf::Rect<float> r0(1,2,3,4);
-sf::Rect<float> r1(1,2,3,4);
-sf::Rect<float> r2(1,2,3,4);
-sf::Rect<float> r3(1,2,3,4);
-sf::Rect<float> r4(1,2,3,4);
-sf::Rect<float> r5(1,2,3,4);
+
 
    // bool reserved_space(int, int); //Upptaget? Kommer agera hjälpfkn
 
@@ -71,6 +66,13 @@ public:
     pos wp4{50, 60};
     pos wp5{70, 60};
     pos wp6{70, 120}; //120 är utanför den synliga banan banan
+
+    sf::Rect<float> r0(1,2,3,4);
+    sf::Rect<float> r1(1,2,3,4);
+    sf::Rect<float> r2(1,2,3,4);
+    sf::Rect<float> r3(1,2,3,4);
+    sf::Rect<float> r4(1,2,3,4);
+    sf::Rect<float> r5(1,2,3,4);
 
     //sf::Sprite CourseSprite(CourseImage)
 

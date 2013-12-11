@@ -40,7 +40,7 @@ vector<Tower> Board::get_Tower()
     return Tower_list;
 }
 
-void Board::set_Tower(Tower new_Tower)
+void Board::set_Tower(Tower& new_Tower)
 {
     Tower_list.push_back(new_Tower);
 }
@@ -69,7 +69,7 @@ bool Board::exist(pos other_pos)
 
     for (unsigned int i = 0; i < Tower_list.size(); i++)
     {
-        if ((Tower_list.at(i)).get_position() == other_pos)
+        if ((Tower_list.at(i).get_position().x_pos == other_pos.x_pos) and (Tower_list.at(i).get_position().y_pos == other_pos.y_pos))
         {
             return true;
         }

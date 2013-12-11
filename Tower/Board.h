@@ -29,7 +29,7 @@ public:
     void set_Shot(Shot);
     Course get_Course();
     vector<Tower> get_Tower();
-    void set_Tower(Tower);
+    void set_Tower(Tower&);
     vector<Sheep> get_Sheep();
     void set_Sheep(Sheep&);
     bool exist(pos);

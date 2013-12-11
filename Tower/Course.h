@@ -13,11 +13,7 @@
 
 #include <vector> //Det som behövs
 #include <SFML/Graphics.hpp> //Användning av SFMLs rektangelfkn
-
-
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
-
+#include "Sheep.h" //blä
 
 //Skall skriva konstruktor i .cc
 
@@ -29,22 +25,21 @@
  * Enklast att lägga in punkterna var och en för sig med manuell matematik!!!!!
  */
 
-sf::Rect r0(1,2,3,4);
-sf::Rect r1(1,2,3,4);
-sf::Rect r2(1,2,3,4);
-sf::Rect r3(1,2,3,4);
-sf::Rect r4(1,2,3,4);
-sf::Rect r5(1,2,3,4);
+sf::Rect<float> r0(1,2,3,4);
+sf::Rect<float> r1(1,2,3,4);
+sf::Rect<float> r2(1,2,3,4);
+sf::Rect<float> r3(1,2,3,4);
+sf::Rect<float> r4(1,2,3,4);
+sf::Rect<float> r5(1,2,3,4);
 
    // bool reserved_space(int, int); //Upptaget? Kommer agera hjälpfkn
 
 
 //Struct för waypoint
-struct waypoint{
+struct pos{
     int x_pos;
     int y_pos;
-    int unused;
-}
+};
 /*
 wp0{-5, 10}; //-5 är utanför den synliga banan
 wp1{20, 10};
@@ -64,7 +59,7 @@ public:
 	 * Våra waypoints för styrning av får
      * Fördefinerade pos1-posn
      */
-	Course(/*vector <pos> waypoints (pos0, pos1, pos2, pos3, pos4, pos5*/));
+	Course(/*vector <pos> waypoints (pos0, pos1, pos2, pos3, pos4, pos5*/);
     ~Course(); //Destruktor
     pos get_waypoint(int);
     void waypoint_direction(int);

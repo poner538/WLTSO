@@ -12,6 +12,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "Shot.h"
+#include "Sheep.h"
 #include <iostream>
 #include <math.h>
 

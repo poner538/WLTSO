@@ -17,12 +17,11 @@
 
 
 
-  struct pos
+/*  struct pos
     {
         int x_pos = 0;
         int y_pos = 0;
-        int waypoint_number = 0;
-    };
+    };*/
 
 
 //dummyfår för att testa shot
@@ -52,7 +51,7 @@ Klassen Shot ska tilldelas ett får, en skada den ska göra och en startposition
 class Shot
 {
     public:
-    Shot(Sheep,int,pos);
+    Shot(Sheep&,int,pos);
     ~Shot();
 //    ~Shot(Sheep);
     int get_dmg();
@@ -62,7 +61,7 @@ class Shot
     private:
     int dmg;
     pos shot_pos;
-    Sheep target;
+    Sheep& target;
     //sf::Image ShotImage(".jpg");
     //sf::Sprite ShotSprite(ShotImage);
     void hit_sheep();

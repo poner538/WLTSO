@@ -31,7 +31,7 @@ public:
     vector<Tower> get_Tower();
     void set_Tower(Tower);
     vector<Sheep> get_Sheep();
-    void set_Sheep(Sheep);
+    void set_Sheep(Sheep&);
     bool exist(pos);
 
 private:
@@ -41,9 +41,9 @@ private:
 
     /*Datamedlemmar*/
     Course Board_Course;
-    vector<Sheep> Sheep_list = 0;
-    vector<Tower> Tower_list = 0;
-    vector<Shot> Shot_list = 0;
+    vector<Sheep> Sheep_list;
+    vector<Tower> Tower_list;
+    vector<Shot> Shot_list;
 
 };
 

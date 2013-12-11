@@ -12,14 +12,15 @@
 #define SHEEP_H
 #include <SFML/Graphics.hpp>
 #include <string>
+#include "Course.h"
 
 
 //höhö hittepå
-struct pos
+/*struct pos
 {
     int x_pos = 0;
     int y_pos = 0;
-};
+};*/
 
 
 

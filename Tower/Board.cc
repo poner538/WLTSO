@@ -40,7 +40,7 @@ vector<Tower*> Board::get_Tower()
     return Tower_list;
 }
 
-void Board::set_Tower(Tower& new_Tower)
+void Board::set_Tower(Tower* new_Tower)
 {
     Tower_list.push_back(new_Tower);
 }
@@ -50,7 +50,7 @@ vector<Sheep*> Board::get_Sheep()
     return Sheep_list;
 }
 
-void Board::set_Sheep(Sheep& new_Sheep)
+void Board::set_Sheep(Sheep* new_Sheep)
 {
     Sheep_list.push_back(new_Sheep);
 }
@@ -61,7 +61,7 @@ bool Board::exist(pos other_pos)
     for (unsigned int i = 0; i < Sheep_list.size(); i++)
     {
         ;
-        if ((Sheep_list.at(i).get_position().x_pos == other_pos.x_pos) and  (Sheep_list.at(i).get_position().y_pos == other_pos.y_pos))
+        if ((Sheep_list.at(i)->get_position().x_pos == other_pos.x_pos) and  (Sheep_list.at(i)->get_position().y_pos == other_pos.y_pos))
         {
             return true;
         }
@@ -69,7 +69,7 @@ bool Board::exist(pos other_pos)
 
     for (unsigned int i = 0; i < Tower_list.size(); i++)
     {
-        if ((Tower_list.at(i).get_position().x_pos == other_pos.x_pos) and (Tower_list.at(i).get_position().y_pos == other_pos.y_pos))
+        if ((Tower_list.at(i)->get_position().x_pos == other_pos.x_pos) and (Tower_list.at(i)->get_position().y_pos == other_pos.y_pos))
         {
             return true;
         }

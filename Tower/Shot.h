@@ -13,11 +13,17 @@
 #define SHOT_H
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Sheep.h"
 
 
+<<<<<<< HEAD
 
 
 /*  struct pos
+=======
+/*
+  struct pos
+>>>>>>> 8f263b5a4bbab335fd61068219ec2dff058f4214
     {
         int x_pos = 0;
         int y_pos = 0;
@@ -32,7 +38,7 @@ class Sheep
 
    public:
        Sheep();
-       int dmg;
+       int hp;
     pos get_position()
     {
         return current_position;

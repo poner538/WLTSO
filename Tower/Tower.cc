@@ -9,7 +9,8 @@
 *
 */
 
-#include "Shot.h"
+
+//#include "Sheep.h"
 #include <SFML/Graphics.hpp>
 #include "Tower.h"
 #include <iostream>
@@ -27,8 +28,13 @@ Tower::Tower(int new_range,int new_shooting_speed,int new_dmg,pos new_pos)
 }
 
 Catapult_tower::Catapult_tower(pos new_pos)
-    : Tower(10,2,10,new_pos)
+    : Tower(100,2,7,new_pos)
 {
+}
+
+sf::Sprite Catapult_tower::get_Tower_Sprite()
+{
+    return Tower_Sprite;
 }
 
 Shooting_tower::Shooting_tower(pos new_pos)
@@ -36,23 +42,27 @@ Shooting_tower::Shooting_tower(pos new_pos)
 {
 }
 
-void Tower::locate_sheep()
+sf::Sprite Shooting_tower::get_Tower_Sprite()
+{
+    return Tower_Sprite;
+}
+
+void Tower::locate_sheep(Sheep vec_sheep)
 {
 
-    int x = 120;
-    int y = 50;
 
-        if ( pow(range, 2) >= pow((x - T_pos.x_pos),2) + pow((y + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
+
+        if ( pow(range, 2) >= pow((vec_sheep.get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
         {
+             cout << "hittade fåret\n";
+            shoot(vec_sheep);
 
-            //shoot(sheep_target);
-            cout << "hittade fåret\n";
-
+            return;
         }
         else
         {
             //mytimer(5);
-            cout << "hitta inget skott \n";
+            cout << "hitta inget får \n";
         }
 
 }
@@ -63,6 +73,11 @@ void Tower::shoot(Sheep sheep_target)
     Shot a_shot(sheep_target,dmg,T_pos);
     a_shot.hunt_sheep();
     mytimer(shooting_speed);
+}
+
+pos Tower::get_position()
+{
+    return T_pos;
 }
 
 

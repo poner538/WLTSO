@@ -15,8 +15,9 @@
 #include "Sheep.h"
 #include <iostream>
 #include <math.h>
+//#include "Sheep.h"
 
-Shot::Shot(Sheep sheep_target, int new_dmg,pos start_pos)
+Shot::Shot(Sheep sheep_target,const int new_dmg,pos start_pos)
 {
     target = sheep_target;
     dmg = new_dmg;
@@ -68,13 +69,13 @@ void Shot::hit_sheep()
 /*
 Sheep::Sheep()
 {
-    dmg = 10;
+    hp = 10;
 }
 
-void Sheep::hit(int damage)
+void Sheep::hit(const int damage)
    {
 
-       if(dmg < damage)
+       if(hp < damage)
        {
         std::cout << "dödat får\n";
          delete this;
@@ -82,8 +83,10 @@ void Sheep::hit(int damage)
        else
         std::cout << "nästan dödat får\n";
         {
-        this->dmg = dmg - damage;
+        this->hp = this->hp - damage;
+        std::cout << this->hp << "\n";
         return;
         }
    }
+
 */

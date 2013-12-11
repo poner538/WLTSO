@@ -9,13 +9,17 @@
  * Hur fåren ska flytta sig under spelet
  */
 
- #include <vector> //Det som behövs
- #include <SFML/Graphics.hpp> //Användning av SFMLs rektangelfkn
+#include <vector> //Det som behövs
+#include <SFML/Graphics.hpp> //Användning av SFMLs rektangelfkn
 
 
- //Skall skriva konstruktor i .cc
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
- /* (left, top, width, height)
+
+//Skall skriva konstruktor i .cc
+
+/* (left, top, width, height)
  * (wp(i).x_pos - 1)
  * (wp(i).y_pos - 1)
  * (wp(i+1).x_pos - wp(i).x_pos +2)
@@ -33,7 +37,7 @@ sf::Rect r5(1,2,3,4);
 
 
 //Struct för waypoint
- struct waypoint{
+struct waypoint{
     int x_pos;
     int y_pos;
     int unused;
@@ -48,9 +52,9 @@ wp6{70, 120, 0} //120 är utanför den synliga banan banan
 ;
 
 
- class Course
- {
- public:
+class Course
+{
+public:
 
     /*
 	 * Våra waypoints för styrning av får

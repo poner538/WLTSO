@@ -12,7 +12,7 @@
 #include "Course.h"
 #include <vector>
 
-//Skriv in konstruktor!!
+//Skriv in konstruktor!! Vad testDB!
 
 Course::Course()
 {

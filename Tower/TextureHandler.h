@@ -30,6 +30,7 @@ public:
     sf::Texture getTower1();
     sf::Texture getTower2();
     sf::Texture getShot();
+    sf::Texture getCourse();
 
     static TextureHandler texturehandler;
 
@@ -41,6 +42,7 @@ private:
     std::string filenameTower1;
     std::string filenameTower2;
     std::string filenameShot;
+    std::string filenameCourse;
 
     sf::Texture EasySheep_Texture;
     sf::Texture MediumSheep_Texture;
@@ -48,6 +50,7 @@ private:
     sf::Texture Tower1_Texture;
     sf::Texture Tower2_Texture;
     sf::Texture Shot_Texture;
+    sf::Texture Course_Texture;
 };
 
 #endif // TEXTUREHANDLER_H

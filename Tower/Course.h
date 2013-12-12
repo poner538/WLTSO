@@ -17,13 +17,7 @@
 
 //Skall skriva konstruktor i .cc
 
-/* (left, top, width, height)
- * (wp(i).x_pos - 1)
- * (wp(i).y_pos - 1)
- * (wp(i+1).x_pos - wp(i).x_pos +2)
- * (wp(i+1).y_pos - wp(i).y_pos +2)
- * Enklast att lägga in punkterna var och en för sig med manuell matematik!!!!!
- */
+
 
 
 
@@ -67,15 +61,22 @@ public:
     pos wp5{70, 60};
     pos wp6{70, 120}; //120 är utanför den synliga banan banan
 
-    sf::Rect<float> r0{sf::Rect<float>(1,2,3,4)};
-    sf::Rect<float> r1{sf::Rect<float>(1,2,3,4)};
-    sf::Rect<float> r2{sf::Rect<float>(1,2,3,4)};
-    sf::Rect<float> r3{sf::Rect<float>(1,2,3,4)};
-    sf::Rect<float> r4{sf::Rect<float>(1,2,3,4)};
-    sf::Rect<float> r5{sf::Rect<float>(1,2,3,4)};
+    sf::Rect<int> r0{sf::Rect<int>(1,2,3,4)};
+    sf::Rect<int> r1{sf::Rect<int>(1,2,3,4)};
+    sf::Rect<int> r2{sf::Rect<int>(1,2,3,4)};
+    sf::Rect<int> r3{sf::Rect<int>(1,2,3,4)};
+    sf::Rect<int> r4{sf::Rect<int>(1,2,3,4)};
+    sf::Rect<int> r5{sf::Rect<int>(1,2,3,4)};
 
+private:
+   void initiate_rectangles()
 
-    //sf::Sprite CourseSprite(CourseImage)
+    sf::Sprite Rect0_Sprite;
+    sf::Sprite Rect1_Sprite;
+    sf::Sprite Rect2_Sprite;
+    sf::Sprite Rect3_Sprite;
+    sf::Sprite Rect4_Sprite;
+    sf::Sprite Rect5_Sprite;
 
  };
 

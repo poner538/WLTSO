@@ -16,7 +16,38 @@
 
 Course::Course()
 {
+    initiate_rectangles();
+    Rect0_Sprite.setTexture(TextureHandler::texturehandler.getCourse());
+    Rect1_Sprite.setTexture(TextureHandler::texturehandler.getCourse());
+    Rect2_Sprite.setTexture(TextureHandler::texturehandler.getCourse());
+    Rect3_Sprite.setTexture(TextureHandler::texturehandler.getCourse());
+    Rect4_Sprite.setTexture(TextureHandler::texturehandler.getCourse());
+    Rect5_Sprite.setTexture(TextureHandler::texturehandler.getCourse());
+    Rect0_Sprite.setTextureRect(r0);
+    Rect1_Sprite.setTextureRect(r1);
+    Rect2_Sprite.setTextureRect(r2);
+    Rect3_Sprite.setTextureRect(r3);
+    Rect4_Sprite.setTextureRect(r4);
+    Rect5_Sprite.setTextureRect(r5);//Mycket hårdkodning nu...
+}
 
+void Course::initiate_rectangles()
+{
+    int spread = 10; //Tex
+    sf::Rect<int> r0{sf::Rect<int>(wp0.x_pos - spread,wp0.y_pos - spread, wp1.x_pos - wp0.x_pos + 2*spread, 2*spread)}; //Hårdkodat med riktningar och sånt +- ema
+    sf::Rect<int> r1{sf::Rect<int>(wp1.x_pos - spread,wp1.y_pos - spread, 2*spread, wp2.y_pos - wp1.y_pos + 2*spread)};
+    sf::Rect<int> r2{sf::Rect<int>(wp2.x_pos - spread,wp2.y_pos - spread, wp3.x_pos - wp2.x_pos + 2*spread, 2*spread)};
+    sf::Rect<int> r3{sf::Rect<int>(wp3.x_pos - spread,wp3.y_pos - spread, 2*spread, wp3.y_pos - wp4.y_pos + 2*spread)};
+    sf::Rect<int> r4{sf::Rect<int>(wp4.x_pos - spread,wp4.y_pos - spread, wp5.x_pos - wp4.x_pos + 2*spread, 2*spread)};
+    sf::Rect<int> r5{sf::Rect<int>(wp5.x_pos - spread,wp5.y_pos - spread, 2*spread, wp6.y_pos - wp5.y_pos + 2*spread)};
+
+/* (left, top, width, height)
+ * (wp(i).x_pos - 1)
+ * (wp(i).y_pos - 1)
+ * (wp(i+1).x_pos - wp(i).x_pos +2)
+ * (wp(i+1).y_pos - wp(i).y_pos +2)
+ * Enklast att lägga in punkterna var och en för sig med manuell matematik!!!!!
+ */
 }
 
 void waypoint_direction(int Sheep::heading_to)

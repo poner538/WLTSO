@@ -70,6 +70,8 @@
 		<Unit filename="Game.h" />
 		<Unit filename="Sheep.cc" />
 		<Unit filename="Sheep.h" />
+		<Unit filename="Shop.cc" />
+		<Unit filename="Shop.h" />
 		<Unit filename="Shot.cc" />
 		<Unit filename="Shot.h" />
 		<Unit filename="TextureHandler.cc" />

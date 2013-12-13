@@ -10,6 +10,7 @@
 */
 
 #include "Controller.h"
+#include <iostream>
 
 Controller Controller::controller(100,100);
 
@@ -24,7 +25,7 @@ void Controller::change_gold(const int value)
 {
     if ((gold + value) < 0)
     {
-        //neeeej, pengar Shop.NotEnoghMoney() någon form av utskrift eller nåt.
+        cout<<"Du är för fattig för att köpa torn!"<<endl; //Ville göra en popup som går att stänga. #varningsmeddelande
     }
     gold = gold + value;
 }

@@ -14,6 +14,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Sheep.h"
+#include "Course.h"
 
 /*
 
@@ -24,18 +25,18 @@ Klassen Shot ska tilldelas ett får, en skada den ska göra och en startposition
 
 class Shot
 {
-    public:
-    Shot(Sheep&,int,pos);
+public:
+    Shot(Sheep*, int, pos);
     ~Shot();
 
     int get_dmg();
     void hunt_sheep();
 
 
-    private:
+private:
     int dmg;
     pos shot_pos;
-    Sheep& target;
+    Sheep* target;
     //sf::Image ShotImage(".jpg");
     //sf::Sprite ShotSprite(ShotImage);
     void hit_sheep();

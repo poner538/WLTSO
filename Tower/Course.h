@@ -8,48 +8,32 @@
  *
  * Hur fåren ska flytta sig under spelet
  */
+
 #ifndef COURSE_H
 #define COURSE_H
 
 #include <vector> //Det som behövs
 #include <SFML/Graphics.hpp> //Användning av SFMLs rektangelfkn
-#include "Sheep.h" //blä
-
-//Skall skriva konstruktor i .cc
+#include "TextureHandler.h"
 
 
-
-
-
-   // bool reserved_space(int, int); //Upptaget? Kommer agera hjälpfkn
-
-
-//Struct för waypoint
-struct pos{
-    int x_pos;
-    int y_pos;
+struct pos
+{
+    int x_pos = 0;
+    int y_pos = 0;
+    pos(int x = 0, int y = 0)
+    {
+        x_pos = x;
+        y_pos = y;
+    }
 };
-/*
-wp0{-5, 10}; //-5 är utanför den synliga banan
-wp1{20, 10};
-wp2{20, 80};
-wp3{50, 80};
-wp4{50, 60};
-wp5{70, 60};
-wp6{70, 120}; //120 är utanför den synliga banan banan*/
-
-
 
 class Course
 {
 public:
 
-    /*
-	 * Våra waypoints för styrning av får
-     * Fördefinerade pos1-posn
-     */
 	Course(/*vector <pos> waypoints (pos0, pos1, pos2, pos3, pos4, pos5*/);
-    ~Course(); //Destruktor
+    ~Course() = default; //Destruktor
     pos get_waypoint(int);
     void waypoint_direction(int);
 
@@ -69,7 +53,7 @@ public:
     sf::Rect<int> r5{sf::Rect<int>(1,2,3,4)};
 
 private:
-   void initiate_rectangles()
+   void initiate_rectangles();
 
     sf::Sprite Rect0_Sprite;
     sf::Sprite Rect1_Sprite;

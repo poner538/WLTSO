@@ -12,8 +12,6 @@
 #include "Course.h"
 #include <vector>
 
-//Skriv in konstruktor!!
-
 Course::Course()
 {
     initiate_rectangles();
@@ -41,7 +39,10 @@ void Course::initiate_rectangles()
     sf::Rect<int> r4{sf::Rect<int>(wp4.x_pos - spread,wp4.y_pos - spread, wp5.x_pos - wp4.x_pos + 2*spread, 2*spread)};
     sf::Rect<int> r5{sf::Rect<int>(wp5.x_pos - spread,wp5.y_pos - spread, 2*spread, wp6.y_pos - wp5.y_pos + 2*spread)};
 
-/* (left, top, width, height)
+/* (left, top, width, height) struct pos{
+    int x_pos;
+    int y_pos;
+};
  * (wp(i).x_pos - 1)
  * (wp(i).y_pos - 1)
  * (wp(i+1).x_pos - wp(i).x_pos +2)
@@ -50,7 +51,7 @@ void Course::initiate_rectangles()
  */
 }
 
-void waypoint_direction(int Sheep::heading_to)
+/*void waypoint_direction(int Sheep::heading_to)
 {
      if (Sheep::heading_to == 1 | 3 | 5)//OR är tanken
      {
@@ -67,7 +68,7 @@ void waypoint_direction(int Sheep::heading_to)
         dx = 0
         dy = -(Sheep::speed)
      }
-}
+}*/
 
 pos Course::get_waypoint(int number)
 {

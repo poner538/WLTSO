@@ -18,6 +18,7 @@
 #include <vector>
 
 
+
 using namespace std;
 
 Tower::Tower(int new_range,int new_shooting_speed,int new_dmg,pos new_pos)
@@ -53,10 +54,10 @@ void Tower::locate_sheep(vector<Sheep*> vec_sheep)
 for(int i = 1 ; i <= vec_sheep.size() ; i++)
 
 
-        if ( pow(range, 2) >= pow((vec_sheep.at(i).get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(i).get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
+        if ( pow(range, 2) >= pow((vec_sheep.at(i)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(i)->get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
         {
              cout << "hittade fåret\n";
-            shoot(vec_sheep);
+            shoot(vec_sheep.at(i));
 
             return;
         }
@@ -69,7 +70,7 @@ for(int i = 1 ; i <= vec_sheep.size() ; i++)
 }
 
 
-void Tower::shoot(Sheep sheep_target)
+void Tower::shoot(Sheep* sheep_target)
 {
     Shot a_shot(sheep_target,dmg,T_pos);
     a_shot.hunt_sheep();

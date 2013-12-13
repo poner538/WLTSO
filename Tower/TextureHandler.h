@@ -17,7 +17,7 @@ class TextureHandler
 {
 public:
     /*The big 5*/
-    TextureHandler();
+    TextureHandler(int);
     ~TextureHandler() = default;
     TextureHandler(const TextureHandler& other) = delete; //Kopieringskonstruktor
     TextureHandler(const TextureHandler&& other) = delete; //Kopieringskonstruktor med move

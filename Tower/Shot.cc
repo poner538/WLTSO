@@ -12,12 +12,10 @@
 
 #include <SFML/Graphics.hpp>
 #include "Shot.h"
-#include "Sheep.h"
 #include <iostream>
 #include <math.h>
-//#include "Sheep.h"
 
-Shot::Shot(Sheep& sheep_target,const int new_dmg,pos start_pos)
+Shot::Shot(Sheep* sheep_target,const int new_dmg,pos start_pos)
 {
     target = sheep_target;
     dmg = new_dmg;
@@ -29,28 +27,28 @@ Shot::~Shot()
 
 void Shot::hunt_sheep()
 {
-    if((target.get_position().x_pos == shot_pos.x_pos) and (target.get_position().y_pos == shot_pos.y_pos))
+    if((target->get_position().x_pos == shot_pos.x_pos) and (target->get_position().y_pos == shot_pos.y_pos))
     {
         hit_sheep();
         return;
     }
     else
     {
-        if(target.get_position().x_pos < shot_pos.x_pos)
+        if(target->get_position().x_pos < shot_pos.x_pos)
         {
             std::cout << "x-\n";
             --shot_pos.x_pos;
         }
-        else if(target.get_position().x_pos > shot_pos.x_pos)
+        else if(target->get_position().x_pos > shot_pos.x_pos)
         {
             ++shot_pos.x_pos;
         }
-        if(target.get_position().y_pos < shot_pos.y_pos)
+        if(target->get_position().y_pos < shot_pos.y_pos)
         {
             std::cout << "y-\n";
             --shot_pos.y_pos;
         }
-        else if(target.get_position().y_pos > shot_pos.y_pos)
+        else if(target->get_position().y_pos > shot_pos.y_pos)
         {
             ++shot_pos.y_pos;
         }
@@ -60,7 +58,7 @@ void Shot::hunt_sheep()
 
 void Shot::hit_sheep()
 {
-    target.hit(dmg);
+    target->hit(dmg);
     delete this;
 }
 

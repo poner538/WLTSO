@@ -13,14 +13,8 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Course.h"
+#include "Controller.h"
 
-
-//höhö hittepå
-/*struct pos
-{
-    int x_pos = 0;
-    int y_pos = 0;
-};*/
 
 
 
@@ -85,6 +79,8 @@ public:
     pos get_position();
     void set_position(pos new_position);
     sf::Sprite get_Sheep_Sprite();
+    void update_position(float time);
+
 
 private:
     int current_graphic_state = 1;
@@ -102,6 +98,8 @@ public:
     pos get_position();
     void set_position(pos new_position);
     sf::Sprite get_Sheep_Sprite();
+    void update_position(float time);
+
 
 private:
     int current_graphic_state = 1;

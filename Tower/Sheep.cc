@@ -13,9 +13,6 @@
 */
 
 #include "Sheep.h"
-#include "Controller.h"
-#include "TextureHandler.h"
-#include "Course.h"
 #include <cmath>
 
 Sheep::Sheep(int new_speed, int new_hp, int new_bounty, Course new_Course)
@@ -76,7 +73,7 @@ void EasySheep::update_position(float time)
     pos temp_pos;
     x_temp = next_position.x_pos - current_position.x_pos;
     y_temp = next_position.y_pos - current_position.y_pos;
-    norm = sqrt(pwr(x_temp, 2) + pwr(y_temp, 2));
+    norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
         if (next_waypoint = 5)//då har den gått i mål
@@ -91,7 +88,7 @@ void EasySheep::update_position(float time)
         temp_pos.x_pos = current_position.x_pos + x_temp*(time*speed-norm);
         temp_pos.y_pos = current_position.y_pos + y_temp*(time*speed-norm);
 
-        next_position = current_Course.get_waypoint(next_waypoint()+1);
+        next_position = current_Course.get_waypoint(next_waypoint+1);
         next_waypoint = next_waypoint + 1;
 
         set_position(temp_pos);
@@ -99,7 +96,7 @@ void EasySheep::update_position(float time)
         //Här har den kommit till waypointens position och ska vidare
         x_temp = next_position.x_pos - current_position.x_pos;
         y_temp = next_position.y_pos - current_position.y_pos;
-        norm = sqrt(pwr(x_temp, 2) + pwr(y_temp, 2));
+        norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*(norm - time*speed);
@@ -135,7 +132,6 @@ void MediumSheep::set_position(pos new_position)
 {
     current_position = new_position;
     Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
-    current_waypoint = new_position.waypoint_number;
 }
 
 sf::Sprite MediumSheep::get_Sheep_Sprite()
@@ -151,7 +147,7 @@ void MediumSheep::update_position(float time)
     pos temp_pos;
     x_temp = next_position.x_pos - current_position.x_pos;
     y_temp = next_position.y_pos - current_position.y_pos;
-    norm = sqrt(pwr(x_temp, 2) + pwr(y_temp, 2));
+    norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
         if (next_waypoint = 5)//då har den gått i mål
@@ -166,7 +162,7 @@ void MediumSheep::update_position(float time)
         temp_pos.x_pos = current_position.x_pos + x_temp*(time*speed-norm);
         temp_pos.y_pos = current_position.y_pos + y_temp*(time*speed-norm);
 
-        next_position = current_Course.get_waypoint(next_waypoint()+1);
+        next_position = current_Course.get_waypoint(next_waypoint+1);
         next_waypoint = next_waypoint + 1;
 
         set_position(temp_pos);
@@ -174,7 +170,7 @@ void MediumSheep::update_position(float time)
         //Här har den kommit till waypointens position och ska vidare
         x_temp = next_position.x_pos - current_position.x_pos;
         y_temp = next_position.y_pos - current_position.y_pos;
-        norm = sqrt(pwr(x_temp, 2) + pwr(y_temp, 2));
+        norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*(norm - time*speed);
@@ -210,7 +206,6 @@ void HardSheep::set_position(pos new_position)
 {
     current_position = new_position;
     Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
-    current_waypoint = new_position.waypoint_number;
 }
 
 sf::Sprite HardSheep::get_Sheep_Sprite()
@@ -226,7 +221,7 @@ void HardSheep::update_position(float time)
     pos temp_pos;
     x_temp = next_position.x_pos - current_position.x_pos;
     y_temp = next_position.y_pos - current_position.y_pos;
-    norm = sqrt(pwr(x_temp, 2) + pwr(y_temp, 2));
+    norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
         if (next_waypoint = 5)//då har den gått i mål
@@ -241,7 +236,7 @@ void HardSheep::update_position(float time)
         temp_pos.x_pos = current_position.x_pos + x_temp*(time*speed-norm);
         temp_pos.y_pos = current_position.y_pos + y_temp*(time*speed-norm);
 
-        next_position = current_Course.get_waypoint(next_waypoint()+1);
+        next_position = current_Course.get_waypoint(next_waypoint+1);
         next_waypoint = next_waypoint + 1;
 
         set_position(temp_pos);
@@ -249,7 +244,7 @@ void HardSheep::update_position(float time)
         //Här har den kommit till waypointens position och ska vidare
         x_temp = next_position.x_pos - current_position.x_pos;
         y_temp = next_position.y_pos - current_position.y_pos;
-        norm = sqrt(pwr(x_temp, 2) + pwr(y_temp, 2));
+        norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*(norm - time*speed);

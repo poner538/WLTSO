@@ -12,9 +12,9 @@
 #include <iostream>
 #include "TextureHandler.h"
 
-TextureHandler TextureHandler::texturehandler = TextureHandler();
+TextureHandler TextureHandler::texturehandler(1);
 
-TextureHandler::TextureHandler()
+TextureHandler::TextureHandler(int dummy)
 {
     if (!EasySheep_Texture.loadFromFile(filenameEasySheep))
     {
@@ -39,6 +39,10 @@ TextureHandler::TextureHandler()
     if (!Shot_Texture.loadFromFile(filenameShot))
     {
         std::cout << "Shot laddades inte! :(" << std::endl;
+    }
+    if (!Course_Texture.loadFromFile(filenameCourse))
+    {
+        std::cout << "Course laddedes inte! :(" << std::endl;
     }
 }
 
@@ -70,4 +74,9 @@ sf::Texture TextureHandler::getTower2()
 sf::Texture TextureHandler::getShot()
 {
     return Shot_Texture;
+}
+
+sf::Texture TextureHandler::getCourse()
+{
+    return Course_Texture;
 }

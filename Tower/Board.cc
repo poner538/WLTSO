@@ -12,6 +12,8 @@
 #include "Board.h"
 #include <vector>
 
+
+
 Board::Board(Course new_Board_Course)
 {
     Board_Course = new_Board_Course;

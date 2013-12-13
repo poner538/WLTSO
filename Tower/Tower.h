@@ -16,11 +16,10 @@
 #ifndef TOWER_H
 #define TOWER_H
 #include <SFML/Graphics.hpp>
-#include <ctime>
+#include <vector>
+#include "Course.h"
 #include "Sheep.h"
 #include "Shot.h"
-#include "Board.h"
-#include <vector>
 using namespace std;
 
 
@@ -40,7 +39,7 @@ public:
     Tower(int,int,int,pos);
 
     virtual void locate_sheep(vector<Sheep*>);
-    void shoot(Sheep&);
+    void shoot(Sheep*);
     pos get_position();
     virtual sf::Sprite get_Tower_Sprite() = 0;
 

@@ -8,14 +8,18 @@
 *
 *
 */
-#ifndef COURSE_H
-#define COURSE_H
+#ifndef GAME_H
+#define GAME_H
+#include <SFML/Graphics.hpp>
+#include "Course.h"
+#include "Board.h"
+
 
 class Game
 {
 public:
     /*The big 5*/
-    Game(sf::Window, Board);
+    Game(sf::RenderWindow*, Board*);
     ~Game() = default;
     Game(const Game& other) = delete; //Kopieringskonstruktor
     Game(const Game&& other) = delete; //Kopieringskonstruktor med move
@@ -32,15 +36,17 @@ public:
 
 private:
     /*Datamedlemmar*/
-    sf::window GameWindow;
-    Board GameBoard;
+    sf::RenderWindow* GameWindow;
+    Board* GameBoard;
+    int feeding_time = 10;
 
     pos course_start_pos{-5,20};
     vector<vector<int>> wave;
     bool start_stop = true;
     int current_level = 1;
+    int current_sheep = 1;
     bool can_I_shop = true;
 
 };
 
-#endif // COURSE_H
+#endif // GAME_H

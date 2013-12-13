@@ -31,14 +31,14 @@ public:
 
     int get_dmg();
     void hunt_sheep();
+    sf::Sprite get_Shot_Sprite();
 
 
 private:
     int dmg;
     pos shot_pos;
     Sheep* target;
-    //sf::Image ShotImage(".jpg");
-    //sf::Sprite ShotSprite(ShotImage);
+    sf::Sprite Shot_Sprite;
     void hit_sheep();
 
 };

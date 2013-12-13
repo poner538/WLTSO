@@ -108,3 +108,5 @@ bool Board::reserved_space(int x, int y)
     }
     return t;
 }
+
+

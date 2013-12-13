@@ -34,13 +34,14 @@ protected:
     int dmg;
     pos T_pos;
     int current_graphic_state;
-    virtual sf::Sprite get_Tower_Sprite() = 0;
+
 public:
     Tower(int,int,int,pos);
 
     virtual void locate_sheep(vector<Sheep*>);
     void shoot(Sheep*);
     pos get_position();
+    virtual sf::Sprite get_Tower_Sprite() = 0;
 
 
 

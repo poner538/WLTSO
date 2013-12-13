@@ -20,10 +20,16 @@ Shot::Shot(Sheep* sheep_target,const int new_dmg,pos start_pos)
     target = sheep_target;
     dmg = new_dmg;
     shot_pos = start_pos;
+    Shot_Sprite.setTexture(TextureHandler::texturehandler.getShot());
 }
 
 Shot::~Shot()
 {}
+
+sf::Sprite Shot::get_Shot_Sprite()
+{
+    return Shot_Sprite;
+}
 
 void Shot::hunt_sheep()
 {

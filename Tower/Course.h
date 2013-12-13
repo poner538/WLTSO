@@ -36,6 +36,7 @@ public:
     ~Course() = default; //Destruktor
     pos get_waypoint(int);
     void waypoint_direction(int);
+    sf::Sprite get_Course_Sprite(int);
 
     pos wp0{-5, 10}; //-5 är utanför den synliga banan
     pos wp1{20, 10};

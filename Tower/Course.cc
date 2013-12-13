@@ -29,6 +29,38 @@ Course::Course()
     Rect5_Sprite.setTextureRect(r5);//Mycket hårdkodning nu...
 }
 
+sf::Sprite Course::get_Course_Sprite(int number)
+{
+    if (number == 0)
+    {
+        return Rect0_Sprite;
+    }
+    else if (number == 1)
+    {
+        return Rect1_Sprite;
+    }
+    else if (number == 2)
+    {
+        return Rect2_Sprite;
+    }
+    else if (number == 3)
+    {
+        return Rect3_Sprite;
+    }
+    else if (number == 4)
+    {
+        return Rect4_Sprite;
+    }
+    else if (number == 5)
+    {
+        return Rect5_Sprite;
+    }
+    else
+    {
+        //vi borde ha en felklass
+    }
+}
+
 void Course::initiate_rectangles()
 {
     int spread = 10; //Tex

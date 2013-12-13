@@ -32,6 +32,7 @@ Tower::Tower(int new_range,int new_shooting_speed,int new_dmg,pos new_pos)
 Catapult_tower::Catapult_tower(pos new_pos)
     : Tower(100,2,7,new_pos)
 {
+    Tower_Sprite.setTexture(TextureHandler::texturehandler.getTower2())
 }
 
 sf::Sprite Catapult_tower::get_Tower_Sprite()
@@ -42,6 +43,7 @@ sf::Sprite Catapult_tower::get_Tower_Sprite()
 Shooting_tower::Shooting_tower(pos new_pos)
     : Tower(15,1,5,new_pos)
 {
+    Tower_Sprite.setTexture(TextureHandler::texturehandler.getTower1());
 }
 
 sf::Sprite Shooting_tower::get_Tower_Sprite()

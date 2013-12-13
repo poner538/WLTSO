@@ -25,7 +25,7 @@ Sheep::Sheep(int new_speed, int new_hp, int new_bounty, Course new_Course)
 
 void Sheep::hit(int damage)
 {
-    if (damage > hp)  //Kanske >=, lever inte fåret på 0 hp nu?
+    if (damage >= hp)
     {
         Controller::controller.change_gold(bounty);
         Controller::controller.change_points(bounty);//Eller om vi ska ha datamedlem points

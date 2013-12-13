@@ -28,13 +28,13 @@ TextureHandler::TextureHandler(int dummy)
     {
        std::cout << "HardSheep laddades inte! :(" << std::endl;
     }
-     if (!Tower1_Texture.loadFromFile(filenameTower1))
+     if (!Catapult_tower_Texture.loadFromFile(filenameCatapult_tower))
     {
-       std::cout << "Tower1 laddades inte! :(" << std::endl;
+       std::cout << "Catapult Tower laddades inte! :(" << std::endl;
     }
-     if (!Tower2_Texture.loadFromFile(filenameTower2))
+     if (!Shooting_tower_Texture.loadFromFile(filenameShooting_tower))
     {
-       std::cout << "Tower2 laddades inte! :(" << std::endl;
+       std::cout << "Shooting Tower laddades inte! :(" << std::endl;
     }
     if (!Shot_Texture.loadFromFile(filenameShot))
     {
@@ -61,14 +61,14 @@ sf::Texture TextureHandler::getHardSheep()
     return HardSheep_Texture;
 }
 
-sf::Texture TextureHandler::getTower1()
+sf::Texture TextureHandler::getCatapult_tower()
 {
-    return Tower1_Texture;
+    return Catapult_tower_Texture;
 }
 
-sf::Texture TextureHandler::getTower2()
+sf::Texture TextureHandler::getShooting_tower()
 {
-    return Tower2_Texture;
+    return Shooting_tower_Texture;
 }
 
 sf::Texture TextureHandler::getShot()

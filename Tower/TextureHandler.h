@@ -27,8 +27,8 @@ public:
     sf::Texture getEasySheep();
     sf::Texture getMediumSheep();
     sf::Texture getHardSheep();
-    sf::Texture getTower1();
-    sf::Texture getTower2();
+    sf::Texture getCatapult_tower();
+    sf::Texture getShooting_tower();
     sf::Texture getShot();
     sf::Texture getCourse();
 
@@ -39,16 +39,16 @@ private:
     std::string filenameEasySheep = "EasySheep.jpg";
     std::string filenameMediumSheep = "MediumSheep.jpg";
     std::string filenameHardSheep = "HardSheep.jpg";
-    std::string filenameTower1;
-    std::string filenameTower2;
+    std::string filenameCatapult_tower;
+    std::string filenameShooting_tower;
     std::string filenameShot;
     std::string filenameCourse;
 
     sf::Texture EasySheep_Texture;
     sf::Texture MediumSheep_Texture;
     sf::Texture HardSheep_Texture;
-    sf::Texture Tower1_Texture;
-    sf::Texture Tower2_Texture;
+    sf::Texture Catapult_tower_Texture;
+    sf::Texture Shooting_tower_Texture;
     sf::Texture Shot_Texture;
     sf::Texture Course_Texture;
 };

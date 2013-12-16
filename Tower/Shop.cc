@@ -36,7 +36,7 @@ void build_Catapult_Tower() //Öppnas från int main är min tnake i nuläget
 
 }
 
-void build_Shooting_Tower() //Öppnas från int main är min tnake i nuläget
+void build_Shooting_Tower()
 {
 	if(event.mouseButton.button == sf::Mouse::Left) //Kollar om vänster musknapp används.
 	{
@@ -53,3 +53,5 @@ void build_Shooting_Tower() //Öppnas från int main är min tnake i nuläget
 	}
 
 }
+
+

@@ -9,23 +9,28 @@
 *
 */
 #include "Game.h"
+#include "Board.h"
+#include "Sheep.h"
 #include <iostream>
 
-Game::Game(sf::RenderWindow* new_Window, Board* new_Board)
+Game::Game(sf::RenderWindow*& new_Window, Board*& new_Board)
 {
     GameWindow = new_Window;
     GameBoard = new_Board;
+    current_wave = wave.at(current_level);
 }
 
-void feed_sheep(float time_passed, int current_wave, int sheep_number)
+void Game::feed_Sheep(float time_passed)
 {
-    if(feeding_time - time_passed <= 0)
+    int sheep_number = current_wave.at(current_sheep);
+    if (feeding_time - time_passed <= 0)
     {
-        if(sheep_number <= wave.current_wave.size() - 1) //den här kollen borde man kunna ha i en annan funktion
+        if(current_sheep < current_wave.size() - 1) //är vi inne?
         {
             if (current_wave.at(sheep_number) == 1)
             {
-                new EasySheep(GameBoard->get_Course());
+                EasySheep* tempEasySheep = new EasySheep(GameBoard->get_Course());
+                GameBoard->set_Sheep(tempEasySheep);
                 feeding_time = 10;
             }
             else if (current_wave.at(sheep_number) == 2)
@@ -43,6 +48,18 @@ void feed_sheep(float time_passed, int current_wave, int sheep_number)
                 //Ska inte hända
             }
             current_sheep = current_sheep + 1;
+            if (current_wave.size() == current_sheep - 1) //slutet på waven, har kan man kalla på pause
+            {
+                current_level = current_level + 1; //nästa wave då
+                if (current_level == wave.size()) // är vågorna slut?
+                {
+                    //då är det slut
+                }
+            }
+            else
+            {
+                current_wave = wave.at(current_sheep);
+            }
         }
         return;
     }
@@ -60,11 +77,11 @@ void feed_sheep(float time_passed, int current_wave, int sheep_number)
 
 void Game::update_Game(float time)
 {
-    for (int i = 0; i < GameBoard->get_Sheep().size() - 1; i++)
+    for (unsigned int i = 0; i < GameBoard->get_Sheep().size() - 1; i++)
     {
-        GameBoard->get_Sheep().at(i)->update_position(time));
+        GameBoard->get_Sheep().at(i)->update_position(time);
     }
-    for (int i = 0; i < GameBoard->get_Shot().size() - 1; i++)
+    for (unsigned int i = 0; i < GameBoard->get_Shot().size() - 1; i++)
     {
         GameBoard->get_Shot().at(i)->hunt_sheep(time);
     }
@@ -82,25 +99,42 @@ void Game::game_over()
 
 void Game::update_background_graphics()
 {
+    GameBoard->get_Board_Sprite().setTexture(TextureHandler::texturehandler.getBoard());
+    GameWindow->draw(GameBoard->get_Board_Sprite());
+
     for (int i = 0; i < 6; i++)
     {
+        GameBoard->get_Course().get_Course_Sprite(i).setTexture(TextureHandler::texturehandler.getCourse());
         GameWindow->draw(GameBoard->get_Course().get_Course_Sprite(i));
+
     }
+    GameWindow->display();
 }
 
 void Game::update_foreground_graphics()
 {
-    for (int i = 0; i < GameBoard->get_Sheep().size() - 1; i++)
+    for (unsigned int i = 0; i <= GameBoard->get_Sheep().size(); i++)
     {
-        GameWindow->draw(GameBoard->get_Sheep().at(i)->get_Sheep_Sprite());
+        if (GameBoard->get_Sheep().size() != 0)
+        {
+            GameBoard->get_Sheep().at(i)->get_Sheep_Sprite().setTexture(TextureHandler::texturehandler.getEasySheep());
+            GameWindow->draw(GameBoard->get_Sheep().at(i)->get_Sheep_Sprite());
+        }
     }
-    for (int i = 0; i < GameBoard->get_Tower().size() - 1; i++)
+    for (unsigned int i = 0; i <= GameBoard->get_Tower().size(); i++)
     {
-        GameWindow->draw(GameBoard->get_Tower().at(i)->get_Tower_Sprite());//Finns get_Tower_Sprite?
+        if (GameBoard->get_Tower().size() != 0)
+        {
+
+            GameWindow->draw(GameBoard->get_Tower().at(i)->get_Tower_Sprite());//Finns get_Tower_Sprite?
+        }
     }
-    for (int i = 0; i < GameBoard->get_Shot().size() - 1; i ++)
+    for (unsigned int i = 0; i <= GameBoard->get_Shot().size(); i ++)
     {
-        GameWindow->draw(GameBoard->get_Shot().at(i)->get_Shot_Sprite());
+        if (GameBoard->get_Shot().size() != 0)
+        {
+            GameWindow->draw(GameBoard->get_Shot().at(i)->get_Shot_Sprite());
+        }
     }
 
 }

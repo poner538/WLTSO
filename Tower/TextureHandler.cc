@@ -44,6 +44,10 @@ TextureHandler::TextureHandler(int dummy)
     {
         std::cout << "Course laddedes inte! :(" << std::endl;
     }
+    if (!Board_Texture.loadFromFile(filenameBoard))
+    {
+        std::cout << "Board laddedes inte! :(" << std::endl;
+    }
 }
 
 sf::Texture TextureHandler::getEasySheep()
@@ -79,4 +83,9 @@ sf::Texture TextureHandler::getShot()
 sf::Texture TextureHandler::getCourse()
 {
     return Course_Texture;
+}
+
+sf::Texture TextureHandler::getBoard()
+{
+    return Board_Texture;
 }

@@ -30,7 +30,7 @@ class Board
 {
 public:
     /*The big 5*/
-    Board(Course new_Board_Course);
+    Board(Course& new_Board_Course);
     ~Board() = default;
     Board(const Board& other) = delete; //Kopieringskonstruktor
     Board(const Board&& other) = delete; //Kopieringskonstruktor med move
@@ -46,13 +46,16 @@ public:
     vector<Sheep*> get_Sheep();
     void set_Sheep(Sheep*);
     bool exist(pos);
+    sf::Sprite get_Board_Sprite();
 
 private:
     /*Privata funktioner*/
     bool reserved_space(int, int); //Upptaget? Kommer agera hjälpfkn
 
 
+
     /*Datamedlemmar*/
+    sf::Sprite Board_Sprite;
     Course Board_Course;
     vector<Sheep*> Sheep_list;
     vector<Tower*> Tower_list;

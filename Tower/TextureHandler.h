@@ -31,6 +31,7 @@ public:
     sf::Texture getShooting_tower();
     sf::Texture getShot();
     sf::Texture getCourse();
+    sf::Texture getBoard();
 
     static TextureHandler texturehandler;
 
@@ -39,10 +40,11 @@ private:
     std::string filenameEasySheep = "EasySheep.jpg";
     std::string filenameMediumSheep = "MediumSheep.jpg";
     std::string filenameHardSheep = "HardSheep.jpg";
-    std::string filenameCatapult_tower;
-    std::string filenameShooting_tower;
-    std::string filenameShot;
-    std::string filenameCourse;
+    std::string filenameCatapult_tower = "CatapultTower.jpg";
+    std::string filenameShooting_tower = "ShootingTower.jpg";
+    std::string filenameShot = "Shot.jpg";
+    std::string filenameCourse = "Course.jpg";
+    std::string filenameBoard = "Board.jpg";
 
     sf::Texture EasySheep_Texture;
     sf::Texture MediumSheep_Texture;
@@ -51,6 +53,7 @@ private:
     sf::Texture Shooting_tower_Texture;
     sf::Texture Shot_Texture;
     sf::Texture Course_Texture;
+    sf::Texture Board_Texture;
 };
 
 #endif // TEXTUREHANDLER_H

@@ -38,23 +38,15 @@ public:
     void waypoint_direction(int);
     sf::Sprite get_Course_Sprite(int);
 
-<<<<<<< HEAD
-    pos wp0{-5, 10}; //-5 är utanför den synliga banan
-    pos wp1{20*60, 10*60};
-    pos wp2{20*60, 80*60};
-    pos wp3{50*60, 80*60};
-    pos wp4{50*60, 60*60};
-    pos wp5{70*60, 60*60};
-    pos wp6{70*60, 120*60}; //120 är utanför den synliga banan banan
-=======
+
     pos wp0{-20, 60}; //-20 är utanför den synliga banan
     pos wp1{120, 60};
     pos wp2{120, 480};
     pos wp3{300, 480};
     pos wp4{300, 360};
     pos wp5{420, 360};
-    pos wp6{420, 620}; //620 är utanför den synliga banan banan
->>>>>>> 9fc580476eda2986a501dec70409dc0a4c30bc32
+    pos wp6{420, 620}; //620 är utanför den synliga banan
+
 
     sf::Rect<int> r0{sf::Rect<int>(1,2,3,4)};
     sf::Rect<int> r1{sf::Rect<int>(1,2,3,4)};

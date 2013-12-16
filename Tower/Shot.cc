@@ -66,30 +66,3 @@ void Shot::hit_sheep()
     target->hit(dmg);
     delete this;
 }
-
-
-//dummies för sheepdumme att testa Shot här nedanför
-/*
-Sheep::Sheep()
-{
-    hp = 10;
-}
-
-void Sheep::hit(const int damage)
-   {
-
-       if(hp < damage)
-       {
-        std::cout << "dödat får\n";
-         delete this;
-       }
-       else
-        std::cout << "nästan dödat får\n";
-        {
-        this->hp = this->hp - damage;
-        std::cout << this->hp << "\n";
-        return;
-        }
-   }
-
-*/

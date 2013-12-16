@@ -56,33 +56,34 @@ sf::Sprite Shooting_tower::get_Tower_Sprite()
     return Tower_Sprite;
 }
 
-void Tower::locate_sheep(vector<Sheep*> vec_sheep)
+void Tower::locate_sheep(vector<Sheep*> vec_sheep,float time)
 {
-for(int i = 1 ; i <= vec_sheep.size() ; i++)
+    if(shot_timer(time))
+    {
+        temptime = time;
+        for(int i = 1 ; i <= vec_sheep.size() ; i++)
 
 
-        if ( pow(range, 2) >= pow((vec_sheep.at(i)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(i)->get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
-        {
-             cout << "hittade fåret\n";
-            shoot(vec_sheep.at(i));
+            if ( pow(range, 2) >= pow((vec_sheep.at(i)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(i)->get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
+            {
+                cout << "hittade fåret\n";
+                shoot(vec_sheep.at(i));
 
-            return;
-        }
-        else
-        {
-            //mytimer(5);
-            cout << "hitta inget får \n";
-        }
+                return;
+            }
+            else
+            {
+                //mytimer(5);
+                cout << "hitta inget får \n";
+            }
 
+    }
 }
-
 
 void Tower::shoot(Sheep* sheep_target)
 {
     Shot* a_shot = new Shot(sheep_target,dmg,T_pos);
     GameBoard->set_Shot(a_shot);
-    //a_shot.hunt_sheep();
-    mytimer(shooting_speed);
 }
 
 pos Tower::get_position()
@@ -90,4 +91,13 @@ pos Tower::get_position()
     return T_pos;
 }
 
+bool Tower::shot_timer(float time) //en funktion som fördröjer skotten i sec-antal sekunder
+{
+
+    if(time >= temptime + shooting_speed)
+        return true;
+    else
+        return false;
+
+}
 

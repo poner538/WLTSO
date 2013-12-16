@@ -21,12 +21,13 @@
 
 using namespace std;
 
-Tower::Tower(int new_range,int new_shooting_speed,int new_dmg,pos new_pos)
+Tower::Tower(int new_range,int new_shooting_speed,int new_dmg,pos new_pos , Board* new_board)
 {
     dmg = new_dmg;
     shooting_speed = new_shooting_speed;
     range = new_range;
     T_pos = new_pos;
+    GameBoard = new_board;
 }
 
 Catapult_tower::Catapult_tower(pos new_pos)
@@ -61,7 +62,7 @@ for(int i = 1 ; i <= vec_sheep.size() ; i++)
         if ( pow(range, 2) >= pow((vec_sheep.at(i)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(i)->get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
         {
              cout << "hittade fåret\n";
-            shoot(vec_sheep.at(i));
+            shoot(vec_sheep.at(i),GameBoard);
 
             return;
         }
@@ -74,10 +75,11 @@ for(int i = 1 ; i <= vec_sheep.size() ; i++)
 }
 
 
-void Tower::shoot(Sheep* sheep_target)
+void Tower::shoot(Sheep* sheep_target, Board* shot_to_Board)
 {
     Shot a_shot(sheep_target,dmg,T_pos);
     a_shot.hunt_sheep();
+    shot_to_Board->set_Shot(a_shot);
     mytimer(shooting_speed);
 }
 

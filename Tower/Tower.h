@@ -20,6 +20,8 @@
 #include "Course.h"
 #include "Sheep.h"
 #include "Shot.h"
+#include "Game.h"
+#include "Board.h"
 using namespace std;
 
 
@@ -34,12 +36,17 @@ protected:
     int dmg;
     pos T_pos;
     int current_graphic_state;
+<<<<<<< HEAD
+    virtual sf::Sprite get_Tower_Sprite() = 0;
+    Board* GameBoard;
+=======
+>>>>>>> ee102580a027411ded11e2a2426c7660d091d4ad
 
 public:
-    Tower(int,int,int,pos);
+    Tower(int,int,int,pos,Board*);
 
     virtual void locate_sheep(vector<Sheep*>);
-    void shoot(Sheep*);
+    void shoot(Sheep*,Board*);
     pos get_position();
     virtual sf::Sprite get_Tower_Sprite() = 0;
 

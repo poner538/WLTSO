@@ -76,7 +76,7 @@ void EasySheep::update_position(float time)
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint = 5)//då har den gått i mål
+        if (next_waypoint == 5)//då har den gått i mål
         {
             Controller::controller.lives();
             delete this;
@@ -150,7 +150,7 @@ void MediumSheep::update_position(float time)
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint = 5)//då har den gått i mål
+        if (next_waypoint == 5)//då har den gått i mål
         {
             Controller::controller.lives();
             delete this;

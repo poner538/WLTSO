@@ -12,14 +12,16 @@
 #define GAME_H
 #include <SFML/Graphics.hpp>
 #include "Course.h"
-#include "Board.h"
+#include <vector>
+class Board;
+class Sheep;
 
 
 class Game
 {
 public:
     /*The big 5*/
-    Game(sf::RenderWindow*, Board*);
+    Game(sf::RenderWindow*&, Board*&);
     ~Game() = default;
     Game(const Game& other) = delete; //Kopieringskonstruktor
     Game(const Game&& other) = delete; //Kopieringskonstruktor med move
@@ -28,9 +30,10 @@ public:
 
 
     /*Medlemsfunktioner*/
-    void feed_Sheep(vector<int> current_wave);
-    void game_on(); //Uppdatera grafik, skapa board
+    void feed_Sheep(float);
+    void game_on(); //Uppdatera grafik, skapa board, konstruktor?
     void game_over();
+    void update_Game(float);
     void update_background_graphics();
     void update_foreground_graphics();
 
@@ -39,12 +42,13 @@ private:
     sf::RenderWindow* GameWindow;
     Board* GameBoard;
     int feeding_time = 10;
+    int current_sheep = 0;
+    std::vector<int> current_wave;
 
     pos course_start_pos{-5,20};
-    vector<vector<int>> wave;
+    std::vector<std::vector<int>> wave = {{1, 1, 1} , {2, 2, 2}};
     bool start_stop = true;
-    int current_level = 1;
-    int current_sheep = 1;
+    int current_level = 0;
     bool can_I_shop = true;
 
 };

@@ -11,6 +11,7 @@
 
 #include "Course.h"
 #include <vector>
+#include <iostream>
 
 Course::Course()
 {
@@ -45,7 +46,7 @@ sf::Sprite Course::get_Course_Sprite(int number)
     }
     else if (number == 3)
     {
-        return Rect3_Sprite;
+        return Rect2_Sprite;
     }
     else if (number == 4)
     {

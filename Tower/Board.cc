@@ -14,9 +14,11 @@
 
 
 
-Board::Board(Course new_Board_Course)
+Board::Board(Course& new_Board_Course)
 {
     Board_Course = new_Board_Course;
+    Board_Sprite.setTexture(TextureHandler::texturehandler.getBoard());
+
 }
 
 vector<Shot*> Board::get_Shot()
@@ -52,6 +54,11 @@ vector<Sheep*> Board::get_Sheep()
 void Board::set_Sheep(Sheep* new_Sheep)
 {
     Sheep_list.push_back(new_Sheep);
+}
+
+sf::Sprite Board::get_Board_Sprite()
+{
+    return Board_Sprite;
 }
 
 bool Board::exist(pos other_pos)

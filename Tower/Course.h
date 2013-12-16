@@ -39,12 +39,12 @@ public:
     sf::Sprite get_Course_Sprite(int);
 
     pos wp0{-5, 10}; //-5 är utanför den synliga banan
-    pos wp1{20, 10};
-    pos wp2{20, 80};
-    pos wp3{50, 80};
-    pos wp4{50, 60};
-    pos wp5{70, 60};
-    pos wp6{70, 120}; //120 är utanför den synliga banan banan
+    pos wp1{20*60, 10*60};
+    pos wp2{20*60, 80*60};
+    pos wp3{50*60, 80*60};
+    pos wp4{50*60, 60*60};
+    pos wp5{70*60, 60*60};
+    pos wp6{70*60, 120*60}; //120 är utanför den synliga banan banan
 
     sf::Rect<int> r0{sf::Rect<int>(1,2,3,4)};
     sf::Rect<int> r1{sf::Rect<int>(1,2,3,4)};

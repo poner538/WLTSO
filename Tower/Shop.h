@@ -11,23 +11,20 @@
 #ifndef SHOP_H
 #define SHOP_H
 #include <SFML/Graphics.hpp>
-#include <Event.hpp>
-#include "Board.h"
-#include "Tower.h"
+#include <SFML/Window/Event.hpp>
 
+class Board;
+class Controller;
 
-//Andra includes
 
 class Shop
 {
 public:
-    Shop();
+    Shop(Board*, Controller*);
     ~Shop();
-    sf::Image ShopImage(bildnamn.jpg);
-    sf::Sprite ShopSprite(ShopImage.jpg);
-    int price_tower1;
-    int price_tower2;
-    int width;
+//    sf::Image ShopImage(bildnamn.jpg);
+ //   sf::Sprite ShopSprite(ShopImage.jpg);
+
 
 
 
@@ -37,7 +34,7 @@ public:
 
     //Knappar till tornbyggen
     int button_width = 80; //ex bredd
-    int button_height = 200 //ex höjd
+    int button_height = 200; //ex höjd
     sf::Rect<int> Catapult_tower_button{sf::Rect<int>(610,300, button_width, button_height)};
     sf::Rect<int> Shooting_tower_button{sf::Rect<int>(710,300, button_width, button_height)};
 
@@ -64,11 +61,13 @@ if(event.mouseButton.button == sf::Mouse::Left)
 
 
 
-private:
+protected:
 
 
 
-
+    Board* gameboard;
+    Controller* gamecontroller;
+    sf::Event* gameevent;
 
 
 

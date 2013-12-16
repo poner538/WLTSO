@@ -23,7 +23,7 @@ public:
     Controller& operator=(const Controller& other) = delete; //Tilldelningspoerator
     Controller& operator=(const Controller&& other) = delete; //Tilldelningspoperator med move
 
-    bool check_gold(const int value);
+    bool gold_check(const int value);
     void change_gold(const int value);
     void change_points(const int value);
     void lives();

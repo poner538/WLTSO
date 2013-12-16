@@ -12,6 +12,9 @@
 #define SHOP_H
 #include <SFML/Graphics.hpp>
 #include <Event.hpp>
+#include "Board.h"
+#include "Tower.h"
+
 
 //Andra includes
 
@@ -29,8 +32,8 @@ public:
 
 
     //Medlemsfunktioner
-    void build_tower1();
-    void build_tower2();
+    void build_Catapult_Tower();
+    void build_Shooting_Tower();
 
 
 

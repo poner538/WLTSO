@@ -21,12 +21,16 @@ Controller::Controller(int new_gold, int new_lives)
     points = 0;
 }
 
+
+bool Controller::gold_check(const int value)
+{
+    if((gold + value) < 0)
+        return false;
+    else
+        return true;
+}
 void Controller::change_gold(const int value)
 {
-    if ((gold + value) < 0)
-    {
-        cout<<"Du är för fattig för att köpa torn!"<<endl; //Ville göra en popup som går att stänga. #varningsmeddelande
-    }
     gold = gold + value;
 }
 

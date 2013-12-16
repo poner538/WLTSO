@@ -13,6 +13,7 @@
 #include <SFML/Graphics.hpp>
 #include "Course.h"
 #include <vector>
+#include "Shop.h"
 class Board;
 class Sheep;
 

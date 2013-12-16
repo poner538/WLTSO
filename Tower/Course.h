@@ -45,13 +45,17 @@ public:
     pos wp4{300, 360};
     pos wp5{420, 360};
     pos wp6{420, 620}; //620 är utanför den synliga banan
+<<<<<<< HEAD
+=======
 
-    sf::Rect<int> r0{sf::Rect<int>(1,2,3,4)};
-    sf::Rect<int> r1{sf::Rect<int>(1,2,3,4)};
-    sf::Rect<int> r2{sf::Rect<int>(1,2,3,4)};
-    sf::Rect<int> r3{sf::Rect<int>(1,2,3,4)};
-    sf::Rect<int> r4{sf::Rect<int>(1,2,3,4)};
-    sf::Rect<int> r5{sf::Rect<int>(1,2,3,4)};
+>>>>>>> d89333dc2e4afcf1bb64979ac30214d2218c0a01
+
+    sf::Rect<int> r0{sf::Rect<int>(0,0,0,0)};
+    sf::Rect<int> r1{sf::Rect<int>(0,0,0,0)};
+    sf::Rect<int> r2{sf::Rect<int>(0,0,0,0)};
+    sf::Rect<int> r3{sf::Rect<int>(0,0,0,0)};
+    sf::Rect<int> r4{sf::Rect<int>(0,0,0,0)};
+    sf::Rect<int> r5{sf::Rect<int>(0,0,0,0)};
 
 private:
    void initiate_rectangles();

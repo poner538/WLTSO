@@ -99,7 +99,6 @@ void Game::game_over()
 
 void Game::update_background_graphics()
 {
-    GameBoard->get_Board_Sprite().setTexture(TextureHandler::texturehandler.getBoard());
     GameWindow->draw(GameBoard->get_Board_Sprite());
 
     for (int i = 0; i < 6; i++)
@@ -108,7 +107,6 @@ void Game::update_background_graphics()
         GameWindow->draw(GameBoard->get_Course().get_Course_Sprite(i));
 
     }
-    GameWindow->display();
 }
 
 void Game::update_foreground_graphics()
@@ -117,7 +115,6 @@ void Game::update_foreground_graphics()
     {
         if (GameBoard->get_Sheep().size() != 0)
         {
-            GameBoard->get_Sheep().at(i)->get_Sheep_Sprite().setTexture(TextureHandler::texturehandler.getEasySheep());
             GameWindow->draw(GameBoard->get_Sheep().at(i)->get_Sheep_Sprite());
         }
     }

@@ -35,6 +35,12 @@ public:
     void build_Catapult_Tower();
     void build_Shooting_Tower();
 
+    //Knappar till tornbyggen
+    int button_width = 80; //ex bredd
+    int button_height = 200 //ex höjd
+    sf::Rect<int> Tower_knapp1{sf::Rect<int>(610,300, button_width, button_height)};
+    sf::Rect<int> Tower_knapp2{sf::Rect<int>(710,300, button_width, button_height)};
+
 
 
 

@@ -53,7 +53,3 @@ void build_Shooting_Tower() //Öppnas från int main är min tnake i nuläget
 	}
 
 }
- //  Board::exist(pos rightupper_corner);
- //  Board::exist(pos leftupper_corner);  //Denna ges av musen
- //  Board::exist(pos rightlower_corner);
- //  Board::exist(pos leftlower_corner);

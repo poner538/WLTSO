@@ -30,7 +30,7 @@ public:
     ~Shot();
 
     int get_dmg();
-    void hunt_sheep();
+    void hunt_sheep(float);
 
 
 private:
@@ -40,6 +40,7 @@ private:
     //sf::Image ShotImage(".jpg");
     //sf::Sprite ShotSprite(ShotImage);
     void hit_sheep();
+    int speed;
 
 };
 

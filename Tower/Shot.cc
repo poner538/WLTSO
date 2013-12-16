@@ -20,41 +20,39 @@ Shot::Shot(Sheep* sheep_target,const int new_dmg,pos start_pos)
     target = sheep_target;
     dmg = new_dmg;
     shot_pos = start_pos;
+    speed = 20;
 }
 
 Shot::~Shot()
 {}
 
-void Shot::hunt_sheep()
+void Shot::hunt_sheep(float time)
 {
-    if((target->get_position().x_pos == shot_pos.x_pos) and (target->get_position().y_pos == shot_pos.y_pos))
+    float x_temp = shot_pos.x_pos;
+    float y_temp = shot_pos.y_pos;
+    float norm = 0;
+    pos temp_pos;
+    x_temp = target.get_position().x_pos - shot_pos.x_pos;
+    y_temp = target.get_position().y_pos - shot_pos.y_pos;
+    norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
+
+    if(time*speed >= norm)
     {
         hit_sheep();
         return;
     }
     else
     {
-        if(target->get_position().x_pos < shot_pos.x_pos)
-        {
-            std::cout << "x-\n";
-            --shot_pos.x_pos;
-        }
-        else if(target->get_position().x_pos > shot_pos.x_pos)
-        {
-            ++shot_pos.x_pos;
-        }
-        if(target->get_position().y_pos < shot_pos.y_pos)
-        {
-            std::cout << "y-\n";
-            --shot_pos.y_pos;
-        }
-        else if(target->get_position().y_pos > shot_pos.y_pos)
-        {
-            ++shot_pos.y_pos;
-        }
+        x_temp = x_temp / norm;
+        y_temp = y_temp / norm;
+        shot_pos.x_pos = shot_pos.x_pos + x_temp*(time*speed - norm);
+        shot_pos.y_pos = shot_pos.y_pos + y_temp*(time*speed - norm);
     }
-    hunt_sheep();
+//här ska vi lägga till en timer
 }
+
+
+
 
 void Shot::hit_sheep()
 {

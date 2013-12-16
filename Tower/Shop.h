@@ -38,12 +38,28 @@ public:
     //Knappar till tornbyggen
     int button_width = 80; //ex bredd
     int button_height = 200 //ex höjd
-    sf::Rect<int> Tower_knapp1{sf::Rect<int>(610,300, button_width, button_height)};
-    sf::Rect<int> Tower_knapp2{sf::Rect<int>(710,300, button_width, button_height)};
+    sf::Rect<int> Catapult_tower_button{sf::Rect<int>(610,300, button_width, button_height)};
+    sf::Rect<int> Shooting_tower_button{sf::Rect<int>(710,300, button_width, button_height)};
 
 
+/*Ska till Main:
+Kollar om det är vänster musknapp som använts och vilket torn som i så fall ska byggas
+if(event.mouseButton.button == sf::Mouse::Left)
+{
+    if(((Shop.Catapult_Tower_button).contains(event.mouseButton.x, event.mouseButton.y)))
+        {
+            Shop::build_Catapult_Tower();
+        }
 
 
+    else if(((Shop.Shooting_Tower_button).contains(event.mouseButton.x, event.mouseButton.y)))
+        {
+            Shop::build_Shooting_Tower();
+        }
+    else
+        //Någon form av avhopp, dvs inte bygga torn.
+}
+*/
 
 
 

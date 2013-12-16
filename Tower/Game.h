@@ -13,7 +13,7 @@
 #include <SFML/Graphics.hpp>
 #include "Course.h"
 #include "Board.h"
-
+#include "Shop.h"
 
 class Game
 {
@@ -38,6 +38,7 @@ private:
     /*Datamedlemmar*/
     sf::RenderWindow* GameWindow;
     Board* GameBoard;
+    Shop* GameShop;
     int feeding_time = 10;
 
     pos course_start_pos{-5,20};

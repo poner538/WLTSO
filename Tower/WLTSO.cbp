@@ -66,8 +66,6 @@
 		<Unit filename="Controller.h" />
 		<Unit filename="Course.cc" />
 		<Unit filename="Course.h" />
-		<Unit filename="Game.cc" />
-		<Unit filename="Game.h" />
 		<Unit filename="Sheep.cc" />
 		<Unit filename="Sheep.h" />
 		<Unit filename="Shop.cc" />

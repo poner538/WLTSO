@@ -454,7 +454,7 @@
 	"Tower.h"
 	"Shot.h"
 
-1387193300 c:\users\daniel\bashkod\wltso\tower\tower.h
+1387198066 c:\users\daniel\bashkod\wltso\tower\tower.h
 	<SFML/Graphics.hpp>
 	<vector>
 	"Shot.h"
@@ -471,5 +471,20 @@
 
 1386937201 source:c:\users\daniel\bashkod\wltso\tower\course.cc
 	"Course.h"
+	<vector>
+
+1387193300 source:c:\users\daniel\bashkod\wltso\tower\shot.cc
+	<SFML/Graphics.hpp>
+	"Shot.h"
+	<iostream>
+	<math.h>
+
+1387198066 source:c:\users\daniel\bashkod\wltso\tower\tower.cc
+	<SFML/Graphics.hpp>
+	"Tower.h"
+	"Sheep.h"
+	"Board.h"
+	<iostream>
+	<math.h>
 	<vector>
 

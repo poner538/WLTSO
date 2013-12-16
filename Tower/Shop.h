@@ -22,8 +22,8 @@ class Shop
 public:
     Shop(Board*, Controller*);
     ~Shop();
-//    sf::Image ShopImage(bildnamn.jpg);
- //   sf::Sprite ShopSprite(ShopImage.jpg);
+
+    sf::Sprite get_Shop_Sprite();
 
 
 
@@ -41,17 +41,17 @@ public:
 
 /*Ska till Main:
 Kollar om det är vänster musknapp som använts och vilket torn som i så fall ska byggas
-if(event.mouseButton.button == sf::Mouse::Left)
+if(GameEvent->mouseButton.button == sf::Mouse::Left)
 {
-    if(((Shop.Catapult_Tower_button).contains(event.mouseButton.x, event.mouseButton.y)))
+    if(((GameShop->Catapult_Tower_button).contains(GameEvent->mouseButton.x, GameEvent->mouseButton.y)))
         {
-            Shop::build_Catapult_Tower();
+            GameShop->build_Catapult_Tower();
         }
 
 
-    else if(((Shop.Shooting_Tower_button).contains(event.mouseButton.x, event.mouseButton.y)))
+    else if(((GameShop->Shooting_Tower_button).contains(GameEvent->mouseButton.x, GameEvent->mouseButton.y)))
         {
-            Shop::build_Shooting_Tower();
+            GameShop->build_Shooting_Tower();
         }
     else
         //Någon form av avhopp, dvs inte bygga torn.
@@ -61,13 +61,13 @@ if(event.mouseButton.button == sf::Mouse::Left)
 
 
 
-protected:
+private:
 
 
-
-    Board* gameboard;
-    Controller* gamecontroller;
-    sf::Event* gameevent;
+    sf::Sprite Shop_Sprite;
+    Board* GameBoard;
+    Controller* GameController;
+    sf::Event* GameEvent;
 
 
 

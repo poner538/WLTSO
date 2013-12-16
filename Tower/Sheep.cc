@@ -82,7 +82,6 @@ void EasySheep::update_position(float time)
             delete this;
 
         }
-
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*(time*speed-norm);
@@ -101,7 +100,7 @@ void EasySheep::update_position(float time)
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*(norm - time*speed);
         temp_pos.y_pos = current_position.y_pos + y_temp*(norm - time*speed);
-
+        Sheep_Sprite.setPosition(temp_pos.x_pos, temp_pos.y_pos);
         set_position(temp_pos);
     }
     else
@@ -110,7 +109,7 @@ void EasySheep::update_position(float time)
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*time*speed;
         temp_pos.y_pos = current_position.y_pos + y_temp*time*speed;
-
+        Sheep_Sprite.setPosition(temp_pos.x_pos, temp_pos.y_pos);
         set_position(temp_pos);
     }
     distance = distance + time*speed;

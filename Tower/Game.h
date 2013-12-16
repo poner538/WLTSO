@@ -32,23 +32,26 @@ public:
     /*Medlemsfunktioner*/
     void feed_Sheep(float);
     void game_on(); //Uppdatera grafik, skapa board, konstruktor?
-    void game_over();
+    //void game_over();
     void update_Game(float);
     void update_background_graphics();
     void update_foreground_graphics();
+
+    bool game_over = false;
+    bool start_stop = true;
 
 private:
     /*Datamedlemmar*/
     sf::RenderWindow* GameWindow;
     Board* GameBoard;
     Shop* GameShop;
-    int feeding_time = 10;
+    float feeding_time = 1;
     int current_sheep = 0;
     std::vector<int> current_wave;
+    bool new_wave = false;
 
     pos course_start_pos{-5,20};
     std::vector<std::vector<int>> wave = {{1, 1, 1} , {2, 2, 2}};
-    bool start_stop = true;
     int current_level = 0;
     bool can_I_shop = true;
 

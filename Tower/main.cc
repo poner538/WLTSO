@@ -21,22 +21,19 @@ int main()
     Course myCourse;
     Board* myBoard = new Board(myCourse);
     Game myGame(myWindow, myBoard);
-
-    myGame.update_background_graphics();
-
-
-
-
-    myGame.update_foreground_graphics();
-
-
-
-    myWindow->display();
-
-    for (unsigned int i = 0; i < 400000000000000; i++)
+    sf::Time timer;
+    while(myGame.game_over != true)
     {
-
+        while(myGame.start_stop == true)
+        {
+            sf::Clock clocker;
+            std::cerr << timer.asSeconds() << std::endl;
+            myGame.update_Game(timer.asSeconds());
+            myGame.update_background_graphics();
+            myGame.update_foreground_graphics();
+            myWindow->display();
+            timer = clocker.getElapsedTime();
+        }
     }
-
     return 0;
 }

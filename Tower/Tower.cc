@@ -60,25 +60,33 @@ void Tower::locate_sheep(vector<Sheep*> vec_sheep,float time)
 {
     if(shot_timer(time))
     {
-        temptime = time;
         for(int i = 1 ; i <= vec_sheep.size() ; i++)
 
+        {
 
             if ( pow(range, 2) >= pow((vec_sheep.at(i)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(i)->get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
             {
                 cout << "hittade fåret\n";
                 shoot(vec_sheep.at(i));
-
-                return;
+                temptime = 0;
             }
             else
             {
+
                 //mytimer(5);
                 cout << "hitta inget får \n";
             }
+        }
+
 
     }
+    else
+    {
+        temptime = temptime + time;
+    }
+
 }
+
 
 void Tower::shoot(Sheep* sheep_target)
 {
@@ -94,7 +102,7 @@ pos Tower::get_position()
 bool Tower::shot_timer(float time) //en funktion som fördröjer skotten i sec-antal sekunder
 {
 
-    if(time >= temptime + shooting_speed)
+    if(temptime >= shooting_speed)
         return true;
     else
         return false;

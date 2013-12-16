@@ -30,8 +30,9 @@ public:
     ~Shot();
 
     int get_dmg();
-    void hunt_sheep();
+    void hunt_sheep(float);
     sf::Sprite get_Shot_Sprite();
+
 
 
 private:
@@ -40,6 +41,7 @@ private:
     Sheep* target;
     sf::Sprite Shot_Sprite;
     void hit_sheep();
+    int speed;
 
 };
 

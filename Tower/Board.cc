@@ -57,7 +57,7 @@ void Board::set_Sheep(Sheep* new_Sheep)
 bool Board::exist(pos other_pos)
 {
     bool t = false;
-    for (unsigned int i = 0; i < Sheep_list.size(); i++)
+    /*for (unsigned int i = 0; i < Sheep_list.size(); i++)
     {
         ;
         if ((Sheep_list.at(i)->get_position().x_pos == other_pos.x_pos) and  (Sheep_list.at(i)->get_position().y_pos == other_pos.y_pos))
@@ -65,7 +65,7 @@ bool Board::exist(pos other_pos)
             return true;
         }
     }
-
+    Behövs ej då fåren finns på banan som kollas senare*/
     for (unsigned int i = 0; i < Tower_list.size(); i++)
     {
         if ((Tower_list.at(i)->get_position().x_pos == other_pos.x_pos) and (Tower_list.at(i)->get_position().y_pos == other_pos.y_pos))
@@ -108,3 +108,5 @@ bool Board::reserved_space(int x, int y)
     }
     return t;
 }
+
+

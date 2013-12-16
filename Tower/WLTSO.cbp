@@ -66,8 +66,17 @@
 		<Unit filename="Controller.h" />
 		<Unit filename="Course.cc" />
 		<Unit filename="Course.h" />
+		<Unit filename="Game.cc" />
+		<Unit filename="Game.h" />
 		<Unit filename="Sheep.cc" />
 		<Unit filename="Sheep.h" />
+<<<<<<< HEAD
+=======
+		<Unit filename="Shop.cc" />
+		<Unit filename="Shop.h" />
+>>>>>>> 5f5c2ec118733df098477d582569da8f6cadefca
+		<Unit filename="Shot.cc" />
+		<Unit filename="Shot.h" />
 		<Unit filename="TextureHandler.cc" />
 		<Unit filename="TextureHandler.h" />
 		<Unit filename="Tower.cc" />

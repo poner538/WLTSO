@@ -58,6 +58,7 @@ private:
     vector<Tower*> Tower_list;
     vector<Shot*> Shot_list;
 
+
 };
 
 #endif //BOARD_H

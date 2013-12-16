@@ -30,12 +30,9 @@ public:
     ~Shot();
 
     int get_dmg();
-<<<<<<< HEAD
     void hunt_sheep(float);
-=======
-    void hunt_sheep();
     sf::Sprite get_Shot_Sprite();
->>>>>>> ee102580a027411ded11e2a2426c7660d091d4ad
+
 
 
 private:

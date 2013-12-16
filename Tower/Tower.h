@@ -17,14 +17,10 @@
 #define TOWER_H
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "Course.h"
-#include "Sheep.h"
 #include "Shot.h"
-#include "Game.h"
-#include "Board.h"
 using namespace std;
-
-
+class Board;
+class Sheep;
 /*
     Basklass för torn
 */
@@ -36,17 +32,13 @@ protected:
     int dmg;
     pos T_pos;
     int current_graphic_state;
-<<<<<<< HEAD
-    virtual sf::Sprite get_Tower_Sprite() = 0;
     Board* GameBoard;
-=======
->>>>>>> ee102580a027411ded11e2a2426c7660d091d4ad
 
 public:
     Tower(int,int,int,pos,Board*);
 
     virtual void locate_sheep(vector<Sheep*>);
-    void shoot(Sheep*,Board*);
+    void shoot(Sheep*);
     pos get_position();
     virtual sf::Sprite get_Tower_Sprite() = 0;
 
@@ -59,7 +51,7 @@ public:
 class Catapult_tower : public Tower
 {
 public:
-    Catapult_tower(pos);
+    Catapult_tower(pos,Board*);
     sf::Sprite get_Tower_Sprite();
 
 private:
@@ -71,7 +63,7 @@ private:
 class Shooting_tower : public Tower
 {
 public:
-    Shooting_tower(pos);
+    Shooting_tower(pos,Board*);
     sf::Sprite get_Tower_Sprite();
 
 private:

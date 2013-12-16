@@ -38,11 +38,14 @@ public:
     sf::Rect<int> Catapult_tower_button{sf::Rect<int>(610,210, tower_button_width, tower_button_height)};
     sf::Rect<int> Shooting_tower_button{sf::Rect<int>(710,210, tower_button_width, tower_button_height)};
 
-    //Knappar till paus och ny våg
-    int wave_pause_width = 180;
-    int wave_pause_height = 80;
-    sf::Rect<int> New_Wave_button{sf::Rect<int>(610,410, wave_pause_width, wave_pause_height)};
-    sf::Rect<int> Pause_button{sf::Rect<int>(610,510, wave_pause_width, wave_pause_height)};
+    //Knappar till start, stop och ny våg
+    int wave_width = 180;
+    int wave_height = 80;
+    int startstop_width = 80;
+    int startstop_height = 80;
+    sf::Rect<int> New_Wave_button{sf::Rect<int>(610,410, wave_width, wave_height)};
+    sf::Rect<int> Start_button{sf::Rect<int>(610,510, startstop_width, startstop_height)};
+    sf::Rect<int> Stop_button{sf::Rect<int>(710,510, startstop_width, startstop_height)};
 
 /*
 Ska till Main:
@@ -61,11 +64,16 @@ if(GameEvent->mouseButton.button == sf::Mouse::Left)
     {
         //Kommando för ny våg av fiender
     }
-    else if(((GameShop->Pause_button).contains(GameEvent->mouseButton.x, GameEvent->mouseButton.y)))
+    else if(((GameShop->Start_button).contains(GameEvent->mouseButton.x, GameEvent->mouseButton.y)))
     {
-        //Pauskommand
+        //Startkommando
+    }
+    else if(((GameShop->Stop_button).contains(GameEvent->mouseButton.x, GameEvent->mouseButton.y)))
+    {
+        //Stoppkommando
     }
     else
+
         //typ avbryt
         //Någon form av avhopp, dvs inte bygga torn eller paus eller ny våg dvs ingenting egentligen
         //kanske lämna den tom

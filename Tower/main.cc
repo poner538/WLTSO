@@ -31,7 +31,7 @@ int main()
 
 
 
-    //myWindow->display();
+    myWindow->display();
 
     for (unsigned int i = 0; i < 400000000000000; i++)
     {

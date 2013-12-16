@@ -24,14 +24,14 @@ public:
     TextureHandler& operator=(const TextureHandler& other) = delete; //Tilldelningspoerator
     TextureHandler& operator=(const TextureHandler&& other) = delete; //Tilldelningspoperator med move
 
-    sf::Texture getEasySheep();
-    sf::Texture getMediumSheep();
-    sf::Texture getHardSheep();
-    sf::Texture getCatapult_tower();
-    sf::Texture getShooting_tower();
-    sf::Texture getShot();
-    sf::Texture getCourse();
-    sf::Texture getBoard();
+    sf::Texture& getEasySheep();
+    sf::Texture& getMediumSheep();
+    sf::Texture& getHardSheep();
+    sf::Texture& getCatapult_tower();
+    sf::Texture& getShooting_tower();
+    sf::Texture& getShot();
+    sf::Texture& getCourse();
+    sf::Texture& getBoard();
 
     static TextureHandler texturehandler;
 

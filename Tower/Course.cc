@@ -46,7 +46,7 @@ sf::Sprite Course::get_Course_Sprite(int number)
     }
     else if (number == 3)
     {
-        return Rect2_Sprite;
+        return Rect3_Sprite;
     }
     else if (number == 4)
     {
@@ -64,13 +64,21 @@ sf::Sprite Course::get_Course_Sprite(int number)
 
 void Course::initiate_rectangles()
 {
-    int spread = 10; //Tex
-    sf::Rect<int> r0{sf::Rect<int>(wp0.x_pos - spread,wp0.y_pos - spread, wp1.x_pos - wp0.x_pos + 2*spread, 2*spread)}; //Hårdkodat med riktningar och sånt +- ema
-    sf::Rect<int> r1{sf::Rect<int>(wp1.x_pos - spread,wp1.y_pos - spread, 2*spread, wp2.y_pos - wp1.y_pos + 2*spread)};
-    sf::Rect<int> r2{sf::Rect<int>(wp2.x_pos - spread,wp2.y_pos - spread, wp3.x_pos - wp2.x_pos + 2*spread, 2*spread)};
-    sf::Rect<int> r3{sf::Rect<int>(wp3.x_pos - spread,wp3.y_pos - spread, 2*spread, wp3.y_pos - wp4.y_pos + 2*spread)};
-    sf::Rect<int> r4{sf::Rect<int>(wp4.x_pos - spread,wp4.y_pos - spread, wp5.x_pos - wp4.x_pos + 2*spread, 2*spread)};
-    sf::Rect<int> r5{sf::Rect<int>(wp5.x_pos - spread,wp5.y_pos - spread, 2*spread, wp6.y_pos - wp5.y_pos + 2*spread)};
+    int spread = 20; //Tex
+    r0 = sf::Rect<int>{sf::Rect<int>(wp0.x_pos - spread, wp0.y_pos - spread, wp1.x_pos - wp0.x_pos + 2*spread, 2*spread)}; //Hårdkodat med riktningar och sånt +- ema
+    r1 = sf::Rect<int>{sf::Rect<int>(wp1.x_pos - spread, wp1.y_pos - spread, 2*spread, wp2.y_pos - wp1.y_pos + 2*spread)};
+    r2 = sf::Rect<int>{sf::Rect<int>(wp2.x_pos - spread, wp2.y_pos - spread, wp3.x_pos - wp2.x_pos + 2*spread, 2*spread)};
+    r3 = sf::Rect<int>{sf::Rect<int>(wp4.x_pos - spread, wp4.y_pos - spread, 2*spread, wp3.y_pos - wp4.y_pos + 2*spread)};
+    r4 = sf::Rect<int>{sf::Rect<int>(wp4.x_pos - spread, wp4.y_pos - spread, wp5.x_pos - wp4.x_pos + 2*spread, 2*spread)};
+    r5 = sf::Rect<int>{sf::Rect<int>(wp5.x_pos - spread, wp5.y_pos - spread, 2*spread, wp6.y_pos - wp5.y_pos + 2*spread)};
+
+    Rect0_Sprite.setPosition(wp0.x_pos - spread, wp0.y_pos - spread);
+    Rect1_Sprite.setPosition(wp1.x_pos - spread, wp1.y_pos - spread);
+    Rect2_Sprite.setPosition(wp2.x_pos - spread, wp2.y_pos - spread);
+    Rect3_Sprite.setPosition(wp4.x_pos - spread, wp4.y_pos - spread);
+    Rect4_Sprite.setPosition(wp4.x_pos - spread, wp4.y_pos - spread);
+    Rect5_Sprite.setPosition(wp5.x_pos - spread, wp5.y_pos - spread);
+
 
 /* (left, top, width, height) struct pos{
     int x_pos;

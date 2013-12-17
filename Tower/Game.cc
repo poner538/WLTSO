@@ -20,6 +20,7 @@ Game::Game(sf::RenderWindow*& new_Window, Board*& new_Board)
     current_wave = wave.at(current_level);
 }
 
+
 void Game::feed_Sheep(float time_passed)
 {
     if (feeding_time - time_passed <= 0)

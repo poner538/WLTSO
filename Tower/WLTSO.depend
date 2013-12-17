@@ -525,23 +525,24 @@
 	"Game.h"
 	"Course.h"
 
-1387308437 source:c:\users\ema\documents\github\wltso\tower\shop.cc
+1387312170 source:c:\users\ema\documents\github\wltso\tower\shop.cc
 	"Shop.h"
 	"Board.h"
 	"Controller.h"
 	"Sheep.h"
 	"Tower.h"
+	<sstream>
 
-1387206204 c:\users\ema\documents\github\wltso\tower\shop.h
+1387312103 c:\users\ema\documents\github\wltso\tower\shop.h
 	<SFML/Graphics.hpp>
 	<SFML/Window/Event.hpp>
 
-1387310197 source:c:\users\ema\documents\github\wltso\tower\main.cc
+1387313281 source:c:\users\ema\documents\github\wltso\tower\main.cc
 	<SFML/Graphics.hpp>
 	"Board.h"
 	"Game.h"
 	"Course.h"
+	"Shop.h"
 	<iostream>
 	<string>
-	<sstream>
 

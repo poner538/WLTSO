@@ -31,53 +31,57 @@ int main()
     try
     {
 
-        while (tiden > 0)
+        while (myWindow->isOpen())
         {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2i position = sf::Mouse::getPosition(*myWindow);
-
-                std::cout << "Du tryckte!" << std::endl;
-                int xtorn = position.x;
-                int ytorn = position.y;
-                int xplus = xtorn + tower_width;
-                int yplus = ytorn + tower_width;
-
-                if(!myBoard->exist(pos {xtorn,ytorn}) and (!myBoard->exist(pos {xplus,ytorn})) and (!myBoard->exist(pos {xtorn,yplus})) and (!myBoard->exist(pos {xplus,yplus})))
+                //if ( 650 > position.x > 750 and 50 > position.y > 100 )
                 {
-                    std::cout << "ja" << std::endl;
-                    pos Towerpos {xtorn, ytorn};
-                    Tower* myTower = new Catapult_tower(Towerpos, myBoard);
-                    myBoard->set_Tower(myTower);
-                }
+                    std::cout << "Du tryckte!" << std::endl;
+                    int xtorn = position.x;
+                    int ytorn = position.y;
+                    int xplus = xtorn + tower_width;
+                    int yplus = ytorn + tower_width;
 
-                else
-                {
-                    std::cout << "Nej det får du inte!" << std::endl;
+                    if(!myBoard->exist(pos {xtorn,ytorn}) and (!myBoard->exist(pos {xplus,ytorn})) and (!myBoard->exist(pos {xtorn,yplus})) and (!myBoard->exist(pos {xplus,yplus})))
+                    {
+                        std::cout << "ja" << std::endl;
+                        pos Towerpos {xtorn, ytorn};
+                        Tower* myTower = new Catapult_tower(Towerpos, myBoard);
+                        myBoard->set_Tower(myTower);
+                    }
+
+                    else
+                    {
+                        std::cout << "Nej det får du inte!" << std::endl;
+                    }
                 }
             }
 
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2i position = sf::Mouse::getPosition(*myWindow);
-
-                std::cout << "Du tryckte!" << std::endl;
-                int xtorn = position.x;
-                int ytorn = position.y;
-                int xplus = xtorn + tower_width;
-                int yplus = ytorn + tower_width;
-
-                if(!myBoard->exist(pos {xtorn,ytorn}) and (!myBoard->exist(pos {xplus,ytorn})) and (!myBoard->exist(pos {xtorn,yplus})) and (!myBoard->exist(pos {xplus,yplus})))
+               // if ( 650 > position.x > 750 and 150 > position.y > 200 )
                 {
-                    std::cout << "ja" << std::endl;
-                    pos Towerpos {xtorn, ytorn};
-                    Tower* myTower = new Shooting_tower(Towerpos, myBoard);
-                    myBoard->set_Tower(myTower);
-                }
+                    std::cout << "Du tryckte!" << std::endl;
+                    int xtorn = position.x;
+                    int ytorn = position.y;
+                    int xplus = xtorn + tower_width;
+                    int yplus = ytorn + tower_width;
 
-                else
-                {
-                    std::cout << "Nej det får du inte!" << std::endl;
+                    if(!myBoard->exist(pos {xtorn,ytorn}) and (!myBoard->exist(pos {xplus,ytorn})) and (!myBoard->exist(pos {xtorn,yplus})) and (!myBoard->exist(pos {xplus,yplus})))
+                    {
+                        std::cout << "ja" << std::endl;
+                        pos Towerpos {xtorn, ytorn};
+                        Tower* myTower = new Shooting_tower(Towerpos, myBoard);
+                        myBoard->set_Tower(myTower);
+                    }
+
+                    else
+                    {
+                        std::cout << "Nej det får du inte!" << std::endl;
+                    }
                 }
             }
 
@@ -105,8 +109,9 @@ int main()
             ettan = ettan + tvan;
             sf::Font arial;
             arial.loadFromFile("arial.ttf");
-            sf::Text liv{ettan, arial};
-            liv.setPosition(200,200);
+            sf::Text liv {ettan, arial};
+            liv.setPosition(610,10);
+            liv.setColor(sf::Color::Black);
             myWindow->draw(liv);
 
             std::ostringstream result2;
@@ -114,8 +119,9 @@ int main()
             std::string tvan2 = result2.str();
             ettan = "Guld: ";
             ettan = ettan+ tvan2;
-            sf::Text guld{ettan, arial};
-            guld.setPosition(200,230);
+            sf::Text guld {ettan, arial};
+            guld.setPosition(610,40);
+            guld.setColor(sf::Color::Black);
             myWindow->draw(guld);
 
             std::ostringstream result3;
@@ -123,8 +129,9 @@ int main()
             std::string tvan3 = result3.str();
             ettan = "Poäng: ";
             ettan = ettan + tvan3;
-            sf::Text p{ettan, arial};
-            p.setPosition(200,260);
+            sf::Text p {ettan, arial};
+            p.setPosition(610,70);
+            p.setColor(sf::Color::Black);
             myWindow->draw(p);
 
 
@@ -146,11 +153,11 @@ int main()
     catch(const exception& e)
     {
         std::cout << "nu är det slut" << std::endl;
-       /* myBoard->get_Sheep().clear();
-        myBoard->get_Tower().clear();
-        myBoard->get_Shot().clear();
-        delete myWindow;
-        delete myBoard;*/
+        /* myBoard->get_Sheep().clear();
+         myBoard->get_Tower().clear();
+         myBoard->get_Shot().clear();
+         delete myWindow;
+         delete myBoard;*/
 
     }
     return 0;

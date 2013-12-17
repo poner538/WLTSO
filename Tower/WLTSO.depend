@@ -414,13 +414,14 @@
 	"Course.h"
 	"Board.h"
 
-1387198860 source:c:\users\daniel\bashkod\wltso\tower\sheep.cc
+1387298262 source:c:\users\daniel\bashkod\wltso\tower\sheep.cc
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Sheep.h"
 	<cmath>
+	<iostream>
 
-1386936635 c:\users\daniel\bashkod\wltso\tower\sheep.h
+1387298262 c:\users\daniel\bashkod\wltso\tower\sheep.h
 	<SFML/Graphics.hpp>
 	<string>
 	"Course.h"
@@ -431,21 +432,21 @@
 	<SFML/Graphics.hpp>
 	"TextureHandler.h"
 
-1387201642 c:\users\daniel\bashkod\wltso\tower\texturehandler.h
+1387302932 c:\users\daniel\bashkod\wltso\tower\texturehandler.h
 	<string>
 	<SFML/Graphics.hpp>
 
-1387193341 c:\users\daniel\bashkod\wltso\tower\controller.h
+1387292342 c:\users\daniel\bashkod\wltso\tower\controller.h
 
 1387201642 source:c:\users\daniel\bashkod\wltso\tower\texturehandler.cc
 	<iostream>
 	"TextureHandler.h"
 
-1387198860 source:c:\users\daniel\bashkod\wltso\tower\board.cc
+1387292341 source:c:\users\daniel\bashkod\wltso\tower\board.cc
 	"Board.h"
 	<vector>
 
-1387198860 c:\users\daniel\bashkod\wltso\tower\board.h
+1387292342 c:\users\daniel\bashkod\wltso\tower\board.h
 	<vector>
 	"TextureHandler.h"
 	"Course.h"
@@ -454,33 +455,33 @@
 	"Tower.h"
 	"Shot.h"
 
-1387198066 c:\users\daniel\bashkod\wltso\tower\tower.h
+1387297760 c:\users\daniel\bashkod\wltso\tower\tower.h
 	<SFML/Graphics.hpp>
 	<vector>
 	"Shot.h"
 
-1387191475 c:\users\daniel\bashkod\wltso\tower\shot.h
+1387298262 c:\users\daniel\bashkod\wltso\tower\shot.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Sheep.h"
 	"Course.h"
 
-1387199976 source:c:\users\daniel\bashkod\wltso\tower\controller.cc
+1387292342 source:c:\users\daniel\bashkod\wltso\tower\controller.cc
 	"Controller.h"
 	<iostream>
 
-1387201642 source:c:\users\daniel\bashkod\wltso\tower\course.cc
+1387292342 source:c:\users\daniel\bashkod\wltso\tower\course.cc
 	"Course.h"
 	<vector>
 	<iostream>
 
-1387193300 source:c:\users\daniel\bashkod\wltso\tower\shot.cc
+1387298262 source:c:\users\daniel\bashkod\wltso\tower\shot.cc
 	<SFML/Graphics.hpp>
 	"Shot.h"
 	<iostream>
 	<math.h>
 
-1387198066 source:c:\users\daniel\bashkod\wltso\tower\tower.cc
+1387298262 source:c:\users\daniel\bashkod\wltso\tower\tower.cc
 	<SFML/Graphics.hpp>
 	"Tower.h"
 	"Sheep.h"
@@ -489,7 +490,7 @@
 	<math.h>
 	<vector>
 
-1387198732 source:c:\users\daniel\bashkod\wltso\tower\shop.cc
+1387203966 source:c:\users\daniel\bashkod\wltso\tower\shop.cc
 	"Shop.h"
 	"Board.h"
 	"Controller.h"
@@ -500,21 +501,22 @@
 	<SFML/Graphics.hpp>
 	<SFML/Window/Event.hpp>
 
-1387201642 source:c:\users\daniel\bashkod\wltso\tower\game.cc
+1387298262 source:c:\users\daniel\bashkod\wltso\tower\game.cc
 	"Game.h"
 	"Board.h"
 	"Sheep.h"
 	<iostream>
 
-1387199920 c:\users\daniel\bashkod\wltso\tower\game.h
+1387297760 c:\users\daniel\bashkod\wltso\tower\game.h
 	<SFML/Graphics.hpp>
 	"Course.h"
 	<vector>
 	"Shop.h"
 
-1387201642 source:c:\users\daniel\bashkod\wltso\tower\main.cc
+1387297760 source:c:\users\daniel\bashkod\wltso\tower\main.cc
 	<SFML/Graphics.hpp>
 	"Board.h"
 	"Game.h"
 	"Course.h"
+	<iostream>
 

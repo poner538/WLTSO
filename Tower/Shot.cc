@@ -26,8 +26,15 @@ Shot::Shot(Sheep*& sheep_target,const int new_dmg,pos start_pos)
 }
 
 Shot::~Shot()
-{}
+{
+    target = nullptr;
+    delete target;
+}
 
+bool Shot::is_target()
+{
+    return target->am_i_dead;
+}
 
 sf::Sprite Shot::get_Shot_Sprite()
 {
@@ -36,9 +43,8 @@ sf::Sprite Shot::get_Shot_Sprite()
 
 void Shot::hunt_sheep(float time)
 {
-   if(! target->am_i_dead)
+   if(not(target->am_i_dead))
     {
-        std::cerr << "hej jag är ett skott och nu rör jag på mig" << std::endl;
         float x_temp = shot_pos.x_pos;
         float y_temp = shot_pos.y_pos;
         float norm = 0;

@@ -33,7 +33,7 @@ Tower::Tower(int new_range,float new_shooting_speed,int new_dmg,pos new_pos,Boar
 }
 
 Catapult_tower::Catapult_tower(pos new_pos,Board* new_Board)
-    : Tower(1000,3,100,new_pos,new_Board)
+    : Tower(1000,1,100,new_pos,new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getCatapult_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);
@@ -46,7 +46,7 @@ sf::Sprite Catapult_tower::get_Tower_Sprite()
 }
 
 Shooting_tower::Shooting_tower(pos new_pos,Board* new_Board)
-    : Tower(200,3,50,new_pos,new_Board)
+    : Tower(1000,1,50,new_pos,new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getShooting_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);
@@ -66,27 +66,29 @@ void Tower::locate_sheep(vector<Sheep*>& vec_sheep,float time)
         int x = 0;
         for(int i = 0 ; i < vec_sheep.size() ; i++)
         {
-            if (! vec_sheep.at(i)->am_i_dead)
+            for(int i = 0 ; i < vec_sheep.size() ; i++)
             {
-                if (vec_sheep.at(i)->distance > temp_Sheep->distance)
+                if (! vec_sheep.at(i)->am_i_dead)
                 {
-                    temp_Sheep = vec_sheep.at(i);
-                    x = i;
+                    if (vec_sheep.at(i)->get_distance() > temp_Sheep->get_distance())
+                    {
+                        temp_Sheep = vec_sheep.at(i);
+                        x = i;
+                    }
                 }
             }
+            if ( pow(range, 2) >= pow((vec_sheep.at(x)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(x)->get_position().y_pos - T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
+            {
+                cout << "hittade fåret\n";
+                shoot(vec_sheep.at(x));
+                return;
+            }
+            else
+            {
+                //mytimer(5);
+                cout << "hittade inget får \n";
+            }
         }
-        if ( pow(range, 2) >= pow((vec_sheep.at(x)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(x)->get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
-        {
-            cout << "hittade fåret\n";
-            shoot(vec_sheep.at(x));
-            return;
-        }
-        else
-        {
-            //mytimer(5);
-            cout << "hittade inget får \n";
-        }
-
     }
 }
 

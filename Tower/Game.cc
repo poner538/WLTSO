@@ -28,19 +28,19 @@ void Game::feed_Sheep(float time_passed)
         if(current_sheep < current_wave.size()) //är vi inne?
         {
             int sheep_number = current_wave.at(current_sheep);
-            if (current_wave.at(sheep_number) == 1)
+            if (sheep_number == 1)
             {
                 EasySheep* tempEasySheep = new EasySheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempEasySheep);
                 feeding_time = 100;
             }
-            else if (current_wave.at(sheep_number) == 2)
+            else if (sheep_number == 2)
             {
                 MediumSheep* tempMediumSheep = new MediumSheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempMediumSheep);
                 feeding_time = 100;
             }
-            else if (current_wave.at(sheep_number) == 3)
+            else if (sheep_number == 3)
             {
                 HardSheep* tempHardSheep = new HardSheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempHardSheep);
@@ -86,21 +86,30 @@ void Game::update_Game(float time)
 {
     if (GameBoard->get_Sheep().size() != 0)
     {
+        /*for (unsigned int i = 0; i < GameBoard->get_Sheep().size(); i++)
+        {
+            GameBoard->get_Sheep().at(i)->update_position(time);
+        } */
         for (unsigned int i = 0; i < GameBoard->get_Sheep().size(); i++)
         {
-            if (GameBoard->get_Sheep().at(i)->am_i_dead)
+            if (GameBoard->get_Sheep().at(i)->am_i_dead or GameBoard->get_Sheep().at(i)->update_position(time))
             {
+                for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
+                {
+                    std::cerr << GameBoard->get_Shot().size() << std::endl;
+                    if (GameBoard->get_Shot().at(i)->is_target())
+                    {
+                        delete GameBoard->get_Shot().at(i);
+                        GameBoard->get_Shot().erase(GameBoard->get_Shot().begin()+i);
+                        i = i - 1;
+                    }
+                }
                 delete GameBoard->get_Sheep().at(i);
                 GameBoard->get_Sheep().erase(GameBoard->get_Sheep().begin()+i);
             }
-            else if (GameBoard->get_Sheep().at(i)->update_position(time))
-            {
-                delete GameBoard->get_Sheep().at(i);
-                GameBoard->get_Sheep().erase(GameBoard->get_Sheep().begin()+i);
-            }
-
         }
     }
+
     for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
     {
         if (GameBoard->get_Shot().at(i)->did_i_hit)
@@ -114,8 +123,7 @@ void Game::update_Game(float time)
         }
     }
 
-
-    if(GameBoard->get_Tower().size() != 0)
+    if(GameBoard->get_Tower().size() != 0 and GameBoard->get_Sheep().size() != 0)
     {
         for (unsigned int i = 0; i < GameBoard->get_Tower().size(); i++)
         {

@@ -67,7 +67,7 @@ sf::Sprite EasySheep::get_Sheep_Sprite()
     return Sheep_Sprite;
 }
 
-bool EasySheep::update_position(float time)
+bool HardSheep::update_position(float time)
 {
     float x_temp = 0;
     float y_temp = 0;
@@ -82,6 +82,7 @@ bool EasySheep::update_position(float time)
         if (next_waypoint == 6)//då har den gått i mål
         {
             Controller::controller.lives();
+            am_i_dead = true;
             return true;
         }
         x_temp = x_temp / norm;
@@ -147,24 +148,24 @@ bool MediumSheep::update_position(float time)
     float x_temp = 0;
     float y_temp = 0;
     float norm = 0;
+    float way_to_next = 0;
     pos temp_pos;
     x_temp = next_position.x_pos - current_position.x_pos;
     y_temp = next_position.y_pos - current_position.y_pos;
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint == 5)//då har den gått i mål
+        if (next_waypoint == 6)//då har den gått i mål
         {
             Controller::controller.lives();
+            am_i_dead = true;
             return true;
-
         }
-
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*(time*speed-norm);
         temp_pos.y_pos = current_position.y_pos + y_temp*(time*speed-norm);
-
+        way_to_next = 2*norm - time*speed;
         next_position = current_Course.get_waypoint(next_waypoint+1);
         next_waypoint = next_waypoint + 1;
 
@@ -176,9 +177,8 @@ bool MediumSheep::update_position(float time)
         norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
-        temp_pos.x_pos = current_position.x_pos + x_temp*(norm - time*speed);
-        temp_pos.y_pos = current_position.y_pos + y_temp*(norm - time*speed);
-
+        temp_pos.x_pos = current_position.x_pos + x_temp*way_to_next;
+        temp_pos.y_pos = current_position.y_pos + y_temp*way_to_next;
         set_position(temp_pos);
     }
     else
@@ -218,7 +218,7 @@ sf::Sprite HardSheep::get_Sheep_Sprite()
     return Sheep_Sprite;
 }
 
-bool HardSheep::update_position(float time)
+bool EasySheep::update_position(float time)
 {
     float x_temp = 0;
     float y_temp = 0;
@@ -230,13 +230,12 @@ bool HardSheep::update_position(float time)
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint == 5)//då har den gått i mål
+        if (next_waypoint == 6)//då har den gått i mål
         {
             Controller::controller.lives();
+            am_i_dead = true;
             return true;
-
         }
-
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*(time*speed-norm);

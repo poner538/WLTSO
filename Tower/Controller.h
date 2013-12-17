@@ -28,6 +28,8 @@ public:
     void change_points(const int value);
     void lives();
     int get_lives();
+    int get_points();
+    int get_gold();
 
     static Controller controller;
 

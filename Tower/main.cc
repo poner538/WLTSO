@@ -22,7 +22,7 @@ int main()
     Board* myBoard = new Board(myCourse);
     Game myGame(myWindow, myBoard);
     sf::Clock myClock;
-    float tiden = 50;
+    float tiden = 20;
     int i = 0;
     sf::Event event;
     int tower_width = 50;
@@ -71,6 +71,12 @@ int main()
                 std::cout << "Nej det får du inte!" << std::endl;
             }
         }
+
+        if(!myGame.shall_feed and (sf::Keyboard::isKeyPressed(sf::Keyboard::N)))
+        {
+            myGame.new_wave();
+        }
+
         if(myGame.shall_feed == true)
         {
             myGame.feed_Sheep(myClock.getElapsedTime().asSeconds()*50);
@@ -85,7 +91,12 @@ int main()
         //for (int i = 0; i < 4000; i++){}
         myWindow->clear();
         tiden = tiden - myClock.getElapsedTime().asSeconds();
-        std:: cout << "Tid kvar: " << tiden << std::endl;
+        //std:: cout << "Tid kvar: " << tiden << std::endl;
+        //std::cout << "LIV: " << Controller::controller.get_lives() << std::endl;
+        if(!myGame.shall_feed)
+        {
+           std::cout << "Tryck på N för att starta nästa wave" << std::endl;
+        }
     }
     return 0;
 }

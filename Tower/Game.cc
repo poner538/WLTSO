@@ -55,22 +55,22 @@ void Game::feed_Sheep(float time_passed)
                 shall_feed = false;
                 std::cout << "Kommer jag hit" << std::endl;
                 current_level = current_level + 1; //nästa wave då
-                if (current_level == wave.size()) // är vågorna slut?
+                std::cout << "Så här lång är wave: " << wave.size() << std::endl;
+                if (current_level >= wave.size())
                 {
-                    std::cout << "slut på får" << std::endl;
+                    std::cout << "slut på vågor" << std::endl;
                     //då är det slut
                 }
                 else
                 {
                     std::cout << "ny level!" << std::endl;
                     current_sheep = 0;
-                    current_wave =  wave.at(current_level);
+                    current_wave = wave.at(current_level);
                     change_run();
                 }
             }
         }
         return;
-
     }
     else
     {
@@ -147,6 +147,15 @@ void Game::update_background_graphics()
 
 void Game::update_foreground_graphics()
 {
+
+    for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i ++)
+    {
+        if (GameBoard->get_Shot().size() != 0)
+        {
+            GameWindow->draw(GameBoard->get_Shot().at(i)->get_Shot_Sprite());
+        }
+    }
+
     if (GameBoard->get_Sheep().size() >= 0)
     {
         for (unsigned int i = 0; i < GameBoard->get_Sheep().size(); i++)
@@ -164,13 +173,7 @@ void Game::update_foreground_graphics()
             GameWindow->draw(GameBoard->get_Tower().at(i)->get_Tower_Sprite());//Finns get_Tower_Sprite?
         }
     }
-    for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i ++)
-    {
-        if (GameBoard->get_Shot().size() != 0)
-        {
-            GameWindow->draw(GameBoard->get_Shot().at(i)->get_Shot_Sprite());
-        }
-    }
+
 
 }
 
@@ -206,4 +209,22 @@ void Game::change_shop()
     {
         can_I_shop = true;
     }
+}
+
+void Game::new_wave()
+{
+    if (current_level >= wave.size()) // är vågorna slut?
+    {
+        std::cout << "slut på får" << std::endl;
+        //då är det slut
+    }
+    else
+    {
+        std::cout << "ny level!" << std::endl;
+        current_sheep = 0;
+        current_wave =  wave.at(current_level);
+        change_run();
+    }
+    shall_feed = true;
+
 }

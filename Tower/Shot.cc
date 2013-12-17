@@ -20,6 +20,7 @@ Shot::Shot(Sheep*& sheep_target,const int new_dmg,pos start_pos)
     target = sheep_target;
     dmg = new_dmg;
     shot_pos = start_pos;
+    Shot_Sprite.setPosition(start_pos.x_pos,start_pos.y_pos);
     Shot_Sprite.setTexture(TextureHandler::texturehandler.getShot());
 
 }

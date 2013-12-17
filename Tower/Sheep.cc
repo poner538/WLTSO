@@ -26,16 +26,13 @@ Sheep::Sheep(int new_speed, int new_hp, int new_bounty, Course new_Course)
 
 void Sheep::hit(int damage)
 {
-    std::cerr << "jag är träffad" << std::endl;
-    if (damage >= hp)
+    std::cerr << hp << std::endl;
+    hp = hp - damage;
+    if (hp <= 0)
     {
         Controller::controller.change_gold(bounty);
         Controller::controller.change_points(bounty);//Eller om vi ska ha datamedlem points
-        am_i_hit = true;
-    }
-    else
-    {
-        hp = hp - damage;
+        am_i_dead = true;
     }
 }
 

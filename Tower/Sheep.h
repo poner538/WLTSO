@@ -33,13 +33,14 @@ public:
     void hit(int damage);
     float get_distance();
 
-    bool am_i_hit = false;
+    bool am_i_dead = false;
 
     /*Virtuella funktioner*/
     virtual pos get_position() = 0; //pos inte ännu definierad
     virtual void set_position(pos new_position)= 0;
     virtual sf::Sprite get_Sheep_Sprite() = 0;
     virtual bool update_position(float time) = 0;
+    float distance = 0;
 
 protected:
     //Datamedlemmar
@@ -47,7 +48,6 @@ protected:
     int hp = 0;
     int speed = 0;
     int bounty = 0;
-    float distance = 0;
     Course current_Course;
     bool drawable = true;
 

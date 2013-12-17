@@ -87,7 +87,7 @@ void Game::update_Game(float time)
     {
         for (unsigned int i = 0; i < GameBoard->get_Sheep().size(); i++)
         {
-            if (GameBoard->get_Sheep().at(i)->am_i_hit)
+            if (GameBoard->get_Sheep().at(i)->am_i_dead)
             {
                 delete GameBoard->get_Sheep().at(i);
                 GameBoard->get_Sheep().erase(GameBoard->get_Sheep().begin()+i);

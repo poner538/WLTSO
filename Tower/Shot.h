@@ -41,7 +41,7 @@ private:
     Sheep* target;
     sf::Sprite Shot_Sprite;
     void hit_sheep();
-    int speed = 5;
+    int speed = 7;
 
 };
 

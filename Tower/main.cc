@@ -13,9 +13,9 @@
 #include "Board.h"
 #include "Game.h"
 #include "Course.h"
+#include "Shop.h"
 #include <iostream>
 #include <string>
-#include <sstream>
 
 int main()
 {
@@ -23,6 +23,7 @@ int main()
     Course myCourse;
     Board* myBoard = new Board(myCourse);
     Game myGame(myWindow, myBoard);
+    Shop myShop(myBoard, myWindow);
     sf::Clock myClock;
     float tiden = 20;
     int i = 0;
@@ -33,6 +34,20 @@ int main()
 
         while (myWindow->isOpen())
         {
+            /*if (!myGame.shall_feed)//denna ifsatsen funkar inte av någon anledning
+            {
+                if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+                {
+                    sf::Vector2i position = sf::Mouse::getPosition(*myWindow);
+                    int xpress = position.x;
+                    int ypress = position.y;
+                    if (myShop.is_wave_button(xpress, ypress));
+                    {
+                        myGame.new_wave();
+                    }
+                }
+            }*/
+
             if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             {
                 sf::Vector2i position = sf::Mouse::getPosition(*myWindow);
@@ -98,55 +113,11 @@ int main()
             myClock.restart();
             myGame.update_background_graphics();
             myGame.update_foreground_graphics();
-
-
-
-            //std::string tvan;
-            std::ostringstream result;
-            result << Controller::controller.get_lives();
-            std::string tvan = result.str();
-            std::string ettan = "Antal liv: ";
-            ettan = ettan + tvan;
-            sf::Font arial;
-            arial.loadFromFile("arial.ttf");
-            sf::Text liv {ettan, arial};
-            liv.setPosition(610,10);
-            liv.setColor(sf::Color::Black);
-            myWindow->draw(liv);
-
-            std::ostringstream result2;
-            result2 << Controller::controller.get_gold();
-            std::string tvan2 = result2.str();
-            ettan = "Guld: ";
-            ettan = ettan+ tvan2;
-            sf::Text guld {ettan, arial};
-            guld.setPosition(610,40);
-            guld.setColor(sf::Color::Black);
-            myWindow->draw(guld);
-
-            std::ostringstream result3;
-            result3 << Controller::controller.get_points();
-            std::string tvan3 = result3.str();
-            ettan = "Poäng: ";
-            ettan = ettan + tvan3;
-            sf::Text p {ettan, arial};
-            p.setPosition(610,70);
-            p.setColor(sf::Color::Black);
-            myWindow->draw(p);
-
-
+            myShop.update_scoreboard();
             myWindow->display();
-            //std::cout << i << std::endl;
-            i++;
-            //for (int i = 0; i < 4000; i++){}
             myWindow->clear();
             tiden = tiden - myClock.getElapsedTime().asSeconds();
-            //std:: cout << "Tid kvar: " << tiden << std::endl;
-            //std::cout << "LIV: " << Controller::controller.get_lives() << std::endl;
-            if(!myGame.shall_feed)
-            {
-                // std::cout << "Tryck på N för att starta nästa wave" << std::endl;
-            }
+
 
         }
     }

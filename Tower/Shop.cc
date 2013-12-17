@@ -13,22 +13,18 @@
 #include "Controller.h"
 #include "Sheep.h"
 #include "Tower.h"
+#include <sstream>
 
-Shop::Shop(Board* new_board, Controller* new_controller)
+
+Shop::Shop(Board* new_board, sf::RenderWindow*& new_window)
 {
     GameBoard = new_board;
-    GameController = new_controller;
+    GameWindow = new_window;
 }
 Shop::~Shop()
 {
 
 }
-
-sf::Sprite Shop::get_Shop_Sprite()
-{
-    return Shop_Sprite;
-}
-
 
 //Medlemsfunktioner
 void Shop::build_Catapult_Tower() //Öppnas från int main är min tnake i nuläget
@@ -40,7 +36,7 @@ void Shop::build_Catapult_Tower() //Öppnas från int main är min tnake i nuläget
         towerplacement.y_pos = GameEvent->mouseButton.y;
 		if(GameBoard->exist(towerplacement) == true) //Kollar om det är ledigt där tornet skall byggas
         {
-            if(GameController->gold_check(-100) == true) //Finns det tillräckligt med pengar?
+            if(Controller::controller.gold_check(-100) == true) //Finns det tillräckligt med pengar?
             {
                 Catapult_tower(towerplacement, GameBoard); //Här skall tornet byggas är tanken iaf
             }
@@ -60,7 +56,7 @@ void Shop::build_Shooting_Tower() //Öppnas från int main är min tnake i nuläget
         towerplacement.y_pos = GameEvent->mouseButton.y;
 		if(GameBoard->exist(towerplacement) == true) //Kollar om det är ledigt där tornet skall byggas
         {
-            if(GameController->gold_check(-15) == true) //Finns det tillräckligt med pengar?
+            if(Controller::controller.gold_check(-15) == true) //Finns det tillräckligt med pengar?
             {
                 Shooting_tower(towerplacement, GameBoard); //Här skall tornet byggas är tanken iaf
             }
@@ -71,4 +67,59 @@ void Shop::build_Shooting_Tower() //Öppnas från int main är min tnake i nuläget
 
 }
 
+void Shop::update_scoreboard()//Borde snyggas till
+{
+    std::ostringstream result;
+    result << Controller::controller.get_lives();
+    std::string tvan = result.str();
+    std::string ettan = "Antal liv: ";
+    ettan = ettan + tvan;
+    sf::Font arial;
+    arial.loadFromFile("arial.ttf");
+    sf::Text liv {ettan, arial};
+    liv.setPosition(610,10);
+    liv.setColor(sf::Color::Black);
+    GameWindow->draw(liv);
 
+    std::ostringstream result2;
+    result2 << Controller::controller.get_gold();
+    std::string tvan2 = result2.str();
+    ettan = "Guld: ";
+    ettan = ettan+ tvan2;
+    sf::Text guld {ettan, arial};
+    guld.setPosition(610,40);
+    guld.setColor(sf::Color::Black);
+    GameWindow->draw(guld);
+
+    std::ostringstream result3;
+    result3 << Controller::controller.get_points();
+    std::string tvan3 = result3.str();
+    ettan = "Poäng: ";
+    ettan = ettan + tvan3;
+    sf::Text p {ettan, arial};
+    p.setPosition(610,70);
+    p.setColor(sf::Color::Black);
+    GameWindow->draw(p);
+}
+
+
+bool Shop::is_Catapult_button(int x, int y)
+{
+    return Catapult_tower_button.contains(x,y);
+}
+bool Shop::is_Shooting_button(int x, int y)
+{
+    return Shooting_tower_button.contains(x,y);
+}
+bool Shop::is_start_button(int x,int y)
+{
+    return Start_button.contains(x,y);
+}
+bool Shop::is_stop_button(int x, int y)
+{
+    return Stop_button.contains(x,y);
+}
+bool Shop::is_wave_button(int x, int y)
+{
+    return New_Wave_button.contains(x,y);
+}

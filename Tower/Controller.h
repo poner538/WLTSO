@@ -27,6 +27,7 @@ public:
     void change_gold(const int value);
     void change_points(const int value);
     void lives();
+    int get_lives();
 
     static Controller controller;
 

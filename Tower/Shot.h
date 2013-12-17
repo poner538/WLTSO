@@ -26,14 +26,14 @@ Klassen Shot ska tilldelas ett får, en skada den ska göra och en startposition
 class Shot
 {
 public:
-    Shot(Sheep*, int, pos);
+    Shot(Sheep*&, int, pos);
     ~Shot();
 
     int get_dmg();
     void hunt_sheep(float);
     sf::Sprite get_Shot_Sprite();
 
-
+    bool did_i_hit = false;
 
 private:
     int dmg;
@@ -41,7 +41,7 @@ private:
     Sheep* target;
     sf::Sprite Shot_Sprite;
     void hit_sheep();
-    int speed;
+    int speed = 5;
 
 };
 

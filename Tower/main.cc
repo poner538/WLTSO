@@ -22,7 +22,7 @@ int main()
     Board* myBoard = new Board(myCourse);
     Game myGame(myWindow, myBoard);
     sf::Clock myClock;
-    float tiden = 10;
+    float tiden = 50;
     int i = 0;
     sf::Event event;
     int tower_width = 50;
@@ -71,7 +71,10 @@ int main()
                 std::cout << "Nej det får du inte!" << std::endl;
             }
         }
-
+        if(myGame.shall_feed == true)
+        {
+            myGame.feed_Sheep(myClock.getElapsedTime().asSeconds()*50);
+        }
         myGame.update_Game(myClock.getElapsedTime().asSeconds()*50);
         myClock.restart();
         myGame.update_background_graphics();

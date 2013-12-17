@@ -15,7 +15,7 @@
 #include <iostream>
 #include <math.h>
 
-Shot::Shot(Sheep* sheep_target,const int new_dmg,pos start_pos)
+Shot::Shot(Sheep*& sheep_target,const int new_dmg,pos start_pos)
 {
     target = sheep_target;
     dmg = new_dmg;
@@ -35,6 +35,7 @@ sf::Sprite Shot::get_Shot_Sprite()
 
 void Shot::hunt_sheep(float time)
 {
+    std::cerr << "hej jag är ett skott och nu rör jag på mig" << std::endl;
     float x_temp = shot_pos.x_pos;
     float y_temp = shot_pos.y_pos;
     float norm = 0;
@@ -42,7 +43,6 @@ void Shot::hunt_sheep(float time)
     x_temp = target->get_position().x_pos - shot_pos.x_pos;
     y_temp = target->get_position().y_pos - shot_pos.y_pos;
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
-
     if(time*speed >= norm)
     {
         hit_sheep();
@@ -52,8 +52,8 @@ void Shot::hunt_sheep(float time)
     {
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
-        shot_pos.x_pos = shot_pos.x_pos + x_temp*(time*speed - norm);
-        shot_pos.y_pos = shot_pos.y_pos + y_temp*(time*speed - norm);
+        shot_pos.x_pos = shot_pos.x_pos + x_temp*time*speed;
+        shot_pos.y_pos = shot_pos.y_pos + y_temp*time*speed;
     }
 //här ska vi lägga till en timer
 }
@@ -64,5 +64,5 @@ void Shot::hunt_sheep(float time)
 void Shot::hit_sheep()
 {
     target->hit(dmg);
-    delete this;
+    did_i_hit = true;
 }

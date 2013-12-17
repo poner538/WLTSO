@@ -52,6 +52,7 @@ void Game::feed_Sheep(float time_passed)
             current_sheep = current_sheep + 1;
             if (current_wave.size() == current_sheep) //slutet på waven, har kan man kalla på pause
             {
+                shall_feed = false;
                 std::cout << "Kommer jag hit" << std::endl;
                 current_level = current_level + 1; //nästa wave då
                 if (current_level == wave.size()) // är vågorna slut?
@@ -69,6 +70,7 @@ void Game::feed_Sheep(float time_passed)
             }
         }
         return;
+
     }
     else
     {
@@ -77,20 +79,47 @@ void Game::feed_Sheep(float time_passed)
     }
 }
 
+
+
 void Game::update_Game(float time)
 {
-    feed_Sheep(time);
     if (GameBoard->get_Sheep().size() != 0)
     {
         for (unsigned int i = 0; i < GameBoard->get_Sheep().size(); i++)
         {
-            GameBoard->get_Sheep().at(i)->update_position(time);
+            if (GameBoard->get_Sheep().at(i)->am_i_hit)
+            {
+                delete GameBoard->get_Sheep().at(i);
+                GameBoard->get_Sheep().erase(GameBoard->get_Sheep().begin()+i);
+            }
+            else if (GameBoard->get_Sheep().at(i)->update_position(time))
+            {
+                delete GameBoard->get_Sheep().at(i);
+                GameBoard->get_Sheep().erase(GameBoard->get_Sheep().begin()+i);
+            }
+
         }
-        /*for (unsigned int i = 0; i <= GameBoard->get_Shot().size(); i++)
+    }
+    for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
+    {
+        if (GameBoard->get_Shot().at(i)->did_i_hit)
+        {
+            delete GameBoard->get_Shot().at(i);
+            GameBoard->get_Shot().erase(GameBoard->get_Shot().begin()+i);
+        }
+        else
         {
             GameBoard->get_Shot().at(i)->hunt_sheep(time);
-        }*/
+        }
+    }
 
+
+    if(GameBoard->get_Tower().size() != 0)
+    {
+        for (unsigned int i = 0; i < GameBoard->get_Tower().size(); i++)
+        {
+            GameBoard->get_Tower().at(i)->locate_sheep(GameBoard->get_Sheep(),time);
+        }
     }
 }
 
@@ -135,7 +164,7 @@ void Game::update_foreground_graphics()
             GameWindow->draw(GameBoard->get_Tower().at(i)->get_Tower_Sprite());//Finns get_Tower_Sprite?
         }
     }
-    for (unsigned int i = 0; i <= GameBoard->get_Shot().size(); i ++)
+    for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i ++)
     {
         if (GameBoard->get_Shot().size() != 0)
         {

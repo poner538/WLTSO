@@ -33,12 +33,13 @@ public:
     void hit(int damage);
     float get_distance();
 
+    bool am_i_hit = false;
 
     /*Virtuella funktioner*/
     virtual pos get_position() = 0; //pos inte ännu definierad
     virtual void set_position(pos new_position)= 0;
     virtual sf::Sprite get_Sheep_Sprite() = 0;
-    virtual void update_position(float time) = 0;
+    virtual bool update_position(float time) = 0;
 
 protected:
     //Datamedlemmar
@@ -56,11 +57,12 @@ class EasySheep: public Sheep
 {
 
 public:
+    virtual ~EasySheep() = default;
     EasySheep(Course new_Course);
     pos get_position();
     void set_position(pos new_position);
     sf::Sprite get_Sheep_Sprite();
-    void update_position(float time);
+    bool update_position(float time);
 
 private:
 
@@ -76,11 +78,12 @@ class MediumSheep: public Sheep
 {
 
 public:
+    ~MediumSheep() = default;
     MediumSheep(Course new_Course);
     pos get_position();
     void set_position(pos new_position);
     sf::Sprite get_Sheep_Sprite();
-    void update_position(float time);
+    bool update_position(float time);
 
 
 private:
@@ -95,11 +98,12 @@ class HardSheep: public Sheep
 {
 
 public:
+    ~HardSheep() = default;
     HardSheep(Course new_Course);
     pos get_position();
     void set_position(pos new_position);
     sf::Sprite get_Sheep_Sprite();
-    void update_position(float time);
+    bool update_position(float time);
 
 
 private:

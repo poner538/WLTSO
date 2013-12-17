@@ -48,3 +48,8 @@ void Controller::lives()
     }
     current_lives = current_lives - 1;
 }
+
+int Controller::get_lives()
+{
+    return current_lives;
+}

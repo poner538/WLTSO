@@ -21,7 +21,7 @@ Board::Board(Course& new_Board_Course)
 
 }
 
-vector<Shot*> Board::get_Shot()
+vector<Shot*>& Board::get_Shot()
 {
     return Shot_list;
 }
@@ -36,7 +36,7 @@ Course Board::get_Course()
     return Board_Course;
 }
 
-vector<Tower*> Board::get_Tower()
+vector<Tower*>& Board::get_Tower()
 {
     return Tower_list;
 }
@@ -46,7 +46,7 @@ void Board::set_Tower(Tower* new_Tower)
     Tower_list.push_back(new_Tower);
 }
 
-vector<Sheep*> Board::get_Sheep()
+vector<Sheep*>& Board::get_Sheep()
 {
     return Sheep_list;
 }

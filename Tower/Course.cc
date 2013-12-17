@@ -137,6 +137,10 @@ pos Course::get_waypoint(int number)
     {
         return wp5;
     }
+    else if (number == 6)
+    {
+        return wp6;
+    }
     else
     {
         //vi borde ha en felklass

@@ -36,7 +36,7 @@ public:
     void update_Game(float);
     void update_background_graphics();
     void update_foreground_graphics();
-
+    bool shall_feed = true; // ska vara false init
     bool is_running();
     void change_run();
 
@@ -57,7 +57,7 @@ private:
     std::vector<std::vector<int>> wave = {{1, 1}, {1, 2, 3}};
     bool start_stop = true;
     int current_level = 0;
-    bool can_I_shop = false;
+    bool can_I_shop = true;
 
 };
 

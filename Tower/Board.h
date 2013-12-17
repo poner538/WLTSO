@@ -38,12 +38,12 @@ public:
     Board& operator=(const Board&& other) = delete; //Tilldelningspoperator med move
 
     /*Funktioner*/
-    vector<Shot*> get_Shot();
+    vector<Shot*>& get_Shot();
     void set_Shot(Shot*);
     Course get_Course();
-    vector<Tower*> get_Tower();
+    vector<Tower*>& get_Tower();
     void set_Tower(Tower*);
-    vector<Sheep*> get_Sheep();
+    vector<Sheep*>& get_Sheep();
     void set_Sheep(Sheep*);
     bool exist(pos);
     sf::Sprite get_Board_Sprite();

@@ -39,8 +39,8 @@ protected:
 public:
     Tower(int,int,int,pos,Board*);
 
-    virtual void locate_sheep(vector<Sheep*>,float);
-    void shoot(Sheep*);
+    virtual void locate_sheep(vector<Sheep*>&,float);
+    void shoot(Sheep*&);
     pos get_position();
     virtual sf::Sprite get_Tower_Sprite() = 0;
 

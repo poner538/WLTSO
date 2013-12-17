@@ -26,11 +26,12 @@ Sheep::Sheep(int new_speed, int new_hp, int new_bounty, Course new_Course)
 
 void Sheep::hit(int damage)
 {
+    std::cerr << "jag är träffad" << std::endl;
     if (damage >= hp)
     {
         Controller::controller.change_gold(bounty);
         Controller::controller.change_points(bounty);//Eller om vi ska ha datamedlem points
-        delete this;
+        am_i_hit = true;
     }
     else
     {
@@ -69,7 +70,7 @@ sf::Sprite EasySheep::get_Sheep_Sprite()
     return Sheep_Sprite;
 }
 
-void EasySheep::update_position(float time)
+bool EasySheep::update_position(float time)
 {
     float x_temp = 0;
     float y_temp = 0;
@@ -81,10 +82,10 @@ void EasySheep::update_position(float time)
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint == 5)//då har den gått i mål
+        if (next_waypoint == 6)//då har den gått i mål
         {
             Controller::controller.lives();
-            //delete this;
+            return true;
         }
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
@@ -116,6 +117,7 @@ void EasySheep::update_position(float time)
         set_position(temp_pos);
     }
     distance = distance + time*speed;
+    return false;
 }
 
 /*MediumSheep*/
@@ -143,7 +145,7 @@ sf::Sprite MediumSheep::get_Sheep_Sprite()
     return Sheep_Sprite;
 }
 
-void MediumSheep::update_position(float time)
+bool MediumSheep::update_position(float time)
 {
     float x_temp = 0;
     float y_temp = 0;
@@ -157,7 +159,7 @@ void MediumSheep::update_position(float time)
         if (next_waypoint == 5)//då har den gått i mål
         {
             Controller::controller.lives();
-            //delete this;
+            return true;
 
         }
 
@@ -192,6 +194,7 @@ void MediumSheep::update_position(float time)
         set_position(temp_pos);
     }
     distance = distance + time*speed;
+    return false;
 }
 
 /*HardSheep*/
@@ -218,7 +221,7 @@ sf::Sprite HardSheep::get_Sheep_Sprite()
     return Sheep_Sprite;
 }
 
-void HardSheep::update_position(float time)
+bool HardSheep::update_position(float time)
 {
     float x_temp = 0;
     float y_temp = 0;
@@ -233,7 +236,7 @@ void HardSheep::update_position(float time)
         if (next_waypoint == 5)//då har den gått i mål
         {
             Controller::controller.lives();
-            //delete this;
+            return true;
 
         }
 
@@ -267,4 +270,5 @@ void HardSheep::update_position(float time)
         set_position(temp_pos);
     }
     distance = distance + time*speed;
+    return false;
 }

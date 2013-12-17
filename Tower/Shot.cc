@@ -54,6 +54,7 @@ void Shot::hunt_sheep(float time)
         y_temp = y_temp / norm;
         shot_pos.x_pos = shot_pos.x_pos + x_temp*time*speed;
         shot_pos.y_pos = shot_pos.y_pos + y_temp*time*speed;
+        Shot_Sprite.setPosition(shot_pos.x_pos, shot_pos.y_pos);
     }
 //här ska vi lägga till en timer
 }

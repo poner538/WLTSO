@@ -55,7 +55,7 @@ private:
 
 
     pos course_start_pos{-5,20};
-    std::vector<std::vector<int>> wave = {{2, 3}, {1, 1, 1}};
+    std::vector<std::vector<int>> wave = {{1, 1, 2, 3}, {1, 1, 1}};
     bool start_stop = true;
     int current_level = 0;
     bool can_I_shop = true;

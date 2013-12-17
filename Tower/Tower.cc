@@ -23,7 +23,7 @@
 
 using namespace std;
 
-Tower::Tower(int new_range,int new_shooting_speed,int new_dmg,pos new_pos,Board* new_Board)
+Tower::Tower(int new_range,float new_shooting_speed,int new_dmg,pos new_pos,Board* new_Board)
 {
     dmg = new_dmg;
     shooting_speed = new_shooting_speed;
@@ -33,11 +33,11 @@ Tower::Tower(int new_range,int new_shooting_speed,int new_dmg,pos new_pos,Board*
 }
 
 Catapult_tower::Catapult_tower(pos new_pos,Board* new_Board)
-    : Tower(1000,2,7,new_pos,new_Board)
+    : Tower(1000,3,7,new_pos,new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getCatapult_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);
-    Tower_Sprite.setTextureRect(sf::Rect<int>{sf::Rect<int>(new_pos.x_pos, new_pos.y_pos, 50, 50)});
+    Tower_Sprite.setTextureRect(sf::Rect<int> {sf::Rect<int>(new_pos.x_pos, new_pos.y_pos, 50, 50)});
 }
 
 sf::Sprite Catapult_tower::get_Tower_Sprite()
@@ -46,11 +46,11 @@ sf::Sprite Catapult_tower::get_Tower_Sprite()
 }
 
 Shooting_tower::Shooting_tower(pos new_pos,Board* new_Board)
-    : Tower(1000,1,5,new_pos,new_Board)
+    : Tower(1000,3,5,new_pos,new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getShooting_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);
-    Tower_Sprite.setTextureRect(sf::Rect<int>{sf::Rect<int>(new_pos.x_pos, new_pos.y_pos, 50, 50)}); //Detta faqqar texten!
+    Tower_Sprite.setTextureRect(sf::Rect<int> {sf::Rect<int>(new_pos.x_pos, new_pos.y_pos, 50, 50)}); //Detta faqqar texten!
 }
 
 sf::Sprite Shooting_tower::get_Tower_Sprite()
@@ -62,27 +62,33 @@ void Tower::locate_sheep(vector<Sheep*>& vec_sheep,float time)
 {
     if(shot_timer(time))
     {
-        temptime = time;
+        Sheep* temp_Sheep;
+        int x = 0;
         for(int i = 0 ; i < vec_sheep.size() ; i++)
-
-
-            if ( pow(range, 2) >= pow((vec_sheep.at(i)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(i)->get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
+        {
+            if (vec_sheep.at(i)->distance > temp_Sheep->distance)
             {
-                cout << "hittade fåret\n";
-                shoot(vec_sheep.at(i));
+                temp_Sheep = vec_sheep.at(i);
+                x = i;
             }
-            else
-            {
-                //mytimer(5);
-                cout << "hittade inget får \n";
-            }
+        }
+        if ( pow(range, 2) >= pow((vec_sheep.at(x)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(x)->get_position().y_pos + T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
+        {
+            cout << "hittade fåret\n";
+            shoot(vec_sheep.at(x));
+        }
+        else
+        {
+            //mytimer(5);
+            cout << "hittade inget får \n";
+        }
 
     }
 }
 
 void Tower::shoot(Sheep*& sheep_target)
 {
-    Shot* a_shot = new Shot(sheep_target,dmg,T_pos);
+    Shot* a_shot = new Shot(sheep_target, dmg, T_pos);
     std::cerr << "nytt skott skapades" << std::endl;
     GameBoard->set_Shot(a_shot);
 }
@@ -95,10 +101,16 @@ pos Tower::get_position()
 bool Tower::shot_timer(float time) //en funktion som fördröjer skotten i sec-antal sekunder
 {
 
-    if(time >= temptime + shooting_speed)
+    if(temptime >= shooting_speed)
+    {
+        temptime = 0;
         return true;
+    }
     else
-        return false;
+    {
 
+        temptime = temptime + time;
+        return false;
+    }
 }
 

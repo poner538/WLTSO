@@ -28,7 +28,7 @@ class Tower
 {
 protected:
     int range;
-    int shooting_speed; // i sekunder
+    float shooting_speed; // i sekunder
     int dmg;
     pos T_pos;
     int current_graphic_state;
@@ -37,7 +37,7 @@ protected:
     float temptime = 0;
 
 public:
-    Tower(int,int,int,pos,Board*);
+    Tower(int,float,int,pos,Board*);
 
     virtual void locate_sheep(vector<Sheep*>&,float);
     void shoot(Sheep*&);

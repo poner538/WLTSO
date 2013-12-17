@@ -20,6 +20,7 @@ Shot::Shot(Sheep*& sheep_target,const int new_dmg,pos start_pos)
     target = sheep_target;
     dmg = new_dmg;
     shot_pos = start_pos;
+    Shot_Sprite.setPosition(start_pos.x_pos,start_pos.y_pos);
     Shot_Sprite.setTexture(TextureHandler::texturehandler.getShot());
 
 }
@@ -54,6 +55,7 @@ void Shot::hunt_sheep(float time)
         y_temp = y_temp / norm;
         shot_pos.x_pos = shot_pos.x_pos + x_temp*time*speed;
         shot_pos.y_pos = shot_pos.y_pos + y_temp*time*speed;
+        Shot_Sprite.setPosition(shot_pos.x_pos, shot_pos.y_pos);
     }
 //här ska vi lägga till en timer
 }

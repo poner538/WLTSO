@@ -42,6 +42,7 @@ public:
 
     bool is_shopping();
     void change_shop();
+    void new_wave();
 
 private:
     /*Datamedlemmar*/
@@ -54,7 +55,7 @@ private:
 
 
     pos course_start_pos{-5,20};
-    std::vector<std::vector<int>> wave = {{1, 1}, {1, 2, 3}};
+    std::vector<std::vector<int>> wave = {{1, 1}, {1, 1, 1}};
     bool start_stop = true;
     int current_level = 0;
     bool can_I_shop = true;

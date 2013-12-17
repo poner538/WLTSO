@@ -75,7 +75,7 @@ bool Board::exist(pos other_pos)
     Behövs ej då fåren finns på banan som kollas senare*/
     for (unsigned int i = 0; i < Tower_list.size(); i++)
     {
-        if ((Tower_list.at(i)->get_position().x_pos == other_pos.x_pos) and (Tower_list.at(i)->get_position().y_pos == other_pos.y_pos))
+        if (Tower_list.at(i)->get_Tower_Sprite().getTextureRect().contains(other_pos.x_pos, other_pos.y_pos))
         {
             return true;
         }

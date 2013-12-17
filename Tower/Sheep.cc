@@ -14,6 +14,7 @@
 
 #include "Sheep.h"
 #include <cmath>
+#include <iostream>
 
 Sheep::Sheep(int new_speed, int new_hp, int new_bounty, Course new_Course)
 {
@@ -42,11 +43,14 @@ float Sheep::get_distance()
     return distance;
 }
 
+
+
 /*EasySheep*/
 
 EasySheep::EasySheep(Course new_Course) : Sheep (1/*speed*/, 100/*hp*/, 6/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getEasySheep());
+    set_position(current_position);
 }
 
 pos EasySheep::get_position()
@@ -70,6 +74,7 @@ void EasySheep::update_position(float time)
     float x_temp = 0;
     float y_temp = 0;
     float norm = 0;
+    float way_to_next = 0;
     pos temp_pos;
     x_temp = next_position.x_pos - current_position.x_pos;
     y_temp = next_position.y_pos - current_position.y_pos;
@@ -79,15 +84,13 @@ void EasySheep::update_position(float time)
         if (next_waypoint == 5)//då har den gått i mål
         {
             Controller::controller.lives();
-            delete this;
-
+            //delete this;
         }
-
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*(time*speed-norm);
         temp_pos.y_pos = current_position.y_pos + y_temp*(time*speed-norm);
-
+        way_to_next = 2*norm - time*speed;
         next_position = current_Course.get_waypoint(next_waypoint+1);
         next_waypoint = next_waypoint + 1;
 
@@ -99,9 +102,8 @@ void EasySheep::update_position(float time)
         norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
-        temp_pos.x_pos = current_position.x_pos + x_temp*(norm - time*speed);
-        temp_pos.y_pos = current_position.y_pos + y_temp*(norm - time*speed);
-
+        temp_pos.x_pos = current_position.x_pos + x_temp*way_to_next;
+        temp_pos.y_pos = current_position.y_pos + y_temp*way_to_next;
         set_position(temp_pos);
     }
     else
@@ -121,6 +123,8 @@ void EasySheep::update_position(float time)
 MediumSheep::MediumSheep(Course new_Course) : Sheep (2/*speed*/, 200/*hp*/, 12/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getMediumSheep());
+    set_position(current_position);
+
 }
 
 pos MediumSheep::get_position()
@@ -153,7 +157,7 @@ void MediumSheep::update_position(float time)
         if (next_waypoint == 5)//då har den gått i mål
         {
             Controller::controller.lives();
-            delete this;
+            //delete this;
 
         }
 
@@ -195,6 +199,7 @@ void MediumSheep::update_position(float time)
 HardSheep::HardSheep(Course new_Course) : Sheep (3/*speed*/, 300/*hp*/, 18/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getHardSheep());
+    set_position(current_position);
 }
 
 pos HardSheep::get_position()
@@ -218,16 +223,17 @@ void HardSheep::update_position(float time)
     float x_temp = 0;
     float y_temp = 0;
     float norm = 0;
+    float way_to_next = 0;
     pos temp_pos;
     x_temp = next_position.x_pos - current_position.x_pos;
     y_temp = next_position.y_pos - current_position.y_pos;
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint = 5)//då har den gått i mål
+        if (next_waypoint == 5)//då har den gått i mål
         {
             Controller::controller.lives();
-            delete this;
+            //delete this;
 
         }
 
@@ -235,7 +241,7 @@ void HardSheep::update_position(float time)
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*(time*speed-norm);
         temp_pos.y_pos = current_position.y_pos + y_temp*(time*speed-norm);
-
+        way_to_next = 2*norm - time*speed;
         next_position = current_Course.get_waypoint(next_waypoint+1);
         next_waypoint = next_waypoint + 1;
 
@@ -247,9 +253,8 @@ void HardSheep::update_position(float time)
         norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
-        temp_pos.x_pos = current_position.x_pos + x_temp*(norm - time*speed);
-        temp_pos.y_pos = current_position.y_pos + y_temp*(norm - time*speed);
-
+        temp_pos.x_pos = current_position.x_pos + x_temp*way_to_next;
+        temp_pos.y_pos = current_position.y_pos + y_temp*way_to_next;
         set_position(temp_pos);
     }
     else

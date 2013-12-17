@@ -37,20 +37,27 @@ public:
     void update_background_graphics();
     void update_foreground_graphics();
 
+    bool is_running();
+    void change_run();
+
+    bool is_shopping();
+    void change_shop();
+
 private:
     /*Datamedlemmar*/
     sf::RenderWindow* GameWindow;
     Board* GameBoard;
     Shop* GameShop;
-    int feeding_time = 10;
+    int feeding_time = 50;
     int current_sheep = 0;
     std::vector<int> current_wave;
 
+
     pos course_start_pos{-5,20};
-    std::vector<std::vector<int>> wave = {{1, 1, 1} , {2, 2, 2}};
+    std::vector<std::vector<int>> wave = {{1, 1}, {1, 2, 3}};
     bool start_stop = true;
     int current_level = 0;
-    bool can_I_shop = true;
+    bool can_I_shop = false;
 
 };
 

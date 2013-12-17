@@ -48,6 +48,7 @@ protected:
     int bounty = 0;
     float distance = 0;
     Course current_Course;
+    bool drawable = true;
 
 };
 
@@ -65,8 +66,8 @@ private:
 
     int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
-    pos current_position{-5, 10};
-    pos next_position{20, 10};
+    pos current_position{-20, 60};
+    pos next_position{120, 60};
     int next_waypoint = 1;
 
 };
@@ -85,8 +86,8 @@ public:
 private:
     int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
-    pos current_position{-5, 10};
-    pos next_position{20, 10};
+    pos current_position{-20, 60};
+    pos next_position{120, 60};
     int next_waypoint = 1;
 };
 
@@ -104,8 +105,8 @@ public:
 private:
     int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
-    pos current_position{-5, 10};
-    pos next_position{20, 10};
+    pos current_position{-20, 60};
+    pos next_position{120, 60};
     int next_waypoint = 1;
 };
 

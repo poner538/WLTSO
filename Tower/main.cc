@@ -26,6 +26,8 @@ int main()
     int i = 0;
     sf::Event event;
     int tower_width = 50;
+    try{
+
     while (tiden > 0)
     {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -37,6 +39,7 @@ int main()
             int ytorn = position.y;
             int xplus = xtorn + tower_width;
             int yplus = ytorn + tower_width;
+
             if(!myBoard->exist(pos {xtorn,ytorn}) and (!myBoard->exist(pos {xplus,ytorn})) and (!myBoard->exist(pos {xtorn,yplus})) and (!myBoard->exist(pos {xplus,yplus})))
             {
                 std::cout << "ja" << std::endl;
@@ -44,6 +47,7 @@ int main()
                 Tower* myTower = new Catapult_tower(Towerpos, myBoard);
                 myBoard->set_Tower(myTower);
             }
+
             else
             {
                 std::cout << "Nej det får du inte!" << std::endl;
@@ -59,6 +63,7 @@ int main()
             int ytorn = position.y;
             int xplus = xtorn + tower_width;
             int yplus = ytorn + tower_width;
+
             if(!myBoard->exist(pos {xtorn,ytorn}) and (!myBoard->exist(pos {xplus,ytorn})) and (!myBoard->exist(pos {xtorn,yplus})) and (!myBoard->exist(pos {xplus,yplus})))
             {
                 std::cout << "ja" << std::endl;
@@ -66,6 +71,7 @@ int main()
                 Tower* myTower = new Shooting_tower(Towerpos, myBoard);
                 myBoard->set_Tower(myTower);
             }
+
             else
             {
                 std::cout << "Nej det får du inte!" << std::endl;
@@ -86,6 +92,16 @@ int main()
         myWindow->clear();
         tiden = tiden - myClock.getElapsedTime().asSeconds();
         std:: cout << "Tid kvar: " << tiden << std::endl;
+    }
+    }
+    catch(const exception& e)
+    {
+        myBoard->get_Sheep().clear();
+        myBoard->get_Tower().clear();
+        myBoard->get_Shot().clear();
+        delete myWindow;
+        delete myBoard;
+
     }
     return 0;
 }

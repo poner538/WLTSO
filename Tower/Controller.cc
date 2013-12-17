@@ -53,3 +53,13 @@ int Controller::get_lives()
 {
     return current_lives;
 }
+
+int Controller::get_gold()
+{
+    return gold;
+}
+
+int Controller::get_points()
+{
+    return points;
+}

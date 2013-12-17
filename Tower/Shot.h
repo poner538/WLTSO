@@ -28,7 +28,7 @@ class Shot
 public:
     Shot(Sheep*&, int, pos);
     ~Shot();
-
+    bool is_target();
     int get_dmg();
     void hunt_sheep(float);
     sf::Sprite get_Shot_Sprite();
@@ -41,7 +41,7 @@ private:
     Sheep* target;
     sf::Sprite Shot_Sprite;
     void hit_sheep();
-    int speed = 7;
+    int speed = 5;
 
 };
 

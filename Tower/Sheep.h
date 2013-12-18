@@ -114,4 +114,24 @@ private:
     int next_waypoint = 1;
 };
 
+class BossSheep: public Sheep
+{
+
+public:
+    ~BossSheep() = default;
+    BossSheep(Course new_Course);
+    pos get_position();
+    void set_position(pos new_position);
+    sf::Sprite get_Sheep_Sprite();
+    bool update_position(float time);
+
+
+private:
+    int current_graphic_state = 1;
+    sf::Sprite Sheep_Sprite;
+    pos current_position{-20, 60};
+    pos next_position{120, 60};
+    int next_waypoint = 1;
+};
+
 #endif // SHEEP_H

@@ -38,7 +38,7 @@ public:
 private:
     int gold = 0;
     int points = 0;
-    int current_lives = 100;
+    int current_lives = 0;
 };
 
 #endif // CONTROLLER_H

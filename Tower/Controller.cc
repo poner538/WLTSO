@@ -42,10 +42,6 @@ void Controller::change_points(const int value)
 
 void Controller::lives()
 {
-    if (current_lives == 0)
-    {
-        //Game.GameOver() kanske det kan heta
-    }
     current_lives = current_lives - 1;
 }
 

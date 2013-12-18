@@ -1,10 +1,7 @@
-#include <iostream>
-#include <SFML/Graphics.hpp>
-
 /*
 * FILNAMN:          Sheep.cc
 * PROGRAMMERARE:    Johanna Laidla  910712-5826, Y3a
-                    Ema Becirovic   920510-6249, Y3a
+*                   Ema Becirovic   920510-6249, Y3a
 * DATUM:            2013-mm-dd
 *
 * BESKRIVNING
@@ -12,6 +9,8 @@
 *
 */
 
+#include <iostream>
+#include <SFML/Graphics.hpp>
 #include "Sheep.h"
 #include <cmath>
 #include <iostream>
@@ -40,13 +39,8 @@ float Sheep::get_distance()
     return distance;
 }
 
-
-
 /*EasySheep*/
-
-
 EasySheep::EasySheep(Course new_Course) : Sheep (150/*speed*/, 100/*hp*/, 7/*bounty*/, new_Course)
-
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getEasySheep());
     set_position(current_position);
@@ -120,10 +114,7 @@ bool EasySheep::update_position(float time)
 }
 
 /*MediumSheep*/
-
-
 MediumSheep::MediumSheep(Course new_Course) : Sheep (225/*speed*/, 200/*hp*/, 16/*bounty*/, new_Course)
-
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getMediumSheep());
     set_position(current_position);
@@ -198,10 +189,7 @@ bool MediumSheep::update_position(float time)
 }
 
 /*HardSheep*/
-
-
 HardSheep::HardSheep(Course new_Course) : Sheep (300/*speed*/, 300/*hp*/, 27/*bounty*/, new_Course)
-
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getHardSheep());
     set_position(current_position);
@@ -276,9 +264,7 @@ bool HardSheep::update_position(float time)
 
 }
 
-
 /*BossSheep*/
-
 BossSheep::BossSheep(Course new_Course) : Sheep (35/*speed*/, 20000/*hp*/, 1337/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getHardSheep());
@@ -350,6 +336,4 @@ bool BossSheep::update_position(float time)
     }
     distance = distance + time*speed;
     return false;
-
-
 }

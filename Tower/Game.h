@@ -32,7 +32,7 @@ public:
     /*Medlemsfunktioner*/
     void feed_Sheep(float);
     void game_on(); //Uppdatera grafik, skapa board, konstruktor?
-    void game_over();
+    void game_over(std::string);
     void update_Game(float);
     void update_background_graphics();
     void update_foreground_graphics();
@@ -43,6 +43,8 @@ public:
     bool is_shopping();
     void change_shop();
     void new_wave();
+
+    bool ending = false;
 
 private:
     /*Datamedlemmar*/

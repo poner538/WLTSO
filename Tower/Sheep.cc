@@ -26,7 +26,6 @@ Sheep::Sheep(int new_speed, int new_hp, int new_bounty, Course new_Course)
 
 void Sheep::hit(int damage)
 {
-    std::cerr << hp << std::endl;
     hp = hp - damage;
     if (hp <= 0)
     {

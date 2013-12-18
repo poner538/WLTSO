@@ -33,7 +33,7 @@ Tower::Tower(int new_range,float new_shooting_speed,int new_dmg,pos new_pos,Boar
 }
 
 Catapult_tower::Catapult_tower(pos new_pos,Board* new_Board)
-    : Tower(200,1,100,new_pos,new_Board)
+    : Tower(200,0.3,200,new_pos,new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getCatapult_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);
@@ -45,7 +45,7 @@ sf::Sprite Catapult_tower::get_Tower_Sprite()
 }
 
 Shooting_tower::Shooting_tower(pos new_pos,Board* new_Board)
-    : Tower(1000,1,50,new_pos,new_Board)
+    : Tower(323,0.1,50,new_pos,new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getShooting_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);
@@ -106,7 +106,7 @@ bool Tower::shot_timer(float time) //en funktion som fördröjer skotten i sec-ant
     else
     {
 
-        temptime = temptime + time/50;
+        temptime = temptime + time/10;
         return false;
     }
 }

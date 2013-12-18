@@ -35,19 +35,19 @@ void Game::feed_Sheep(float time_passed)
             {
                 EasySheep* tempEasySheep = new EasySheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempEasySheep);
-                feeding_time = 100;
+                feeding_time = 6;
             }
             else if (sheep_number == 2)
             {
                 MediumSheep* tempMediumSheep = new MediumSheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempMediumSheep);
-                feeding_time = 100;
+                feeding_time = 6;
             }
             else if (sheep_number == 3)
             {
                 HardSheep* tempHardSheep = new HardSheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempHardSheep);
-                feeding_time = 100;
+                feeding_time = 6;
             }
             else
             {
@@ -82,7 +82,7 @@ void Game::feed_Sheep(float time_passed)
 
 void Game::update_Game(float time)
 {
-    if((shall_feed) and (GameBoard->get_Sheep().size()==0))
+    if((!shall_feed) and (GameBoard->get_Sheep().size()==0))
     {
         can_I_shop = true;
     }
@@ -107,13 +107,12 @@ void Game::update_Game(float time)
                 }
                 delete GameBoard->get_Sheep().at(i);
                 GameBoard->get_Sheep().erase(GameBoard->get_Sheep().begin()+i);
-                set_sound2(true);
+                set_sound1(true);
             }
         }
     }
     else if (current_wave.size() <= current_sheep)
     {
-        can_I_shop = true;
     }
 
     for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
@@ -141,6 +140,7 @@ void Game::update_Game(float time)
             Controller::controller.made_shot = false;
         }
     }
+
 }
 
 void Game::game_on()
@@ -236,6 +236,7 @@ void Game::change_run(bool t)
 void Game::change_shopping(bool ny)
 {
     can_I_shop = ny;
+
 }
 
 bool Game::is_shopping()
@@ -243,17 +244,6 @@ bool Game::is_shopping()
     return can_I_shop;
 }
 
-void Game::change_shop()
-{
-    if(is_shopping())
-    {
-        can_I_shop = false;
-    }
-    else
-    {
-        can_I_shop = true;
-    }
-}
 
 void Game::new_wave()
 {
@@ -265,8 +255,9 @@ void Game::new_wave()
     {
         current_sheep = 0;
         current_wave =  wave.at(current_level);
+        shall_feed = true;
     }
-    shall_feed = true;
+
 
 }
 
@@ -289,4 +280,9 @@ bool Game::is_sound2()
 void Game::set_sound2(bool t)
 {
     sound2 = t;
+}
+
+int Game::get_level()
+{
+    return current_level + 1;
 }

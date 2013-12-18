@@ -19,6 +19,7 @@
 					<Add option="-static-libgcc" />
 					<Add option="-static-libstdc++" />
 					<Add option="-std=c++11" />
+					<Add library="sfml-audio-s-d" />
 					<Add library="sfml-graphics-s-d" />
 					<Add library="sfml-window-s-d" />
 					<Add library="sfml-system-s-d" />
@@ -39,6 +40,7 @@
 					<Add option="-static-libgcc" />
 					<Add option="-static-libstdc++" />
 					<Add option="-std=c++11" />
+					<Add library="sfml-audio-s" />
 					<Add library="sfml-graphics-s" />
 					<Add library="sfml-window-s" />
 					<Add library="sfml-system-s" />
@@ -55,6 +57,7 @@
 			<Add option="-static-libgcc" />
 			<Add option="-static-libstdc++" />
 			<Add option="-std=c++11" />
+			<Add library="sfml-audio-s" />
 			<Add library="sfml-graphics-s" />
 			<Add library="sfml-window-s" />
 			<Add library="sfml-system-s" />
@@ -66,10 +69,8 @@
 		<Unit filename="Controller.h" />
 		<Unit filename="Course.cc" />
 		<Unit filename="Course.h" />
-		<Unit filename="fail.h" />
 		<Unit filename="Game.cc" />
 		<Unit filename="Game.h" />
-		<Unit filename="main.cc" />
 		<Unit filename="Sheep.cc" />
 		<Unit filename="Sheep.h" />
 		<Unit filename="Shop.cc" />
@@ -80,6 +81,8 @@
 		<Unit filename="TextureHandler.h" />
 		<Unit filename="Tower.cc" />
 		<Unit filename="Tower.h" />
+		<Unit filename="fail.h" />
+		<Unit filename="main.cc" />
 		<Extensions>
 			<DoxyBlocks>
 				<comment_style block="0" line="0" />

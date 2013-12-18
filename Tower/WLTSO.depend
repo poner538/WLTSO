@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1387362973 source:c:\users\ema\documents\github\wltso\tower\tower.cc
+1387390394 source:c:\users\ema\documents\github\wltso\tower\tower.cc
 	<SFML/Graphics.hpp>
 	"Tower.h"
 	"Sheep.h"
@@ -342,13 +342,13 @@
 	<string>
 	<vector>
 
-1387358444 source:c:\users\ema\documents\github\wltso\tower\controller.cc
+1387395293 source:c:\users\ema\documents\github\wltso\tower\controller.cc
 	"Controller.h"
 	<iostream>
 
-1387307065 c:\users\ema\documents\github\wltso\tower\controller.h
+1387380129 c:\users\ema\documents\github\wltso\tower\controller.h
 
-1387362857 source:c:\users\ema\documents\github\wltso\tower\sheep.cc
+1387392863 source:c:\users\ema\documents\github\wltso\tower\sheep.cc
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Sheep.h"
@@ -361,7 +361,7 @@
 	"Course.h"
 	"Controller.h"
 
-1387352038 c:\users\ema\documents\github\wltso\tower\texturehandler.h
+1387381504 c:\users\ema\documents\github\wltso\tower\texturehandler.h
 	<string>
 	<SFML/Graphics.hpp>
 
@@ -369,11 +369,11 @@
 	<iostream>
 	"TextureHandler.h"
 
-1387366420 source:c:\users\ema\documents\github\wltso\tower\board.cc
+1387382188 source:c:\users\ema\documents\github\wltso\tower\board.cc
 	"Board.h"
 	<vector>
 
-1387365081 c:\users\ema\documents\github\wltso\tower\board.h
+1387382188 c:\users\ema\documents\github\wltso\tower\board.h
 	<vector>
 	"TextureHandler.h"
 	"Course.h"
@@ -392,7 +392,7 @@
 	<vector>
 	"Shot.h"
 
-1387302213 c:\users\ema\documents\github\wltso\tower\shot.h
+1387384676 c:\users\ema\documents\github\wltso\tower\shot.h
 	<SFML/Graphics.hpp>
 	<iostream>
 	"Sheep.h"
@@ -409,7 +409,8 @@
 	<iostream>
 	<math.h>
 
-1387372134 source:c:\users\ema\documents\github\wltso\tower\game.cc
+1387395723 source:c:\users\ema\documents\github\wltso\tower\game.cc
+	<SFML/Audio.hpp>
 	"Game.h"
 	"Board.h"
 	"Sheep.h"
@@ -417,7 +418,7 @@
 	<ostream>
 	<sstream>
 
-1387370354 c:\users\ema\documents\github\wltso\tower\game.h
+1387396122 c:\users\ema\documents\github\wltso\tower\game.h
 	<SFML/Graphics.hpp>
 	"Course.h"
 	<vector>
@@ -529,7 +530,7 @@
 	"Course.h"
 	<iostream>
 
-1387366420 source:c:\users\ema\documents\github\wltso\tower\shop.cc
+1387396122 source:c:\users\ema\documents\github\wltso\tower\shop.cc
 	"Shop.h"
 	"Board.h"
 	"Controller.h"
@@ -537,11 +538,12 @@
 	"Tower.h"
 	<sstream>
 
-1387366420 c:\users\ema\documents\github\wltso\tower\shop.h
+1387382188 c:\users\ema\documents\github\wltso\tower\shop.h
 	<SFML/Graphics.hpp>
 	<SFML/Window/Event.hpp>
 
-1387372136 source:c:\users\ema\documents\github\wltso\tower\main.cc
+1387396662 source:c:\users\ema\documents\github\wltso\tower\main.cc
+	<SFML/Audio.hpp>
 	<SFML/Graphics.hpp>
 	"Board.h"
 	"Game.h"
@@ -549,6 +551,10 @@
 	"Shop.h"
 	<iostream>
 	<string>
+	<fstream>
+	<vector>
+	<cstdlib>
+	<sstream>
 
 1387323952 source:d:\documents\github\wltso\tower\controller.cc
 	"Controller.h"
@@ -657,5 +663,65 @@
 	"Board.h"
 	<iostream>
 	<math.h>
+	<vector>
+
+1367997278 c:\sfml-2.1\include\sfml\audio.hpp
+	<SFML/System.hpp>
+	<SFML/Audio/Listener.hpp>
+	<SFML/Audio/Music.hpp>
+	<SFML/Audio/Sound.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundBufferRecorder.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<SFML/Audio/SoundStream.hpp>
+
+1367997278 c:\sfml-2.1\include\sfml\audio\listener.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1367997278 c:\sfml-2.1\include\sfml\audio\export.hpp
+	<SFML/Config.hpp>
+
+1367997278 c:\sfml-2.1\include\sfml\audio\music.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundStream.hpp>
+	<SFML/System/Mutex.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+
+1367997278 c:\sfml-2.1\include\sfml\audio\soundstream.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Thread.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1367997278 c:\sfml-2.1\include\sfml\audio\soundsource.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Vector3.hpp>
+
+1367997278 c:\sfml-2.1\include\sfml\audio\sound.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundSource.hpp>
+	<SFML/System/Time.hpp>
+	<cstdlib>
+
+1367997278 c:\sfml-2.1\include\sfml\audio\soundbuffer.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Time.hpp>
+	<string>
+	<vector>
+	<set>
+
+1367997278 c:\sfml-2.1\include\sfml\audio\soundbufferrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/Audio/SoundBuffer.hpp>
+	<SFML/Audio/SoundRecorder.hpp>
+	<vector>
+
+1367997278 c:\sfml-2.1\include\sfml\audio\soundrecorder.hpp
+	<SFML/Audio/Export.hpp>
+	<SFML/System/Thread.hpp>
 	<vector>
 

@@ -20,22 +20,17 @@
 #include <fstream>
 #include <vector>
 #include <cstdlib>
-
-
-
-
+#include <sstream>
 
 
 struct User
-   {
-      int  user_score = 0;
-      std::string user_name;
-    };
+{
+    int  user_score = 0;
+    std::string user_name;
+};
 
 void set_High_Score(string name, int score)
 {
-
-
     std::vector<User> score_list;
     std::ifstream Readfile;
     Readfile.open("High_Score.txt");
@@ -49,7 +44,7 @@ void set_High_Score(string name, int score)
         {
             User temp_user;
             temp_user.user_score = tempscore;
-             temp_user.user_name = tempname;
+            temp_user.user_name = tempname;
             score_list.push_back(temp_user);
 
         }
@@ -62,7 +57,7 @@ void set_High_Score(string name, int score)
     {
         if(score_list.at(i).user_score < score)
         {
-           score_list.insert (score_list.begin() + i, new_user);
+            score_list.insert (score_list.begin() + i, new_user);
             i = score_list.size();
         }
     }
@@ -76,7 +71,7 @@ void set_High_Score(string name, int score)
     }
     std::ofstream Writefile;
     Writefile.open("High_Score.txt");
-    for(int i = 0 ; i < score_list.size();i++)
+    for(int i = 0 ; i < score_list.size(); i++)
     {
         Writefile << score_list.at(i).user_name << " " << score_list.at(i).user_score << endl;
     }
@@ -92,24 +87,23 @@ void set_High_Score(string name, int score)
 int main()
 {
     sf::RenderWindow* myWindow = new sf::RenderWindow(sf::VideoMode(800,600), "Who let the sheep out?");
+    myWindow->setFramerateLimit(60);
     Course myCourse;
     Board* myBoard = new Board(myCourse);
     Game myGame(myWindow, myBoard);
     Shop myShop(myBoard, myWindow);
     sf::Clock myClock;
-    float tiden = 1;
     sf::Event event;
-    int tower_width = 50;
-    myWindow->setFramerateLimit(60);
 
     bool can_buy_catapult = false;
     bool can_buy_shooting = false;
-
+    bool won = false;
+    int tower_width = 50;
     std::string name;
+    int level = 0;
 
     sf::Font arial;
     arial.loadFromFile("arial.ttf");
-
 
     sf::Music myMusic;
     myMusic.openFromFile("Harvest_Moon_Music_-_Harvest_Festival.wav");
@@ -121,13 +115,9 @@ int main()
     hej.openFromFile("cartoon013.wav");
     hej.setLoop(false);
 
-    sf::Music hejsan;
-    hejsan.openFromFile("cartoon004.wav");
-    hejsan.setLoop(false);
-
-
-    bool won = false;
-
+    sf::Music san;
+    san.openFromFile("cartoon004.wav");
+    san.setLoop(false);
 
     try
     {
@@ -150,7 +140,7 @@ int main()
                     //Byggnation Catapult_tower
                     if (myShop.is_Catapult_button(xpressed, ypressed) and myGame.is_shopping() and myGame.is_running())
                     {
-                        if(Controller::controller.gold_check(-10) == true) //Kostnad, catapult tower
+                        if(Controller::controller.gold_check(-70) == true) //Kostnad, catapult tower
                         {
                             can_buy_catapult = true;
                         }
@@ -166,14 +156,15 @@ int main()
                         {
                             Tower* myTower = new Catapult_tower(towerplacement, myBoard);
                             myBoard->set_Tower(myTower);
-                            Controller::controller.change_gold(-10);
+                            Controller::controller.change_gold(-70);
                         }
                         can_buy_catapult=false;
                     }
+
                     //Byggnation av Shooting_tower
                     else if(myShop.is_Shooting_button(xpressed, ypressed) and myGame.is_shopping() and myGame.is_running())
                     {
-                        if(Controller::controller.gold_check(-10) == true) //Kontroll och kostnad shooting
+                        if(Controller::controller.gold_check(-50) == true) //Kontroll och kostnad shooting
                         {
                             can_buy_shooting = true;
                         }
@@ -189,16 +180,19 @@ int main()
                         {
                             Tower* myTower = new Shooting_tower(towerplacement, myBoard);
                             myBoard->set_Tower(myTower);
-                            Controller::controller.change_gold(-20);
+                            Controller::controller.change_gold(-50);
+                            can_buy_shooting=false;
                         }
-                        can_buy_shooting=false;
                     }
+
                     //New wave
                     else if(myShop.is_wave_button(xpressed, ypressed) and myGame.is_shopping())
                     {
                         myGame.change_shopping(false);
                         myGame.new_wave();
+                        level = level + 1;
                     }
+
                     //Start
                     else if(myShop.is_start_button(xpressed, ypressed))
                     {
@@ -213,37 +207,70 @@ int main()
                         myGame.change_run(false);
                         myMusic.pause();
                     }
+
+                    else if(myShop.is_volume_minus_button(xpressed, ypressed))
+                    {
+                        if(myMusic.getVolume()<=20)
+                        {
+                            myMusic.setVolume(0);
+                        }
+                        else
+                        {
+                            myMusic.setVolume(myMusic.getVolume() - 20);
+                        }
+                    }
+
+                    else if(myShop.is_volume_plus_button(xpressed, ypressed))
+                    {
+                        if(myMusic.getVolume()>=80)
+                        {
+                            myMusic.setVolume(100);
+                        }
+                        else
+                        {
+                            myMusic.setVolume(myMusic.getVolume() + 20);
+                        }
+                    }
                 }
                 }
             }
 
             //Här börjar spelkoden
-            //Mata får?
             if(myGame.is_running())
             {
                 if(myGame.shall_feed == true)
                 {
-                    myGame.feed_Sheep(myClock.getElapsedTime().asSeconds()*50);
+                    myGame.feed_Sheep(myClock.getElapsedTime().asSeconds());
                 }
 
-                myGame.update_Game(myClock.getElapsedTime().asSeconds()*50);
+                myGame.update_Game(myClock.getElapsedTime().asSeconds());
 
                 if (myGame.is_sound2())
                 {
-                    hejsan.play();
+                    san.play();
                     myGame.set_sound2(false);
                 }
-                if (myGame.is_sound1() and not(myGame.is_sound2()))
+                if (myGame.is_sound1())
                 {
                     hej.play();
                     myGame.set_sound1(false);
                 }
 
-
                 myClock.restart();
                 myGame.update_background_graphics();
                 myGame.update_foreground_graphics();
                 myShop.update_scoreboard();
+
+                std::ostringstream result4;
+                result4 << level;
+                std::string tvan4 = result4.str();
+                sf::Text lev {tvan4, arial};
+                lev.setPosition(570,10);
+                lev.setColor(sf::Color::Black);
+                myWindow->draw(lev);
+
+
+
 
                 //Har vi vunnit/förlorat
                 if ((Controller::controller.get_lives() <= 0) or (myGame.ending))
@@ -251,16 +278,18 @@ int main()
                     if (!myGame.ending)
                     {
                         sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
-                        medelande.setPosition(170,20);
+                        medelande.setPosition(170,40);
                         medelande.setColor(sf::Color::Black);
                         myWindow->draw(medelande);
                         myWindow->display();
                         std::cin >> name;
+                        myClock.restart();
+                        set_High_Score(name, Controller::controller.get_points());
                     }
                     else if(Controller::controller.get_lives() > 0 and !won)
                     {
                         sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
-                        medelande.setPosition(170,20);
+                        medelande.setPosition(170,40);
                         medelande.setColor(sf::Color::Black);
                         myWindow->draw(medelande);
                         myWindow->display();
@@ -273,22 +302,20 @@ int main()
                     myGame.change_shopping(false);
                     myGame.ending = true;
                 }
-
                 myWindow->display();
                 myWindow->clear();
-                tiden = tiden - myClock.getElapsedTime().asSeconds();
             }
 
         }
     }
     catch(const exception& e)
     {
-         std::cout << "Error, spelet avslutas!" << std::endl;
-         myBoard->get_Sheep().clear();
-         myBoard->get_Tower().clear();
-         myBoard->get_Shot().clear();
-         delete myWindow;
-         delete myBoard;
+        std::cout << "Error, spelet avslutas!" << std::endl;
+        myBoard->get_Sheep().clear();
+        myBoard->get_Tower().clear();
+        myBoard->get_Shot().clear();
+        delete myWindow;
+        delete myBoard;
 
     }
     return 0;

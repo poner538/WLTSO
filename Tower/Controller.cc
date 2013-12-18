@@ -29,9 +29,9 @@ bool Controller::gold_check(const int value)
     else
         return true;
 }
+
 void Controller::change_gold(const int value)
 {
-
     gold = gold + value;
 }
 

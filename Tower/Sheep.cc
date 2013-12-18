@@ -44,7 +44,7 @@ float Sheep::get_distance()
 
 /*EasySheep*/
 
-EasySheep::EasySheep(Course new_Course) : Sheep (1/*speed*/, 100/*hp*/, 6/*bounty*/, new_Course)
+EasySheep::EasySheep(Course new_Course) : Sheep (50/*speed*/, 100/*hp*/, 10/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getEasySheep());
     set_position(current_position);
@@ -58,7 +58,7 @@ pos EasySheep::get_position()
 void EasySheep::set_position(pos new_position)
 {
     current_position = new_position;
-    Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
+    Sheep_Sprite.setPosition(new_position.x_pos - 20, new_position.y_pos - 20);
 }
 
 sf::Sprite EasySheep::get_Sheep_Sprite()
@@ -119,7 +119,7 @@ bool HardSheep::update_position(float time)
 
 /*MediumSheep*/
 
-MediumSheep::MediumSheep(Course new_Course) : Sheep (2/*speed*/, 200/*hp*/, 12/*bounty*/, new_Course)
+MediumSheep::MediumSheep(Course new_Course) : Sheep (100/*speed*/, 200/*hp*/, 20/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getMediumSheep());
     set_position(current_position);
@@ -134,7 +134,7 @@ pos MediumSheep::get_position()
 void MediumSheep::set_position(pos new_position)
 {
     current_position = new_position;
-    Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
+    Sheep_Sprite.setPosition(new_position.x_pos - 20, new_position.y_pos - 20);
 }
 
 sf::Sprite MediumSheep::get_Sheep_Sprite()
@@ -195,7 +195,7 @@ bool MediumSheep::update_position(float time)
 
 /*HardSheep*/
 
-HardSheep::HardSheep(Course new_Course) : Sheep (3/*speed*/, 300/*hp*/, 18/*bounty*/, new_Course)
+HardSheep::HardSheep(Course new_Course) : Sheep (150/*speed*/, 300/*hp*/, 30/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getHardSheep());
     set_position(current_position);
@@ -209,7 +209,7 @@ pos HardSheep::get_position()
 void HardSheep::set_position(pos new_position)
 {
     current_position = new_position;
-    Sheep_Sprite.setPosition(new_position.x_pos, new_position.y_pos);
+    Sheep_Sprite.setPosition(new_position.x_pos - 20, new_position.y_pos - 20);
 }
 
 sf::Sprite HardSheep::get_Sheep_Sprite()

@@ -39,11 +39,10 @@ public:
     bool shall_feed = false;
     bool is_running();
     void change_run(bool);
-
     bool is_shopping();
-    void change_shop();
     void new_wave();
     void change_shopping(bool);
+    int get_level();
 
     bool ending = false;
 
@@ -57,13 +56,13 @@ private:
     sf::RenderWindow* GameWindow;
     Board* GameBoard;
     Shop* GameShop;
-    int feeding_time = 50;
+    int feeding_time = 1;
     int current_sheep = 0;
     std::vector<int> current_wave;
 
 
     pos course_start_pos {-5,20};
-    std::vector<std::vector<int>> wave = {{2,2,2}, {1, 1, 3, 3, 1, 2, 2, 2, 1, 1}};
+    std::vector<std::vector<int>> wave = {{2,1,2}, {1, 1, 3, 3, 1, 2, 2, 2, 1, 1}};
     bool start_stop = true;
     int current_level = 0;
     bool can_I_shop = true;

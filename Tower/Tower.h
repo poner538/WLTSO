@@ -74,10 +74,4 @@ private:
 };
 
 
-
-
-
-
-
-
 #endif // TOWER_H

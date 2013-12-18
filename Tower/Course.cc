@@ -78,38 +78,7 @@ void Course::initiate_rectangles()
     Rect3_Sprite.setPosition(wp4.x_pos - spread, wp4.y_pos - spread);
     Rect4_Sprite.setPosition(wp4.x_pos - spread, wp4.y_pos - spread);
     Rect5_Sprite.setPosition(wp5.x_pos - spread, wp5.y_pos - spread);
-
-
-/* (left, top, width, height) struct pos{
-    int x_pos;
-    int y_pos;
-};
- * (wp(i).x_pos - 1)
- * (wp(i).y_pos - 1)
- * (wp(i+1).x_pos - wp(i).x_pos +2)
- * (wp(i+1).y_pos - wp(i).y_pos +2)
- * Enklast att lägga in punkterna var och en för sig med manuell matematik!!!!!
- */
 }
-
-/*void waypoint_direction(int Sheep::heading_to)
-{
-     if (Sheep::heading_to == 1 | 3 | 5)//OR är tanken
-     {
-        dx = Sheep::speed  //x=x+1 om positionsuppdatering
-        dy = 0
-     }
-     else if (Sheep::heading_to == 2 | 6)
-     {
-        dx = 0
-        dy = Sheep::speed
-     }
-     else if (Sheep::heading_to == 4)
-     {
-        dx = 0
-        dy = -(Sheep::speed)
-     }
-}*/
 
 pos Course::get_waypoint(int number)
 {
@@ -146,3 +115,4 @@ pos Course::get_waypoint(int number)
         //vi borde ha en felklass
     }
 }
+

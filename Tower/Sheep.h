@@ -94,12 +94,13 @@ private:
     int next_waypoint = 1;
 };
 
-class HardSheep: public Sheep
+
+class BossSheep: public Sheep
 {
 
 public:
-    ~HardSheep() = default;
-    HardSheep(Course new_Course);
+    ~BossSheep() = default;
+    BossSheep(Course new_Course);
     pos get_position();
     void set_position(pos new_position);
     sf::Sprite get_Sheep_Sprite();

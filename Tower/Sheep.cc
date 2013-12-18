@@ -44,11 +44,9 @@ float Sheep::get_distance()
 
 /*EasySheep*/
 
-<<<<<<< HEAD
-EasySheep::EasySheep(Course new_Course) : Sheep (150/*speed*/, 100/*hp*/, 10/*bounty*/, new_Course)
-=======
-EasySheep::EasySheep(Course new_Course) : Sheep (50/*speed*/, 100/*hp*/, 7/*bounty*/, new_Course)
->>>>>>> 5dcc5d71d945ebc68717c9f9088b935075c6d76d
+
+EasySheep::EasySheep(Course new_Course) : Sheep (150/*speed*/, 100/*hp*/, 7/*bounty*/, new_Course)
+
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getEasySheep());
     set_position(current_position);
@@ -123,11 +121,9 @@ bool EasySheep::update_position(float time)
 
 /*MediumSheep*/
 
-<<<<<<< HEAD
-MediumSheep::MediumSheep(Course new_Course) : Sheep (225/*speed*/, 200/*hp*/, 20/*bounty*/, new_Course)
-=======
-MediumSheep::MediumSheep(Course new_Course) : Sheep (100/*speed*/, 200/*hp*/, 16/*bounty*/, new_Course)
->>>>>>> 5dcc5d71d945ebc68717c9f9088b935075c6d76d
+
+MediumSheep::MediumSheep(Course new_Course) : Sheep (225/*speed*/, 200/*hp*/, 16/*bounty*/, new_Course)
+
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getMediumSheep());
     set_position(current_position);
@@ -203,11 +199,9 @@ bool MediumSheep::update_position(float time)
 
 /*HardSheep*/
 
-<<<<<<< HEAD
-HardSheep::HardSheep(Course new_Course) : Sheep (300/*speed*/, 300/*hp*/, 30/*bounty*/, new_Course)
-=======
-HardSheep::HardSheep(Course new_Course) : Sheep (150/*speed*/, 300/*hp*/, 27/*bounty*/, new_Course)
->>>>>>> 5dcc5d71d945ebc68717c9f9088b935075c6d76d
+
+HardSheep::HardSheep(Course new_Course) : Sheep (300/*speed*/, 300/*hp*/, 27/*bounty*/, new_Course)
+
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getHardSheep());
     set_position(current_position);

@@ -29,107 +29,138 @@ int main()
     int i = 0;
     sf::Event event;
     int tower_width = 50;
+    myWindow->setFramerateLimit(60);
+    sf::IntRect mainframe(0,0,600,600);
+    bool can_buy_catapult = false;
+    bool can_buy_shooting = false;
     try
     {
 
         while (myWindow->isOpen())
         {
-            /*if (!myGame.shall_feed)//denna ifsatsen funkar inte av någon anledning
+            while(myWindow->pollEvent(event))
             {
-                if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+                switch(event.type)
                 {
-                    sf::Vector2i position = sf::Mouse::getPosition(*myWindow);
-                    int xpress = position.x;
-                    int ypress = position.y;
-                    if (myShop.is_wave_button(xpress, ypress));
-                    {
-                        myGame.new_wave();
-                    }
-                }
-            }*/
-
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-            {
-                sf::Vector2i position = sf::Mouse::getPosition(*myWindow);
-                //if ( 650 > position.x > 750 and 50 > position.y > 100 )
+                case sf::Event::Closed:
                 {
-                    std::cout << "Du tryckte!" << std::endl;
-                    int xtorn = position.x;
-                    int ytorn = position.y;
-                    int xplus = xtorn + tower_width;
-                    int yplus = ytorn + tower_width;
-
-                    if(!myBoard->exist(pos {xtorn,ytorn}) and (!myBoard->exist(pos {xplus,ytorn})) and (!myBoard->exist(pos {xtorn,yplus})) and (!myBoard->exist(pos {xplus,yplus})))
-                    {
-                        std::cout << "ja" << std::endl;
-                        pos Towerpos {xtorn, ytorn};
-                        Tower* myTower = new Catapult_tower(Towerpos, myBoard);
-                        myBoard->set_Tower(myTower);
-                    }
-
-                    else
-                    {
-                        std::cout << "Nej det får du inte!" << std::endl;
-                    }
+                    myWindow->close();
+                    break;
                 }
-            }
-
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-            {
-                sf::Vector2i position = sf::Mouse::getPosition(*myWindow);
-               // if ( 650 > position.x > 750 and 150 > position.y > 200 )
+                case event.MouseButtonPressed:
                 {
-                    std::cout << "Du tryckte!" << std::endl;
-                    int xtorn = position.x;
-                    int ytorn = position.y;
-                    int xplus = xtorn + tower_width;
-                    int yplus = ytorn + tower_width;
+                    //sf::Vector2i position = sf::Mouse::getPosition(*myWindow);
+                    int xpressed = event.mouseButton.x;
+                    int ypressed = event.mouseButton.y;
 
-                    if(!myBoard->exist(pos {xtorn,ytorn}) and (!myBoard->exist(pos {xplus,ytorn})) and (!myBoard->exist(pos {xtorn,yplus})) and (!myBoard->exist(pos {xplus,yplus})))
+					
+                    //Byggnation Catapult_tower
+                    if (myShop.is_Catapult_button(xpressed, ypressed))
                     {
-                        std::cout << "ja" << std::endl;
-                        pos Towerpos {xtorn, ytorn};
-                        Tower* myTower = new Shooting_tower(Towerpos, myBoard);
-                        myBoard->set_Tower(myTower);
+                        if(Controller::controller.gold_check(-10) == true) //Kostnad, catapult tower
+                        {
+                            can_buy_catapult = true;
+                        }
+                    }
+                    else if (can_buy_catapult == true)
+                    {
+                        pos towerplacement;
+                        towerplacement.x_pos = event.mouseButton.x;
+                        towerplacement.y_pos = event.mouseButton.y;
+                        if(myBoard->exist(towerplacement) == false)
+                        {
+                            Tower* myTower = new Catapult_tower(towerplacement, myBoard);
+                            myBoard->set_Tower(myTower);
+                            Controller::controller.change_gold(-10);
+                        }
+                        can_buy_catapult=false;
                     }
 
-                    else
+                    //Byggnation av Shooting_tower
+                    else if(myShop.is_Shooting_button(xpressed, ypressed))
                     {
-                        std::cout << "Nej det får du inte!" << std::endl;
+                        if(Controller::controller.gold_check(-20) == true) //Kontroll och kostnad shooting
+                        {
+                            can_buy_shooting = true;
+                        }
                     }
+                    else if (can_buy_shooting == true)
+                    {
+                        pos towerplacement;
+                        towerplacement.x_pos = event.mouseButton.x;
+                        towerplacement.y_pos = event.mouseButton.y;
+                        if(myBoard->exist(towerplacement) == false)
+                        {
+                            Tower* myTower = new Shooting_tower(towerplacement, myBoard);
+                            myBoard->set_Tower(myTower);
+                            Controller::controller.change_gold(-20);
+                        }
+                        can_buy_shooting=false;
+                    }
+
+                    //New wave
+                    else if(myShop.is_wave_button(xpressed, ypressed))
+                    {
+                        cerr<<"Ny våg"<< endl;
+                        //myGame.new_wave();
+                    }
+					
+					//Start
+                    else if(myShop.is_start_button(xpressed, ypressed))
+                    {
+                        cerr<<"Start"<< endl;
+                    }
+					
+					//Stopp
+                    else if(myShop.is_stop_button(xpressed, ypressed))
+                    {
+                        cerr<<"Stop"<< endl;
+                    }
+
                 }
+
             }
-
-            if(!myGame.shall_feed and (sf::Keyboard::isKeyPressed(sf::Keyboard::N)))
-            {
-                myGame.new_wave();
-            }
-
-            if(myGame.shall_feed == true)
-            {
-                myGame.feed_Sheep(myClock.getElapsedTime().asSeconds()*50);
-            }
-            myGame.update_Game(myClock.getElapsedTime().asSeconds()*50);
-            myClock.restart();
-            myGame.update_background_graphics();
-            myGame.update_foreground_graphics();
-            myShop.update_scoreboard();
-            myWindow->display();
-            myWindow->clear();
-            tiden = tiden - myClock.getElapsedTime().asSeconds();
-
-
         }
-    }
-    catch(const exception& e)
-    {
-        std::cout << "nu är det slut" << std::endl;
-        /* myBoard->get_Sheep().clear();
-         myBoard->get_Tower().clear();
-         myBoard->get_Shot().clear();
-         delete myWindow;
-         delete myBoard;*/
+
+
+
+
+
+        if(!myGame.shall_feed and (sf::Keyboard::isKeyPressed(sf::Keyboard::N)))
+        {
+            myGame.new_wave();
+        }
+
+        if(myGame.shall_feed == true)
+        {
+            myGame.feed_Sheep(myClock.getElapsedTime().asSeconds()*50);
+        }
+
+
+
+
+
+        myGame.update_Game(myClock.getElapsedTime().asSeconds()*50);
+        myClock.restart();
+        myGame.update_background_graphics();
+        myGame.update_foreground_graphics();
+        myShop.update_scoreboard();
+        myWindow->display();
+        myWindow->clear();
+        tiden = tiden - myClock.getElapsedTime().asSeconds();
+
 
     }
-    return 0;
+}
+catch(const exception& e)
+{
+    std::cout << "nu är det slut" << std::endl;
+    /* myBoard->get_Sheep().clear();
+     myBoard->get_Tower().clear();
+     myBoard->get_Shot().clear();
+     delete myWindow;
+     delete myBoard;*/
+
+}
+return 0;
 }

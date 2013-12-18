@@ -26,46 +26,7 @@ Shop::~Shop()
 
 }
 
-//Medlemsfunktioner
-void Shop::build_Catapult_Tower() //Öppnas från int main är min tnake i nuläget
-{
-	if(GameEvent->mouseButton.button == sf::Mouse::Left) //Kollar om vänster musknapp används.
-	{
-		pos towerplacement;
-        towerplacement.x_pos = GameEvent->mouseButton.x;
-        towerplacement.y_pos = GameEvent->mouseButton.y;
-		if(GameBoard->exist(towerplacement) == true) //Kollar om det är ledigt där tornet skall byggas
-        {
-            if(Controller::controller.gold_check(-100) == true) //Finns det tillräckligt med pengar?
-            {
-                Catapult_tower(towerplacement, GameBoard); //Här skall tornet byggas är tanken iaf
-            }
-            else return;
-        }
-		else return;
-	}
 
-}
-
-void Shop::build_Shooting_Tower() //Öppnas från int main är min tnake i nuläget
-{
-	if(GameEvent->mouseButton.button == sf::Mouse::Left) //Kollar om vänster musknapp används.
-	{
-		pos towerplacement;
-        towerplacement.x_pos = GameEvent->mouseButton.x;
-        towerplacement.y_pos = GameEvent->mouseButton.y;
-		if(GameBoard->exist(towerplacement) == true) //Kollar om det är ledigt där tornet skall byggas
-        {
-            if(Controller::controller.gold_check(-15) == true) //Finns det tillräckligt med pengar?
-            {
-                Shooting_tower(towerplacement, GameBoard); //Här skall tornet byggas är tanken iaf
-            }
-            else return;
-        }
-		else return;
-	}
-
-}
 
 void Shop::update_scoreboard()//Borde snyggas till
 {

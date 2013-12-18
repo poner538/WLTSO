@@ -78,6 +78,7 @@ void Tower::locate_sheep(vector<Sheep*>& vec_sheep,float time)
             if ( pow(range, 2) >= pow((vec_sheep.at(x)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(x)->get_position().y_pos - T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
             {
                 shoot(vec_sheep.at(x));
+                Controller::controller.made_shot = true;
                 return;
             }
         }

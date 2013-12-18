@@ -47,6 +47,11 @@ public:
 
     bool ending = false;
 
+    bool is_sound1();
+    void set_sound1(bool);
+    bool is_sound2();
+    void set_sound2(bool);
+
 private:
     /*Datamedlemmar*/
     sf::RenderWindow* GameWindow;
@@ -57,11 +62,13 @@ private:
     std::vector<int> current_wave;
 
 
-    pos course_start_pos{-5,20};
-    std::vector<std::vector<int>> wave = {{2,2,2}, {1, 1, 1, 1, 1, 2, 2, 2, 1, 1}};
+    pos course_start_pos {-5,20};
+    std::vector<std::vector<int>> wave = {{2,2,2}, {1, 1, 3, 3, 1, 2, 2, 2, 1, 1}};
     bool start_stop = true;
     int current_level = 0;
     bool can_I_shop = true;
+    bool sound1 = false;
+    bool sound2 = false;
 
 };
 

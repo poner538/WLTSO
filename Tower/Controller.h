@@ -31,6 +31,8 @@ public:
     int get_points();
     int get_gold();
 
+    bool made_shot = false;
+
     static Controller controller;
 
 private:

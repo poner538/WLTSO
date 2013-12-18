@@ -41,7 +41,7 @@ private:
     std::string filenameEasySheep = "EasySheep.png";
     std::string filenameMediumSheep = "MediumSheep.png";
     std::string filenameHardSheep = "HardSheep.png";
-    std::string filenameBossSheep = "BossSheep.png";
+    std::string filenameBossSheep = "EasySheep.png";
     std::string filenameCatapult_tower = "CatapultTower.jpg";
     std::string filenameShooting_tower = "ShootingTower.jpg";
     std::string filenameShot = "Shot.png";

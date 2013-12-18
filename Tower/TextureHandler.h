@@ -21,7 +21,7 @@ public:
     ~TextureHandler() = default;
     TextureHandler(const TextureHandler& other) = delete; //Kopieringskonstruktor
     TextureHandler(const TextureHandler&& other) = delete; //Kopieringskonstruktor med move
-    TextureHandler& operator=(const TextureHandler& other) = delete; //Tilldelningspoerator
+    TextureHandler& operator=(const TextureHandler& other) = delete; //Tilldelningsoperator
     TextureHandler& operator=(const TextureHandler&& other) = delete; //Tilldelningspoperator med move
 
     sf::Texture& getEasySheep();

@@ -2,9 +2,9 @@
 * FILNAMN:          Board.h
 * PROGRAMMERARE:    Johanna Laidla  910712-5826, Y3a
                     Ema Becirovic   920510-6249, Y3a
-* DATUM:            2013-mm-dd
+* DATUM:            2013-12-18
 *
-* BESKRIVNING
+* Board är själva spelbrädet och har koll på alla objekt som befinner sig på brädet.
 *
 *
 */

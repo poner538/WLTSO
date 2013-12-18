@@ -9,6 +9,7 @@
  * Hur fåren ska flytta sig under spelet
  */
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include "Board.h"
 #include "Game.h"
@@ -16,6 +17,8 @@
 #include "Shop.h"
 #include <iostream>
 #include <string>
+
+
 
 int main()
 {
@@ -40,7 +43,19 @@ int main()
     sf::Font arial;
     arial.loadFromFile("arial.ttf");
 
-    int j = 0;
+    sf::Music myMusic;
+    myMusic.openFromFile("Harvest_Moon_Music_-_Harvest_Festival.wav");
+    myMusic.setLoop(true);
+    myMusic.setVolume(20);
+    myMusic.play();
+
+    sf::Music hej;
+    hej.openFromFile("cartoon004.wav");
+    hej.setLoop(false);
+
+    sf::Music hejsan;
+    hejsan.openFromFile("cartoon011.wav");
+    hejsan.setLoop(false);
 
     bool won = false;
 
@@ -122,6 +137,7 @@ int main()
                         cerr<<"Start"<< endl;
                         myGame.change_run(true);
                         myClock.restart();
+                        myMusic.play();
                     }
 
                     //Stopp
@@ -129,6 +145,7 @@ int main()
                     {
                         cerr<<"Stop"<< endl;
                         myGame.change_run(false);
+                        myMusic.pause();
                     }
                 }
                 }
@@ -144,6 +161,18 @@ int main()
                 }
 
                 myGame.update_Game(myClock.getElapsedTime().asSeconds()*50);
+
+                if (myGame.is_sound1())
+                {
+                    hej.play();
+                    myGame.set_sound1(false);
+                }
+                if (myGame.is_sound2())
+                {
+                    hejsan.play();
+                    myGame.set_sound2(false);
+                }
+
                 myClock.restart();
                 myGame.update_background_graphics();
                 myGame.update_foreground_graphics();

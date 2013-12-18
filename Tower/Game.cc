@@ -8,6 +8,7 @@
 *
 *
 */
+#include <SFML/Audio.hpp>
 #include "Game.h"
 #include "Board.h"
 #include "Sheep.h"
@@ -118,6 +119,7 @@ void Game::update_Game(float time)
     {
         if (GameBoard->get_Shot().at(i)->did_i_hit)
         {
+            sound1 = true;
             delete GameBoard->get_Shot().at(i);
             GameBoard->get_Shot().erase(GameBoard->get_Shot().begin()+i);
         }
@@ -132,6 +134,11 @@ void Game::update_Game(float time)
         for (unsigned int i = 0; i < GameBoard->get_Tower().size(); i++)
         {
             GameBoard->get_Tower().at(i)->locate_sheep(GameBoard->get_Sheep(),time);
+        }
+        if (Controller::controller.made_shot)
+        {
+            sound2 = true;
+            Controller::controller.made_shot = false;
         }
     }
 }
@@ -209,9 +216,7 @@ void Game::update_foreground_graphics()
     {
         for (unsigned int i = 0; i < GameBoard->get_Tower().size(); i++)
         {
-
-
-            GameWindow->draw(GameBoard->get_Tower().at(i)->get_Tower_Sprite());//Finns get_Tower_Sprite?
+            GameWindow->draw(GameBoard->get_Tower().at(i)->get_Tower_Sprite());
         }
     }
 
@@ -263,4 +268,25 @@ void Game::new_wave()
     }
     shall_feed = true;
 
+}
+
+
+bool Game::is_sound1()
+{
+    return sound1;
+}
+
+void Game::set_sound1(bool t)
+{
+    sound1 = t;
+}
+
+bool Game::is_sound2()
+{
+    return sound2;
+}
+
+void Game::set_sound2(bool t)
+{
+    sound2 = t;
 }

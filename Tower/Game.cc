@@ -187,9 +187,7 @@ void Game::update_background_graphics()
 
     for (int i = 0; i < 6; i++)
     {
-        GameBoard->get_Course().get_Course_Sprite(i).setTexture(TextureHandler::texturehandler.getCourse());
         GameWindow->draw(GameBoard->get_Course().get_Course_Sprite(i));
-
     }
 }
 

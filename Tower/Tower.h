@@ -43,10 +43,6 @@ public:
     void shoot(Sheep*&);
     pos get_position();
     virtual sf::Sprite get_Tower_Sprite() = 0;
-
-
-
-
 };
 
 
@@ -59,6 +55,7 @@ public:
 private:
     sf::Sprite Tower_Sprite;
     int current_graphic_state = 1;
+    sf::IntRect TowerRect;
 
 };
 

@@ -78,16 +78,10 @@ void set_High_Score(string name, int score)
     Writefile.close();
 }
 
-
-
-
-
-
-
 int main()
 {
     sf::RenderWindow* myWindow = new sf::RenderWindow(sf::VideoMode(800,600), "Who let the sheep out?");
-    myWindow->setFramerateLimit(60);
+    myWindow->setFramerateLimit(30);
     Course myCourse;
     Board* myBoard = new Board(myCourse);
     Game myGame(myWindow, myBoard);
@@ -119,6 +113,9 @@ int main()
     san.openFromFile("cartoon004.wav");
     san.setLoop(false);
 
+    int j = 0;
+    int32_t tiden = 0;
+
     try
     {
         while (myWindow->isOpen())
@@ -137,6 +134,9 @@ int main()
                 {
                     int xpressed = event.mouseButton.x;
                     int ypressed = event.mouseButton.y;
+
+
+
                     //Byggnation Catapult_tower
                     if (myShop.is_Catapult_button(xpressed, ypressed) and myGame.is_shopping() and myGame.is_running())
                     {
@@ -145,7 +145,7 @@ int main()
                             can_buy_catapult = true;
                         }
                     }
-                    else if (can_buy_catapult == true)
+                    else if (can_buy_catapult)
                     {
                         pos towerplacement;
                         towerplacement.x_pos = event.mouseButton.x;
@@ -306,6 +306,18 @@ int main()
                 myWindow->clear();
             }
 
+            if (tiden < 1000)
+            {
+                tiden = tiden + myClock.getElapsedTime().asMilliseconds();
+                j = j + 1;
+
+                std::cout << j << std::endl;
+            }
+            else
+            {
+                j = 0;
+                tiden = 0;
+            }
         }
     }
     catch(const exception& e)

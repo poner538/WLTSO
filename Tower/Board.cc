@@ -76,7 +76,7 @@ bool Board::exist(pos other_pos)
 
     for (unsigned int i = 0; i < Tower_list.size(); i++)
     {
-        if (Tower_list.at(i)->get_Tower_Sprite().getTextureRect().contains(other_pos.x_pos, other_pos.y_pos))
+        if (Tower_list.at(i)->get_Tower_Sprite().getGlobalBounds().contains(other_pos.x_pos, other_pos.y_pos))
         {
             return true;
         }

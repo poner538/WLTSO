@@ -107,6 +107,7 @@ void Game::update_Game(float time)
                 }
                 delete GameBoard->get_Sheep().at(i);
                 GameBoard->get_Sheep().erase(GameBoard->get_Sheep().begin()+i);
+                set_sound2(true);
             }
         }
     }
@@ -119,7 +120,6 @@ void Game::update_Game(float time)
     {
         if (GameBoard->get_Shot().at(i)->did_i_hit)
         {
-            sound1 = true;
             delete GameBoard->get_Shot().at(i);
             GameBoard->get_Shot().erase(GameBoard->get_Shot().begin()+i);
         }

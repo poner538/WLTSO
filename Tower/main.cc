@@ -50,11 +50,11 @@ int main()
     myMusic.play();
 
     sf::Music hej;
-    hej.openFromFile("cartoon004.wav");
+    hej.openFromFile("cartoon013.wav");
     hej.setLoop(false);
 
     sf::Music hejsan;
-    hejsan.openFromFile("cartoon011.wav");
+    hejsan.openFromFile("cartoon004.wav");
     hejsan.setLoop(false);
 
     bool won = false;
@@ -162,16 +162,17 @@ int main()
 
                 myGame.update_Game(myClock.getElapsedTime().asSeconds()*50);
 
-                if (myGame.is_sound1())
-                {
-                    hej.play();
-                    myGame.set_sound1(false);
-                }
                 if (myGame.is_sound2())
                 {
                     hejsan.play();
                     myGame.set_sound2(false);
                 }
+                if (myGame.is_sound1() and not(myGame.is_sound2()))
+                {
+                    hej.play();
+                    myGame.set_sound1(false);
+                }
+
 
                 myClock.restart();
                 myGame.update_background_graphics();

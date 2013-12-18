@@ -82,7 +82,7 @@ bool Board::exist(pos other_pos)
         }
     }
 
-    if(other_pos.x_pos >= 550)
+    if(other_pos.x_pos >= 600)
         return true;
 
     t = reserved_space(other_pos.x_pos, other_pos.y_pos);

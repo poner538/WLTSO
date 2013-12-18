@@ -38,7 +38,7 @@ public:
     void update_foreground_graphics();
     bool shall_feed = false;
     bool is_running();
-    void change_run();
+    void change_run(bool);
 
     bool is_shopping();
     void change_shop();
@@ -58,7 +58,7 @@ private:
 
 
     pos course_start_pos{-5,20};
-    std::vector<std::vector<int>> wave = {{3,3,3}, {1, 1, 1, 1, 1, 2, 2, 2, 1, 1}};
+    std::vector<std::vector<int>> wave = {{2,2,2}, {1, 1, 1, 1, 1, 2, 2, 2, 1, 1}};
     bool start_stop = true;
     int current_level = 0;
     bool can_I_shop = true;

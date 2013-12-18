@@ -44,6 +44,10 @@ void set_High_Score(string name, int score)
             i = score_list.size();
         }
     }
+    if (score_list.empty())
+    {
+        score_list.push_back(new_user);
+    }
     if(score_list.size() > 10)
     {
         score_list.pop_back();
@@ -55,6 +59,10 @@ void set_High_Score(string name, int score)
         Writefile << score_list.at(i).user_name << " " << score_list.at(i).user_score << endl;
     }
     Writefile.close();
+
+
+
 }
+
 
 

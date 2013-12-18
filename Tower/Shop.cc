@@ -84,3 +84,11 @@ bool Shop::is_wave_button(int x, int y)
 {
     return New_Wave_button.contains(x,y);
 }
+bool Shop::is_volume_minus_button(int x, int y)
+{
+    return Volume_minus_button.contains(x,y);
+}
+bool Shop::is_volume_plus_button(int x, int y)
+{
+    return Volume_plus_button.contains(x,y);
+}

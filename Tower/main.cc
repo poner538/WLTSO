@@ -26,11 +26,9 @@ int main()
     Shop myShop(myBoard, myWindow);
     sf::Clock myClock;
     float tiden = 1;
-    int i = 0;
     sf::Event event;
     int tower_width = 50;
     myWindow->setFramerateLimit(60);
-    sf::IntRect mainframe(0,0,600,600);
 
     bool can_buy_catapult = false;
     bool can_buy_shooting = false;
@@ -40,7 +38,6 @@ int main()
     sf::Font arial;
     arial.loadFromFile("arial.ttf");
 
-    int j = 0;
 
     bool won = false;
 
@@ -112,14 +109,12 @@ int main()
                     //New wave
                     else if(myShop.is_wave_button(xpressed, ypressed) and myGame.is_shopping())
                     {
-                        cerr<<"Ny våg"<< endl;
                         myGame.change_shopping(false);
                         myGame.new_wave();
                     }
                     //Start
                     else if(myShop.is_start_button(xpressed, ypressed))
                     {
-                        cerr<<"Start"<< endl;
                         myGame.change_run(true);
                         myClock.restart();
                     }
@@ -127,7 +122,6 @@ int main()
                     //Stopp
                     else if(myShop.is_stop_button(xpressed, ypressed))
                     {
-                        cerr<<"Stop"<< endl;
                         myGame.change_run(false);
                     }
                 }
@@ -185,12 +179,12 @@ int main()
     }
     catch(const exception& e)
     {
-        std::cout << "nu är det slut" << std::endl;
-        /* myBoard->get_Sheep().clear();
+         std::cout << "Error, spelet avslutas!" << std::endl;
+         myBoard->get_Sheep().clear();
          myBoard->get_Tower().clear();
          myBoard->get_Shot().clear();
          delete myWindow;
-         delete myBoard;*/
+         delete myBoard;
 
     }
     return 0;

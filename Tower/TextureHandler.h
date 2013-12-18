@@ -44,7 +44,7 @@ private:
     std::string filenameShooting_tower = "ShootingTower.jpg";
     std::string filenameShot = "Shot.jpg";
     std::string filenameCourse = "Course.jpg";
-    std::string filenameBoard = "Board_shop.jpg";
+    std::string filenameBoard = "Board_shop1.jpg";
 
     sf::Texture EasySheep_Texture;
     sf::Texture MediumSheep_Texture;

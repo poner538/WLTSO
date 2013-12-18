@@ -49,6 +49,12 @@ void Game::feed_Sheep(float time_passed)
                 GameBoard->set_Sheep(tempHardSheep);
                 feeding_time = 6;
             }
+            else if (sheep_number == 1337)
+            {
+                BossSheep* tempBossSheep = new BossSheep(GameBoard->get_Course());
+                GameBoard->set_Sheep(tempBossSheep);
+                feeding_time = 6;
+            }
             else
             {
                 //Ska inte hända

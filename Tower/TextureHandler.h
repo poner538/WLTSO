@@ -42,11 +42,11 @@ private:
     std::string filenameMediumSheep = "MediumSheep.png";
     std::string filenameHardSheep = "HardSheep.png";
     std::string filenameBossSheep = "EasySheep.png";
-    std::string filenameCatapult_tower = "CatapultTower.jpg";
-    std::string filenameShooting_tower = "ShootingTower.jpg";
+    std::string filenameCatapult_tower = "CatapultTower.png";
+    std::string filenameShooting_tower = "ShootingTower.png";
     std::string filenameShot = "Shot.png";
     std::string filenameCourse = "Course.jpg";
-    std::string filenameBoard = "Board_shop1.jpg";
+    std::string filenameBoard = "Board_shop1.png";
 
     sf::Texture EasySheep_Texture;
     sf::Texture MediumSheep_Texture;

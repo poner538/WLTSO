@@ -33,7 +33,7 @@ Tower::Tower(int new_range,float new_shooting_speed,int new_dmg,pos new_pos,Boar
 }
 
 Catapult_tower::Catapult_tower(pos new_pos,Board* new_Board)
-    : Tower(200,0.3,200,new_pos,new_Board)
+    : Tower(232,0.3,350,new_pos,new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getCatapult_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);

@@ -12,6 +12,8 @@
 #include "Board.h"
 #include "Sheep.h"
 #include <iostream>
+#include <ostream>
+#include <sstream>
 
 Game::Game(sf::RenderWindow*& new_Window, Board*& new_Board)
 {
@@ -54,17 +56,13 @@ void Game::feed_Sheep(float time_passed)
             if (current_wave.size() == current_sheep) //slutet på waven, har kan man kalla på pause
             {
                 shall_feed = false;
-                std::cout << "Kommer jag hit" << std::endl;
                 current_level = current_level + 1; //nästa wave då
-                std::cout << "Så här lång är wave: " << wave.size() << std::endl;
                 if (current_level >= wave.size())
                 {
-                    std::cout << "slut på vågor" << std::endl;
                     //då är det slut
                 }
                 else
                 {
-                    std::cout << "ny level!" << std::endl;
                     current_sheep = 0;
                     current_wave = wave.at(current_level);
                     change_run();
@@ -86,17 +84,12 @@ void Game::update_Game(float time)
 {
     if (GameBoard->get_Sheep().size() != 0)
     {
-        /*for (unsigned int i = 0; i < GameBoard->get_Sheep().size(); i++)
-        {
-            GameBoard->get_Sheep().at(i)->update_position(time);
-        } */
         for (unsigned int i = 0; i < GameBoard->get_Sheep().size(); i++)
         {
             if (GameBoard->get_Sheep().at(i)->am_i_dead or GameBoard->get_Sheep().at(i)->update_position(time))
             {
                 for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
                 {
-                    std::cerr << GameBoard->get_Shot().size() << std::endl;
                     if (GameBoard->get_Shot().at(i)->is_target())
                     {
                         delete GameBoard->get_Shot().at(i);
@@ -108,6 +101,10 @@ void Game::update_Game(float time)
                 GameBoard->get_Sheep().erase(GameBoard->get_Sheep().begin()+i);
             }
         }
+    }
+    else if (current_wave.size() <= current_sheep)
+    {
+        ending = true;
     }
 
     for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
@@ -137,9 +134,37 @@ void Game::game_on()
 
 }
 
-void Game::game_over()
+void Game::game_over(std::string name)
 {
-    std::cout << "game over" << std::endl;
+
+    //update_Game(float 0);
+    std::ostringstream result4;
+    result4 << Controller::controller.get_points();
+    std::string tvan4 = result4.str();
+    std::string ettan = "GAME OVER! \nPoäng: ";
+    std::string trean = "Namn: ";
+
+    ettan = ettan + tvan4 + "\n" + trean + name;
+    sf::Font arial;
+    arial.loadFromFile("arial.ttf");
+    sf::Text p {ettan, arial};
+    p.setPosition(310,20);
+    p.setColor(sf::Color::Black);
+    GameWindow->draw(p);
+
+    for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
+    {
+        delete GameBoard->get_Shot().at(i);
+        GameBoard->get_Shot().erase(GameBoard->get_Shot().begin()+i);
+        i = i - 1;
+    }
+
+    for (unsigned int i = 0; i < GameBoard->get_Tower().size(); i++)
+    {
+        delete GameBoard->get_Tower().at(i);
+        GameBoard->get_Tower().erase(GameBoard->get_Tower().begin()+i);
+        i = i - 1;
+    }
 }
 
 void Game::update_background_graphics()
@@ -224,12 +249,10 @@ void Game::new_wave()
 {
     if (current_level >= wave.size()) // är vågorna slut?
     {
-        std::cout << "slut på får" << std::endl;
         //då är det slut
     }
     else
     {
-        std::cout << "ny level!" << std::endl;
         current_sheep = 0;
         current_wave =  wave.at(current_level);
         change_run();

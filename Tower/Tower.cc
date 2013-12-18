@@ -33,7 +33,7 @@ Tower::Tower(int new_range,float new_shooting_speed,int new_dmg,pos new_pos,Boar
 }
 
 Catapult_tower::Catapult_tower(pos new_pos,Board* new_Board)
-    : Tower(1000,1,100,new_pos,new_Board)
+    : Tower(200,1,100,new_pos,new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getCatapult_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);
@@ -79,14 +79,8 @@ void Tower::locate_sheep(vector<Sheep*>& vec_sheep,float time)
             }
             if ( pow(range, 2) >= pow((vec_sheep.at(x)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(x)->get_position().y_pos - T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
             {
-                cout << "hittade fåret\n";
                 shoot(vec_sheep.at(x));
                 return;
-            }
-            else
-            {
-                //mytimer(5);
-                cout << "hittade inget får \n";
             }
         }
     }
@@ -95,7 +89,6 @@ void Tower::locate_sheep(vector<Sheep*>& vec_sheep,float time)
 void Tower::shoot(Sheep*& sheep_target)
 {
     Shot* a_shot = new Shot(sheep_target, dmg, T_pos);
-    std::cerr << "nytt skott skapades" << std::endl;
     GameBoard->set_Shot(a_shot);
 }
 

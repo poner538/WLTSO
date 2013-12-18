@@ -34,6 +34,8 @@ public:
     bool is_start_button(int,int);
     bool is_stop_button(int,int);
     bool is_wave_button(int,int);
+    bool is_volume_minus_button(int,int);
+    bool is_volume_plus_button(int,int);
 
 
 private:
@@ -52,6 +54,12 @@ private:
     sf::Rect<int> New_Wave_button{sf::Rect<int>(610,410, wave_width, wave_height)};
     sf::Rect<int> Start_button{sf::Rect<int>(610,510, startstop_width, startstop_height)};
     sf::Rect<int> Stop_button{sf::Rect<int>(710,510, startstop_width, startstop_height)};
+
+    //Knappar till volymkontroll
+    int volume_width = 80;
+    int volume_height = 80;
+    sf::Rect<int> Volume_minus_button{sf::Rect<int>(610,110,volume_width, volume_height)};
+    sf::Rect<int> Volume_plus_button{sf::Rect<int>(710,110,volume_width, volume_height)};
 
     sf::RenderWindow* GameWindow;
     Board* GameBoard;

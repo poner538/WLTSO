@@ -12,7 +12,7 @@
 #include "Controller.h"
 #include <iostream>
 
-Controller Controller::controller(100,100);
+Controller Controller::controller(100,3);
 
 Controller::Controller(int new_gold, int new_lives)
 {

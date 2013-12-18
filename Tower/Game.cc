@@ -59,7 +59,7 @@ void Game::feed_Sheep(float time_passed)
                 current_level = current_level + 1; //nästa wave då
                 if (current_level >= wave.size())
                 {
-                    //då är det slut
+                    //slut på får
                 }
                 else
                 {
@@ -82,7 +82,15 @@ void Game::feed_Sheep(float time_passed)
 
 void Game::update_Game(float time)
 {
-    if (GameBoard->get_Sheep().size() != 0)
+    if((shall_feed) and (GameBoard->get_Sheep().size()==0))
+    {
+        can_I_shop = true;
+    }
+    if ((GameBoard->get_Sheep().size()==0) and (current_level >= wave.size()))
+    {
+        ending = true;
+    }
+    if (GameBoard->get_Sheep().size() > 0)
     {
         for (unsigned int i = 0; i < GameBoard->get_Sheep().size(); i++)
         {
@@ -104,7 +112,7 @@ void Game::update_Game(float time)
     }
     else if (current_wave.size() <= current_sheep)
     {
-        ending = true;
+        can_I_shop = true;
     }
 
     for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
@@ -226,6 +234,11 @@ void Game::change_run()
     {
         start_stop = true;
     }
+}
+
+void Game::change_shopping(bool ny)
+{
+    can_I_shop = ny;
 }
 
 bool Game::is_shopping()

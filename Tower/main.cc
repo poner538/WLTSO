@@ -49,6 +49,7 @@ int main()
     {
         while (myWindow->isOpen())
         {
+            //Alla events
             while(myWindow->pollEvent(event))
             {
                 switch(event.type)
@@ -68,7 +69,7 @@ int main()
 
 
                     //Byggnation Catapult_tower
-                    if (myShop.is_Catapult_button(xpressed, ypressed))
+                    if (myShop.is_Catapult_button(xpressed, ypressed) and myGame.is_shopping())
                     {
                         if(Controller::controller.gold_check(-10) == true) //Kostnad, catapult tower
                         {
@@ -80,7 +81,9 @@ int main()
                         pos towerplacement;
                         towerplacement.x_pos = event.mouseButton.x;
                         towerplacement.y_pos = event.mouseButton.y;
-                        if(myBoard->exist(towerplacement) == false)
+                        int xplus = towerplacement.x_pos + tower_width;
+                        int yplus = towerplacement.y_pos + tower_width;
+                        if((!myBoard->exist(towerplacement)) and (!myBoard->exist(pos {xplus, towerplacement.y_pos})) and (!myBoard->exist(pos {towerplacement.x_pos, yplus})) and (!myBoard->exist(pos {xplus,yplus})))
                         {
                             Tower* myTower = new Catapult_tower(towerplacement, myBoard);
                             myBoard->set_Tower(myTower);
@@ -91,9 +94,9 @@ int main()
 
 
                     //Byggnation av Shooting_tower
-                    else if(myShop.is_Shooting_button(xpressed, ypressed))
+                    else if(myShop.is_Shooting_button(xpressed, ypressed) and myGame.is_shopping())
                     {
-                        if(Controller::controller.gold_check(-20) == true) //Kontroll och kostnad shooting
+                        if(Controller::controller.gold_check(-10) == true) //Kontroll och kostnad shooting
                         {
                             can_buy_shooting = true;
                         }
@@ -103,7 +106,9 @@ int main()
                         pos towerplacement;
                         towerplacement.x_pos = event.mouseButton.x;
                         towerplacement.y_pos = event.mouseButton.y;
-                        if(myBoard->exist(towerplacement) == false)
+                        int xplus = towerplacement.x_pos + tower_width;
+                        int yplus = towerplacement.y_pos + tower_width;
+                        if((!myBoard->exist(towerplacement)) and (!myBoard->exist(pos {xplus, towerplacement.y_pos})) and (!myBoard->exist(pos {towerplacement.x_pos, yplus})) and (!myBoard->exist(pos {xplus,yplus})))
                         {
                             Tower* myTower = new Shooting_tower(towerplacement, myBoard);
                             myBoard->set_Tower(myTower);
@@ -113,10 +118,11 @@ int main()
                     }
 
                     //New wave
-                    else if(myShop.is_wave_button(xpressed, ypressed))
+                    else if(myShop.is_wave_button(xpressed, ypressed) and myGame.is_shopping())
                     {
                         cerr<<"Ny våg"<< endl;
-                        //myGame.new_wave();
+                        myGame.change_shopping(false);
+                        myGame.new_wave();
                     }
 
                     //Start
@@ -130,91 +136,50 @@ int main()
                     {
                         cerr<<"Stop"<< endl;
                     }
-
                 }
                 }
 
-
-
             }
-
-
-
-
-            
-
-            if(!myGame.shall_feed and (sf::Keyboard::isKeyPressed(sf::Keyboard::N)))
-            {
-                myGame.new_wave();
-            }
-
             if(myGame.shall_feed == true)
             {
                 myGame.feed_Sheep(myClock.getElapsedTime().asSeconds()*50);
-                
-                    if(myGame.shall_feed == true)
-                {
-                    myGame.feed_Sheep(myClock.getElapsedTime().asSeconds()*50);
-                }
-                myGame.update_Game(myClock.getElapsedTime().asSeconds()*50);
-                myClock.restart();
-                myGame.update_background_graphics();
-                myGame.update_foreground_graphics();
-                myShop.update_scoreboard();
-                if ((Controller::controller.get_lives() <= 0) or (myGame.ending))
-                {
-                    if (!myGame.ending)
-                    {
-                        sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
-                        medelande.setPosition(170,20);
-                        medelande.setColor(sf::Color::Black);
-                        myWindow->draw(medelande);
-                        myWindow->display();
-                        std::cin >> name;
-                    }
-                    else if(Controller::controller.get_lives() > 0 and !won)
-                    {
-                        sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
-                        medelande.setPosition(170,20);
-                        medelande.setColor(sf::Color::Black);
-                        myWindow->draw(medelande);
-                        myWindow->display();
-                        std::cin >> name;
-                        won = true;
-                    }
-                    myGame.game_over(name);
-                    myGame.ending = true;
-                }
-
-                myWindow->display();
-                myWindow->clear();
-                if (tiden > 0)
-                {
-                    j = j + 1;
-                    std::cout << j << std::endl;
-                    tiden = tiden - myClock.getElapsedTime().asSeconds();
-                }
-                else
-                {
-                    tiden = 1;
-                    j = 0;
-                }
-               
             }
-
-
-
-
 
             myGame.update_Game(myClock.getElapsedTime().asSeconds()*50);
             myClock.restart();
             myGame.update_background_graphics();
             myGame.update_foreground_graphics();
             myShop.update_scoreboard();
+
+            if ((Controller::controller.get_lives() <= 0) or (myGame.ending))
+            {
+                if (!myGame.ending)
+                {
+                    sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
+                    medelande.setPosition(170,20);
+                    medelande.setColor(sf::Color::Black);
+                    myWindow->draw(medelande);
+                    myWindow->display();
+                    std::cin >> name;
+                }
+                else if(Controller::controller.get_lives() > 0 and !won)
+                {
+                    sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
+                    medelande.setPosition(170,20);
+                    medelande.setColor(sf::Color::Black);
+                    myWindow->draw(medelande);
+                    myWindow->display();
+                    std::cin >> name;
+                    won = true;
+                }
+                myGame.game_over(name);
+                myGame.change_shopping(false);
+                myGame.ending = true;
+            }
+
             myWindow->display();
             myWindow->clear();
             tiden = tiden - myClock.getElapsedTime().asSeconds();
-
 
         }
     }

@@ -65,7 +65,6 @@ void Game::feed_Sheep(float time_passed)
                 {
                     current_sheep = 0;
                     current_wave = wave.at(current_level);
-                    change_run();
                 }
             }
         }
@@ -224,16 +223,9 @@ bool Game::is_running()
     return start_stop;
 }
 
-void Game::change_run()
+void Game::change_run(bool t)
 {
-    if(is_running())
-    {
-        start_stop = false;
-    }
-    else
-    {
-        start_stop = true;
-    }
+    start_stop = t;
 }
 
 void Game::change_shopping(bool ny)
@@ -268,7 +260,6 @@ void Game::new_wave()
     {
         current_sheep = 0;
         current_wave =  wave.at(current_level);
-        change_run();
     }
     shall_feed = true;
 

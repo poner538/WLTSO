@@ -54,22 +54,17 @@ int main()
             {
                 switch(event.type)
                 {
-
                 case sf::Event::Closed:
                 {
                     myWindow->close();
                     break;
                 }
                 case event.MouseButtonPressed:
-
                 {
-                    //sf::Vector2i position = sf::Mouse::getPosition(*myWindow);
                     int xpressed = event.mouseButton.x;
                     int ypressed = event.mouseButton.y;
-
-
                     //Byggnation Catapult_tower
-                    if (myShop.is_Catapult_button(xpressed, ypressed) and myGame.is_shopping())
+                    if (myShop.is_Catapult_button(xpressed, ypressed) and myGame.is_shopping() and myGame.is_running())
                     {
                         if(Controller::controller.gold_check(-10) == true) //Kostnad, catapult tower
                         {
@@ -91,10 +86,8 @@ int main()
                         }
                         can_buy_catapult=false;
                     }
-
-
                     //Byggnation av Shooting_tower
-                    else if(myShop.is_Shooting_button(xpressed, ypressed) and myGame.is_shopping())
+                    else if(myShop.is_Shooting_button(xpressed, ypressed) and myGame.is_shopping() and myGame.is_running())
                     {
                         if(Controller::controller.gold_check(-10) == true) //Kontroll och kostnad shooting
                         {
@@ -116,7 +109,6 @@ int main()
                         }
                         can_buy_shooting=false;
                     }
-
                     //New wave
                     else if(myShop.is_wave_button(xpressed, ypressed) and myGame.is_shopping())
                     {
@@ -124,62 +116,70 @@ int main()
                         myGame.change_shopping(false);
                         myGame.new_wave();
                     }
-
                     //Start
                     else if(myShop.is_start_button(xpressed, ypressed))
                     {
                         cerr<<"Start"<< endl;
+                        myGame.change_run(true);
+                        myClock.restart();
                     }
 
                     //Stopp
                     else if(myShop.is_stop_button(xpressed, ypressed))
                     {
                         cerr<<"Stop"<< endl;
+                        myGame.change_run(false);
                     }
                 }
                 }
-
             }
-            if(myGame.shall_feed == true)
+
+            //Här börjar spelkoden
+            //Mata får?
+            if(myGame.is_running())
             {
-                myGame.feed_Sheep(myClock.getElapsedTime().asSeconds()*50);
-            }
-
-            myGame.update_Game(myClock.getElapsedTime().asSeconds()*50);
-            myClock.restart();
-            myGame.update_background_graphics();
-            myGame.update_foreground_graphics();
-            myShop.update_scoreboard();
-
-            if ((Controller::controller.get_lives() <= 0) or (myGame.ending))
-            {
-                if (!myGame.ending)
+                if(myGame.shall_feed == true)
                 {
-                    sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
-                    medelande.setPosition(170,20);
-                    medelande.setColor(sf::Color::Black);
-                    myWindow->draw(medelande);
-                    myWindow->display();
-                    std::cin >> name;
+                    myGame.feed_Sheep(myClock.getElapsedTime().asSeconds()*50);
                 }
-                else if(Controller::controller.get_lives() > 0 and !won)
-                {
-                    sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
-                    medelande.setPosition(170,20);
-                    medelande.setColor(sf::Color::Black);
-                    myWindow->draw(medelande);
-                    myWindow->display();
-                    std::cin >> name;
-                    won = true;
-                }
-                myGame.game_over(name);
-                myGame.change_shopping(false);
-                myGame.ending = true;
-            }
 
-            myWindow->display();
-            myWindow->clear();
-            tiden = tiden - myClock.getElapsedTime().asSeconds();
+                myGame.update_Game(myClock.getElapsedTime().asSeconds()*50);
+                myClock.restart();
+                myGame.update_background_graphics();
+                myGame.update_foreground_graphics();
+                myShop.update_scoreboard();
+
+                //Har vi vunnit/förlorat
+                if ((Controller::controller.get_lives() <= 0) or (myGame.ending))
+                {
+                    if (!myGame.ending)
+                    {
+                        sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
+                        medelande.setPosition(170,20);
+                        medelande.setColor(sf::Color::Black);
+                        myWindow->draw(medelande);
+                        myWindow->display();
+                        std::cin >> name;
+                    }
+                    else if(Controller::controller.get_lives() > 0 and !won)
+                    {
+                        sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
+                        medelande.setPosition(170,20);
+                        medelande.setColor(sf::Color::Black);
+                        myWindow->draw(medelande);
+                        myWindow->display();
+                        std::cin >> name;
+                        won = true;
+                    }
+                    myGame.game_over(name);
+                    myGame.change_shopping(false);
+                    myGame.ending = true;
+                }
+
+                myWindow->display();
+                myWindow->clear();
+                tiden = tiden - myClock.getElapsedTime().asSeconds();
+            }
 
         }
     }

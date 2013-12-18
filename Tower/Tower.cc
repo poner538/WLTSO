@@ -37,7 +37,6 @@ Catapult_tower::Catapult_tower(pos new_pos,Board* new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getCatapult_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);
-    Tower_Sprite.setTextureRect(sf::Rect<int> {sf::Rect<int>(new_pos.x_pos, new_pos.y_pos, 50, 50)});
 }
 
 sf::Sprite Catapult_tower::get_Tower_Sprite()
@@ -50,7 +49,6 @@ Shooting_tower::Shooting_tower(pos new_pos,Board* new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getShooting_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);
-    Tower_Sprite.setTextureRect(sf::Rect<int> {sf::Rect<int>(new_pos.x_pos, new_pos.y_pos, 50, 50)}); //Detta faqqar texten!
 }
 
 sf::Sprite Shooting_tower::get_Tower_Sprite()

@@ -110,9 +110,33 @@ pos Course::get_waypoint(int number)
     {
         return wp6;
     }
-    else
+}
+
+sf::Rect<int> Course::get_Rect(int number)
+{
+    if (number == 0)
     {
-        //vi borde ha en felklass
+        return r0;
+    }
+    else if (number == 1)
+    {
+        return r1;
+    }
+    else if (number == 2)
+    {
+        return r2;
+    }
+    else if (number == 3)
+    {
+        return r3;
+    }
+    else if (number == 4)
+    {
+        return r4;
+    }
+    else if (number == 5)
+    {
+        return r5;
     }
 }
 

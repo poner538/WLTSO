@@ -1,10 +1,14 @@
 /*
 * FILNAMN:          Game.h
-* PROGRAMMERARE:    Johanna Laidla  910712-5826, Y3a
-                    Ema Becirovic   920510-6249, Y3a
-* DATUM:            2013-mm-dd
+* PROGRAMMERARE:    Johanna Laidla      910712-5826, Y3a
+                    Ema Becirovic       920510-6249, Y3a
+                    Karin Lockowandt    910213-3260, Yi3
+                    Daniel Brattgård    900926-3394, Y3a
+                    Pontus Erlesand     910117-1172, Y3a
+                    Marie Ekbrant       890401-2740, Y3a
+* DATUM:            2013-12-19
 *
-* BESKRIVNING
+* Headerfil till klassen Game.
 *
 *
 */
@@ -36,15 +40,17 @@ public:
     void update_Game(float);
     void update_background_graphics();
     void update_foreground_graphics();
-    bool shall_feed = false;
+
     bool is_running();
     void change_run(bool);
     bool is_shopping();
     void new_wave();
     void change_shopping(bool);
+    bool is_ending();
+    void change_ending(bool);
+    bool is_feeed();
+    void change_feed(bool);
     int get_level();
-
-    bool ending = false;
 
     bool is_sound1();
     void set_sound1(bool);
@@ -80,6 +86,8 @@ private:
     bool can_I_shop = true;
     bool sound1 = false;
     bool sound2 = false;
+    bool shall_feed = false;
+    bool ending = false;
 
 };
 

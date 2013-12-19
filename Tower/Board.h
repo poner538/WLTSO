@@ -1,30 +1,26 @@
 /*
 * FILNAMN:          Board.h
-* PROGRAMMERARE:    Johanna Laidla  910712-5826, Y3a
-*                   Ema Becirovic   920510-6249, Y3a
-* DATUM:            2013-12-18
+* PROGRAMMERARE:    Johanna Laidla      910712-5826, Y3a
+                    Ema Becirovic       920510-6249, Y3a
+                    Karin Lockowandt    910213-3260, Yi3
+                    Daniel BrattgÂrd    900926-3394, Y3a
+                    Pontus Erlesand     910117-1172, Y3a
+                    Marie Ekbrant       890401-2740, Y3a
+* DATUM:            2013-12-19
 *
-* Board är själva spelbrädet och har koll på alla objekt som befinner sig på brädet.
+* Headerfil till klassen Board.
 *
 *
 */
-
-
-
 #ifndef BOARD_H
 #define BOARD_H
-
 #include <vector>
 #include "TextureHandler.h"
 #include "Course.h"
 #include "Controller.h"
-
 #include "Sheep.h"
 #include "Tower.h"
 #include "Shot.h"
-
-
-
 
 class Board
 {
@@ -51,8 +47,6 @@ public:
 private:
     /*Privata funktioner*/
     bool reserved_space(int, int); //Upptaget? Kommer agera hj‰lpfkn
-
-
 
     /*Datamedlemmar*/
     sf::Sprite Board_Sprite;

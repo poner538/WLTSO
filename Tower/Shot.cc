@@ -78,3 +78,8 @@ void Shot::hit_sheep()
     target->hit(dmg);
     did_i_hit = true;
 }
+
+bool Shot::get_did_i_hit()
+{
+    return did_i_hit;
+}

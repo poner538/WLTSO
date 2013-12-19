@@ -8,7 +8,7 @@
                     Marie Ekbrant       890401-2740, Y3a
 * DATUM:            2013-12-19
 *
-* BESKRIVNING
+* Headerfil till klassen Sheep.
 *
 *
 */
@@ -46,7 +46,6 @@ public:
     virtual void set_position(pos new_position)= 0;
     virtual sf::Sprite get_Sheep_Sprite() = 0;
     virtual bool update_position(float time) = 0;
-    float distance = 0;
 
 protected:
     //Datamedlemmar
@@ -57,6 +56,8 @@ protected:
     Course current_Course;
     bool drawable = true;
     bool am_i_dead = false;
+    float distance = 0;
+
 
 };
 

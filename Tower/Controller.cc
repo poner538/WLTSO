@@ -59,3 +59,13 @@ int Controller::get_points()
 {
     return points;
 }
+
+bool Controller::get_made_shot()
+{
+    return made_shot;
+}
+
+void Controller::change_made_shot(bool t)
+{
+    made_shot = t;
+}

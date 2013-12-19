@@ -1,10 +1,14 @@
 /*
 * FILNAMN:          TextureHandler.h
-* PROGRAMMERARE:    Johanna Laidla  910712-5826, Y3a
-                    Ema Becirovic   920510-6249, Y3a
-* DATUM:            2013-mm-dd
+* PROGRAMMERARE:    Johanna Laidla      910712-5826, Y3a
+                    Ema Becirovic       920510-6249, Y3a
+                    Karin Lockowandt    910213-3260, Yi3
+                    Daniel Brattgård    900926-3394, Y3a
+                    Pontus Erlesand     910117-1172, Y3a
+                    Marie Ekbrant       890401-2740, Y3a
+* DATUM:            2013-12-19
 *
-* BESKRIVNING
+* Headerfil till klassen TextureHandler.
 *
 *
 */

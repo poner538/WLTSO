@@ -4,7 +4,7 @@
 *                   Ema Becirovic   920510-6249, Y3a
 * DATUM:            2013-12-18
 *
-* Board är själva spelbrädet och har koll på alla objekt som befinner sig på brädet.
+* Board ‰r sj‰lva spelbr‰det och har koll pÂ alla objekt som befinner sig pÂ br‰det.
 *
 *
 */
@@ -21,43 +21,43 @@ Board::Board(Course& new_Board_Course)
 
 }
 
-//Hämtar alla Shots på banan
+//H‰mtar alla Shots pÂ banan
 vector<Shot*>& Board::get_Shot()
 {
     return Shot_list;
 }
 
-//Lägger till nya Shots i listan
+//L‰gger till nya Shots i listan
 void Board::set_Shot(Shot* new_Shot)
 {
     Shot_list.push_back(new_Shot);
 }
 
-//Hämtar Course som finns på banan
+//H‰mtar Course som finns pÂ banan
 Course Board::get_Course()
 {
     return Board_Course;
 }
 
-//Hämtar alla Towers på banan
+//H‰mtar alla Towers pÂ banan
 vector<Tower*>& Board::get_Tower()
 {
     return Tower_list;
 }
 
-//Lägger till nya Towers i listan
+//L‰gger till nya Towers i listan
 void Board::set_Tower(Tower* new_Tower)
 {
     Tower_list.push_back(new_Tower);
 }
 
-//Hämtar alla Sheep på banan
+//H‰mtar alla Sheep pÂ banan
 vector<Sheep*>& Board::get_Sheep()
 {
     return Sheep_list;
 }
 
-//Lägger till nya Sheep i listan
+//L‰gger till nya Sheep i listan
 void Board::set_Sheep(Sheep* new_Sheep)
 {
     Sheep_list.push_back(new_Sheep);
@@ -69,7 +69,7 @@ sf::Sprite Board::get_Board_Sprite()
     return Board_Sprite;
 }
 
-//Kontrollerar ifall det är möjligt att placera ut torn på banan
+//Kontrollerar ifall det ‰r mˆjligt att placera ut torn pÂ banan
 bool Board::exist(pos other_pos)
 {
     bool t = false;
@@ -90,31 +90,31 @@ bool Board::exist(pos other_pos)
     return t;
 }
 
-//Kontrollerar ifall rutorna på brädet är upptagna
+//Kontrollerar ifall rutorna pÂ br‰det ‰r upptagna
 bool Board::reserved_space(int x, int y)
 {
     bool t = false;
-    if ((Board_Course.r0).contains(x, y))
+    if ((Board_Course.get_Rect(0)).contains(x, y))
     {
         t = true;
     }
-    else if ((Board_Course.r1).contains(x, y))
+    else if ((Board_Course.get_Rect(1)).contains(x, y))
     {
         t = true;
     }
-    else if ((Board_Course.r2).contains(x, y))
+    else if ((Board_Course.get_Rect(2)).contains(x, y))
     {
         t = true;
     }
-    else if ((Board_Course.r3).contains(x, y))
+    else if ((Board_Course.get_Rect(3)).contains(x, y))
     {
         t = true;
     }
-    else if ((Board_Course.r4).contains(x, y))
+    else if ((Board_Course.get_Rect(4)).contains(x, y))
     {
         t = true;
     }
-    else if ((Board_Course.r5).contains(x, y))
+    else if ((Board_Course.get_Rect(5)).contains(x, y))
     {
         t = true;
     }

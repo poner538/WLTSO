@@ -123,7 +123,7 @@ void Game::update_Game(float time)
 
     for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
     {
-        if (GameBoard->get_Shot().at(i)->did_i_hit)
+        if (GameBoard->get_Shot().at(i)->get_did_i_hit())
         {
             delete GameBoard->get_Shot().at(i);
             GameBoard->get_Shot().erase(GameBoard->get_Shot().begin()+i);
@@ -140,10 +140,10 @@ void Game::update_Game(float time)
         {
             GameBoard->get_Tower().at(i)->locate_sheep(GameBoard->get_Sheep(),time);
         }
-        if (Controller::controller.made_shot)
+        if (Controller::controller.get_made_shot())
         {
             sound2 = true;
-            Controller::controller.made_shot = false;
+            Controller::controller.change_made_shot(false);
         }
     }
 
@@ -156,21 +156,19 @@ void Game::game_on()
 
 void Game::game_over(std::string name)
 {
+    std::ostringstream pointinput;
+    pointinput << Controller::controller.get_points();
+    std::string pointstring = pointinput.str();
+    std::string gameoverstring = "GAME OVER! \nPoäng: ";
+    std::string namestring = "Namn: ";
 
-    //update_Game(float 0);
-    std::ostringstream result4;
-    result4 << Controller::controller.get_points();
-    std::string tvan4 = result4.str();
-    std::string ettan = "GAME OVER! \nPoäng: ";
-    std::string trean = "Namn: ";
-
-    ettan = ettan + tvan4 + "\n" + trean + name;
+    gameoverstring = gameoverstring + pointstring + "\n" + namestring + name;
     sf::Font arial;
     arial.loadFromFile("arial.ttf");
-    sf::Text p {ettan, arial};
-    p.setPosition(310,20);
-    p.setColor(sf::Color::Black);
-    GameWindow->draw(p);
+    sf::Text gameovertext{gameoverstring, arial};
+    gameovertext.setPosition(310,20);
+    gameovertext.setColor(sf::Color::Black);
+    GameWindow->draw(gameovertext);
 
     for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
     {
@@ -261,8 +259,6 @@ void Game::new_wave()
         current_wave =  wave.at(current_level);
         shall_feed = true;
     }
-
-
 }
 
 
@@ -289,4 +285,24 @@ void Game::set_sound2(bool t)
 int Game::get_level()
 {
     return current_level + 1;
+}
+
+bool Game::is_feeed()
+{
+    return shall_feed;
+}
+
+void Game::change_feed(bool t)
+{
+    shall_feed = t;
+}
+
+bool Game::is_ending()
+{
+    return ending;
+}
+
+void Game::change_ending(bool t)
+{
+    ending = t;
 }

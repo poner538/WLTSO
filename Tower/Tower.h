@@ -26,6 +26,19 @@ class Sheep;
 */
 class Tower
 {
+public:
+    Tower(int,float,int,pos,Board*);
+    ~Tower();
+    Tower(const Tower& other) = delete; //Kopieringskonstruktor
+    Tower(const Tower&& other) = delete; //Kopieringskonstruktor med move
+    Tower& operator=(const Tower& other) = delete; //Tilldelningsoperator
+    Tower& operator=(const Tower&& other) = delete; //Tilldelningspoperator med move
+
+    virtual void locate_sheep(vector<Sheep*>&,float);
+    void shoot(Sheep*&);
+    pos get_position();
+    virtual sf::Sprite get_Tower_Sprite() = 0;
+
 protected:
     int range;
     float shooting_speed; // i sekunder
@@ -35,14 +48,6 @@ protected:
     Board* GameBoard;
     bool shot_timer(float);
     float temptime = 0;
-
-public:
-    Tower(int,float,int,pos,Board*);
-
-    virtual void locate_sheep(vector<Sheep*>&,float);
-    void shoot(Sheep*&);
-    pos get_position();
-    virtual sf::Sprite get_Tower_Sprite() = 0;
 };
 
 

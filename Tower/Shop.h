@@ -1,12 +1,17 @@
 /*
- * FILNAMN:       Shop.h
- * PROGRAMMERARE: Daniel Brattgård 900926-3394, Y3a
- *                Marie Ekbrant 890401-2740, Y3a
- * DATUM:         2013-12-
- *
- * BESKRIVNING
- * Handla saker
- */
+* FILNAMN:          Shop.h
+* PROGRAMMERARE:    Johanna Laidla      910712-5826, Y3a
+                    Ema Becirovic       920510-6249, Y3a
+                    Karin Lockowandt    910213-3260, Yi3
+                    Daniel Brattgård    900926-3394, Y3a
+                    Pontus Erlesand     910117-1172, Y3a
+                    Marie Ekbrant       890401-2740, Y3a
+* DATUM:            2013-12-19
+*
+* Headerfil till klassen Shop.
+*
+*
+*/
 
 #ifndef SHOP_H
 #define SHOP_H
@@ -22,13 +27,12 @@ class Shop
 public:
     Shop(Board*, sf::RenderWindow*&);
     ~Shop();
-
+    Shop(const Shop& other) = delete; //Kopieringskonstruktor
+    Shop(const Shop&& other) = delete; //Kopieringskonstruktor med move
+    Shop& operator=(const Shop& other) = delete; //Tilldelningsoperator
+    Shop& operator=(const Shop&& other) = delete; //Tilldelningspoperator med move
 
     void update_scoreboard();
-
-
-    //sf::Sprite get_Shop_Sprite();
-
     bool is_Catapult_button(int,int);
     bool is_Shooting_button(int,int);
     bool is_start_button(int,int);
@@ -63,6 +67,5 @@ private:
 
     sf::RenderWindow* GameWindow;
     Board* GameBoard;
-    sf::Event* GameEvent;
 };
 #endif

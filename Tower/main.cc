@@ -238,7 +238,7 @@ int main()
             //Här börjar spelkoden
             if(myGame.is_running())
             {
-                if(myGame.shall_feed == true)
+                if(myGame.is_feeed())
                 {
                     myGame.feed_Sheep(myClock.getElapsedTime().asSeconds());
                 }
@@ -273,9 +273,9 @@ int main()
 
 
                 //Har vi vunnit/förlorat
-                if ((Controller::controller.get_lives() <= 0) or (myGame.ending))
+                if ((Controller::controller.get_lives() <= 0) or (myGame.is_ending()))
                 {
-                    if (!myGame.ending)
+                    if (!myGame.is_ending())
                     {
                         sf::Text medelande("Write your name in the terminal: ", arial);
                         medelande.setPosition(170,40);
@@ -300,7 +300,7 @@ int main()
                     }
                     myGame.game_over(name);
                     myGame.change_shopping(false);
-                    myGame.ending = true;
+                    myGame.change_ending(true);
                 }
                 myWindow->display();
                 myWindow->clear();

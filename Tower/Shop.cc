@@ -21,12 +21,14 @@ Shop::Shop(Board* new_board, sf::RenderWindow*& new_window)
     GameBoard = new_board;
     GameWindow = new_window;
 }
+
 Shop::~Shop()
 {
-
+    GameWindow = nullptr;
+    delete GameWindow;
+    GameBoard = nullptr;
+    delete GameBoard;
 }
-
-
 
 void Shop::update_scoreboard()//Borde snyggas till
 {

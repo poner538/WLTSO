@@ -1,16 +1,17 @@
 /*
-* FILNAMN:          Tower.cc
-* PROGRAMMERARE:    Pontus Erlesand   910117-1172, Y3a
-                    Karin Lockowandt  910213-3262, Yi3
-* DATUM:            2013-mm-dd
+* FILNAMN:          Tower.h
+* PROGRAMMERARE:    Johanna Laidla      910712-5826, Y3a
+                    Ema Becirovic       920510-6249, Y3a
+                    Karin Lockowandt    910213-3260, Yi3
+                    Daniel Brattgård    900926-3394, Y3a
+                    Pontus Erlesand     910117-1172, Y3a
+                    Marie Ekbrant       890401-2740, Y3a
+* DATUM:            2013-12-19
 *
-* BESKRIVNING
+* Headerfill till klassen Tower.
 *
 *
 */
-
-
-
 #include <SFML/Graphics.hpp>
 #include "Tower.h"
 #include "Sheep.h"
@@ -30,6 +31,12 @@ Tower::Tower(int new_range,float new_shooting_speed,int new_dmg,pos new_pos,Boar
     range = new_range;
     T_pos = new_pos;
     GameBoard = new_Board;
+}
+
+Tower::~Tower()
+{
+    GameBoard = nullptr;
+    delete GameBoard;
 }
 
 Catapult_tower::Catapult_tower(pos new_pos,Board* new_Board)
@@ -80,7 +87,7 @@ void Tower::locate_sheep(vector<Sheep*>& vec_sheep,float time)
             if ( pow(range, 2) >= pow((vec_sheep.at(x)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(x)->get_position().y_pos - T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
             {
                 shoot(vec_sheep.at(x));
-                Controller::controller.made_shot = true;
+                Controller::controller.change_made_shot(true);
                 return;
             }
         }

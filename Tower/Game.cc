@@ -2,7 +2,7 @@
 * FILNAMN:          Game.cc
 * PROGRAMMERARE:    Johanna Laidla  910712-5826, Y3a
 *                   Ema Becirovic   920510-6249, Y3a
-* DATUM:            2013-mm-dd
+* DATUM:            2013-12-19
 *
 * BESKRIVNING
 *
@@ -28,7 +28,7 @@ void Game::feed_Sheep(float time_passed)
 {
     if (feeding_time - time_passed <= 0)
     {
-        if(current_sheep < current_wave.size()) //‰r vi inne?
+        if(current_sheep < current_wave.size()) //√§r vi inne?
         {
             int sheep_number = current_wave.at(current_sheep);
             if (sheep_number == 1)
@@ -57,16 +57,16 @@ void Game::feed_Sheep(float time_passed)
             }
             else
             {
-                //Ska inte h‰nda
+                //Ska inte h√§nda
             }
             current_sheep = current_sheep + 1;
-            if (current_wave.size() == current_sheep) //slutet pÂ waven, har kan man kalla pÂ pause
+            if (current_wave.size() == current_sheep) //slutet p√• waven, har kan man kalla p√• pause
             {
                 shall_feed = false;
-                current_level = current_level + 1; //n‰sta wave dÂ
+                current_level = current_level + 1; //n√§sta wave d√•
                 if (current_level >= wave.size())
                 {
-                    //slut pÂ fÂr
+                    //slut p√• f√•r
                 }
                 else
                 {
@@ -159,7 +159,7 @@ void Game::game_over(std::string name)
     std::ostringstream pointinput;
     pointinput << Controller::controller.get_points();
     std::string pointstring = pointinput.str();
-    std::string gameoverstring = "GAME OVER! \nPo‰ng: ";
+    std::string gameoverstring = "GAME OVER! \nPoÔøΩng: ";
     std::string namestring = "Namn: ";
 
     gameoverstring = gameoverstring + pointstring + "\n" + namestring + name;
@@ -249,9 +249,9 @@ bool Game::is_shopping()
 
 void Game::new_wave()
 {
-    if (current_level >= wave.size()) // ‰r vÂgorna slut?
+    if (current_level >= wave.size()) // √•r v√•gorna slut?
     {
-        //dÂ ‰r det slut
+        //d√• √§r det slut
     }
     else
     {

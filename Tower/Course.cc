@@ -27,9 +27,10 @@ Course::Course()
     Rect2_Sprite.setTextureRect(r2);
     Rect3_Sprite.setTextureRect(r3);
     Rect4_Sprite.setTextureRect(r4);
-    Rect5_Sprite.setTextureRect(r5);//Mycket hårdkodning nu...
+    Rect5_Sprite.setTextureRect(r5);
 }
 
+//Hämtar rätt Sprite till rätt rektangel
 sf::Sprite Course::get_Course_Sprite(int number)
 {
     if (number == 0)
@@ -56,15 +57,12 @@ sf::Sprite Course::get_Course_Sprite(int number)
     {
         return Rect5_Sprite;
     }
-    else
-    {
-        //vi borde ha en felklass
-    }
 }
 
+//Definierar de rektanglar som banan består av
 void Course::initiate_rectangles()
 {
-    int spread = 30; //Tex
+    int spread = 30; //T.ex.
     r0 = sf::Rect<int>{sf::Rect<int>(wp0.x_pos - spread, wp0.y_pos - spread, wp1.x_pos - wp0.x_pos + 2*spread, 2*spread)}; //Hårdkodat med riktningar och sånt +- ema
     r1 = sf::Rect<int>{sf::Rect<int>(wp1.x_pos - spread, wp1.y_pos - spread, 2*spread, wp2.y_pos - wp1.y_pos + 2*spread)};
     r2 = sf::Rect<int>{sf::Rect<int>(wp2.x_pos - spread, wp2.y_pos - spread, wp3.x_pos - wp2.x_pos + 2*spread, 2*spread)};
@@ -80,6 +78,7 @@ void Course::initiate_rectangles()
     Rect5_Sprite.setPosition(wp5.x_pos - spread, wp5.y_pos - spread);
 }
 
+//Hämtar rätt waypoint
 pos Course::get_waypoint(int number)
 {
     if (number == 0)
@@ -112,6 +111,7 @@ pos Course::get_waypoint(int number)
     }
 }
 
+//Hämtar rätt rektangel
 sf::Rect<int> Course::get_Rect(int number)
 {
     if (number == 0)

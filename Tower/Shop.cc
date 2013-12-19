@@ -1,8 +1,8 @@
 /*
  * FILNAMN:       Shop.cc
- * PROGRAMMERARE: Daniel Brattg�rd 900926-3394, Y3a
+ * PROGRAMMERARE: Daniel Brattgård 900926-3394, Y3a
  *                Marie Ekbrant 890401-2740, Y3a
- * DATUM:         2013-12-
+ * DATUM:         2013-12-19
  *
  * BESKRIVNING
  * Handla saker
@@ -30,8 +30,10 @@ Shop::~Shop()
     delete GameBoard;
 }
 
-void Shop::update_scoreboard()//Borde snyggas till
+/*Skriver ut hur mycket liv, guld respektive poäng man har*/
+void Shop::update_scoreboard()
 {
+
     std::ostringstream result;
     result << Controller::controller.get_lives();
     std::string tvan = result.str();

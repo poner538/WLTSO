@@ -30,31 +30,37 @@ bool Controller::gold_check(const int value)
         return true;
 }
 
+/* Uppdaterar guldinnehav (vid köp av torn samt när man dödar får)*/
 void Controller::change_gold(const int value)
 {
     gold = gold + value;
 }
 
+/* Uppdaterar poänginnehav (när man dödar får)*/
 void Controller::change_points(const int value)
 {
     points = points + value;
 }
 
+/* Drar bort ett liv när ett får lyckats ta sig genom hela banan*/
 void Controller::lives()
 {
     current_lives = current_lives - 1;
 }
 
+/* Returnerar aktuellt antal liv */
 int Controller::get_lives()
 {
     return current_lives;
 }
 
+/* Returnerar aktuell mängd guld*/
 int Controller::get_gold()
 {
     return gold;
 }
 
+/* Returnerar aktuellt antal poäng */
 int Controller::get_points()
 {
     return points;

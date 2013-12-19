@@ -2,7 +2,7 @@
 * FILNAMN:          Sheep.cc
 * PROGRAMMERARE:    Johanna Laidla  910712-5826, Y3a
 *                   Ema Becirovic   920510-6249, Y3a
-* DATUM:            2013-mm-dd
+* DATUM:            2013-12-19
 *
 * BESKRIVNING
 *
@@ -23,27 +23,31 @@ Sheep::Sheep(int new_speed, int new_hp, int new_bounty, Course new_Course)
     current_Course = new_Course;
 }
 
+/* NÃ¤r ett fÃ¥r blir trÃ¤ffat fÃ¶rlorar det hp, mÃ¤ngd guld och poÃ¤ng Ã¶kar */
 void Sheep::hit(int damage)
 {
     hp = hp - damage;
     if (hp <= 0)
     {
         Controller::controller.change_gold(bounty);
-        Controller::controller.change_points(bounty);//Eller om vi ska ha datamedlem points
+        Controller::controller.change_points(bounty);
         change_death(true);
     }
 }
 
+/* */
 float Sheep::get_distance()
 {
     return distance;
 }
 
+/* Kollar om ett fÃ¥r Ã¤r dÃ¶tt eller ej */
 bool Sheep::get_death()
 {
     return am_i_dead;
 }
 
+/* Ã„ndrar fÃ¥rets livsstatus till dÃ¶d */
 void Sheep::change_death(bool t)
 {
     am_i_dead = t;
@@ -56,17 +60,20 @@ EasySheep::EasySheep(Course new_Course) : Sheep (150/*speed*/, 100/*hp*/, 12/*bo
     set_position(current_position);
 }
 
+/* Returnerar fÃ¥rets position */
 pos EasySheep::get_position()
 {
     return current_position;
 }
 
+/* Ã„ndrar fÃ¥rets position */
 void EasySheep::set_position(pos new_position)
 {
     current_position = new_position;
     Sheep_Sprite.setPosition(new_position.x_pos - 20, new_position.y_pos - 20);
 }
 
+/* Returnerar fÃ¥rets Sprite */
 sf::Sprite EasySheep::get_Sheep_Sprite()
 {
     return Sheep_Sprite;
@@ -84,7 +91,7 @@ bool EasySheep::update_position(float time)
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint == 6)//då har den gått i mål
+        if (next_waypoint == 6)//dÃ¥ har den gÃ¥tt i mÃ¥l
         {
             Controller::controller.lives();
             change_death(true);
@@ -100,7 +107,7 @@ bool EasySheep::update_position(float time)
 
         set_position(temp_pos);
 
-        //Här har den kommit till waypointens position och ska vidare
+        //HÃ¤r har den kommit till waypointens position och ska vidare
         x_temp = next_position.x_pos - current_position.x_pos;
         y_temp = next_position.y_pos - current_position.y_pos;
         norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
@@ -159,7 +166,7 @@ bool MediumSheep::update_position(float time)
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint == 6)//då har den gått i mål
+        if (next_waypoint == 6)//dÃ¥ har den gÃ¥tt i mÃ¥l
         {
             Controller::controller.lives();
             change_death(true);
@@ -175,7 +182,7 @@ bool MediumSheep::update_position(float time)
 
         set_position(temp_pos);
 
-        //Här har den kommit till waypointens position och ska vidare
+        //Hï¿½r har den kommit till waypointens position och ska vidare
         x_temp = next_position.x_pos - current_position.x_pos;
         y_temp = next_position.y_pos - current_position.y_pos;
         norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
@@ -233,7 +240,7 @@ bool HardSheep::update_position(float time)
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint == 6)//då har den gått i mål
+        if (next_waypoint == 6)//dï¿½ har den gï¿½tt i mï¿½l
         {
             Controller::controller.lives();
             change_death(true);
@@ -249,7 +256,7 @@ bool HardSheep::update_position(float time)
 
         set_position(temp_pos);
 
-        //Här har den kommit till waypointens position och ska vidare
+        //Hï¿½r har den kommit till waypointens position och ska vidare
         x_temp = next_position.x_pos - current_position.x_pos;
         y_temp = next_position.y_pos - current_position.y_pos;
         norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
@@ -309,7 +316,7 @@ bool BossSheep::update_position(float time)
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint == 6)//då har den gått i mål
+        if (next_waypoint == 6)//dï¿½ har den gï¿½tt i mï¿½l
         {
             Controller::controller.lives();
             change_death(true);
@@ -325,7 +332,7 @@ bool BossSheep::update_position(float time)
 
         set_position(temp_pos);
 
-        //Här har den kommit till waypointens position och ska vidare
+        //Hï¿½r har den kommit till waypointens position och ska vidare
         x_temp = next_position.x_pos - current_position.x_pos;
         y_temp = next_position.y_pos - current_position.y_pos;
         norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));

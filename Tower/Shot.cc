@@ -33,7 +33,7 @@ Shot::~Shot()
 
 bool Shot::is_target()
 {
-    return target->am_i_dead;
+    return target->get_death();
 }
 
 sf::Sprite Shot::get_Shot_Sprite()
@@ -43,7 +43,7 @@ sf::Sprite Shot::get_Shot_Sprite()
 
 void Shot::hunt_sheep(float time)
 {
-   if(not(target->am_i_dead))
+   if(not(target->get_death()))
     {
         float x_temp = shot_pos.x_pos;
         float y_temp = shot_pos.y_pos;

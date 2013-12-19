@@ -1,8 +1,12 @@
 /*
 * FILNAMN:          Sheep.h
-* PROGRAMMERARE:    Johanna Laidla  910712-5826, Y3a
-                    Ema Becirovic   920510-6249, Y3a
-* DATUM:            2013-mm-dd
+* PROGRAMMERARE:    Johanna Laidla      910712-5826, Y3a
+                    Ema Becirovic       920510-6249, Y3a
+                    Karin Lockowandt    910213-3260, Yi3
+                    Daniel Brattgård    900926-3394, Y3a
+                    Pontus Erlesand     910117-1172, Y3a
+                    Marie Ekbrant       890401-2740, Y3a
+* DATUM:            2013-12-19
 *
 * BESKRIVNING
 *
@@ -32,8 +36,10 @@ public:
     /*Funktioner*/
     void hit(int damage);
     float get_distance();
+    void change_death(bool);
+    bool get_death();
 
-    bool am_i_dead = false;
+
 
     /*Virtuella funktioner*/
     virtual pos get_position() = 0; //pos inte ännu definierad
@@ -50,6 +56,7 @@ protected:
     int bounty = 0;
     Course current_Course;
     bool drawable = true;
+    bool am_i_dead = false;
 
 };
 

@@ -277,7 +277,7 @@ int main()
                 {
                     if (!myGame.ending)
                     {
-                        sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
+                        sf::Text medelande("Write your name in the terminal: ", arial);
                         medelande.setPosition(170,40);
                         medelande.setColor(sf::Color::Black);
                         myWindow->draw(medelande);
@@ -288,7 +288,7 @@ int main()
                     }
                     else if(Controller::controller.get_lives() > 0 and !won)
                     {
-                        sf::Text medelande("Skriv in ditt namn i terminalen: ", arial);
+                        sf::Text medelande("Write your name in the terminal: ", arial);
                         medelande.setPosition(170,40);
                         medelande.setColor(sf::Color::Black);
                         myWindow->draw(medelande);

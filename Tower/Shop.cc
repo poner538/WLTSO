@@ -33,7 +33,7 @@ void Shop::update_scoreboard()//Borde snyggas till
     std::ostringstream result;
     result << Controller::controller.get_lives();
     std::string tvan = result.str();
-    std::string ettan = "Antal liv: ";
+    std::string ettan = "Lives: ";
     ettan = ettan + tvan;
     sf::Font arial;
     arial.loadFromFile("arial.ttf");
@@ -45,7 +45,7 @@ void Shop::update_scoreboard()//Borde snyggas till
     std::ostringstream result2;
     result2 << Controller::controller.get_gold();
     std::string tvan2 = result2.str();
-    ettan = "Guld: ";
+    ettan = "Gold: ";
     ettan = ettan+ tvan2;
     sf::Text guld {ettan, arial};
     guld.setPosition(610,40);
@@ -55,7 +55,7 @@ void Shop::update_scoreboard()//Borde snyggas till
     std::ostringstream result3;
     result3 << Controller::controller.get_points();
     std::string tvan3 = result3.str();
-    ettan = "Poäng: ";
+    ettan = "Score: ";
     ettan = ettan + tvan3;
     sf::Text p {ettan, arial};
     p.setPosition(610,70);

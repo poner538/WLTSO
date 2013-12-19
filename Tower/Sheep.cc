@@ -30,7 +30,7 @@ void Sheep::hit(int damage)
     {
         Controller::controller.change_gold(bounty);
         Controller::controller.change_points(bounty);//Eller om vi ska ha datamedlem points
-        am_i_dead = true;
+        change_death(true);
     }
 }
 
@@ -39,8 +39,18 @@ float Sheep::get_distance()
     return distance;
 }
 
+bool Sheep::get_death()
+{
+    return am_i_dead;
+}
+
+void Sheep::change_death(bool t)
+{
+    am_i_dead = t;
+}
+
 /*EasySheep*/
-EasySheep::EasySheep(Course new_Course) : Sheep (150/*speed*/, 100/*hp*/, 7/*bounty*/, new_Course)
+EasySheep::EasySheep(Course new_Course) : Sheep (150/*speed*/, 100/*hp*/, 12/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getEasySheep());
     set_position(current_position);
@@ -77,7 +87,7 @@ bool EasySheep::update_position(float time)
         if (next_waypoint == 6)//då har den gått i mål
         {
             Controller::controller.lives();
-            am_i_dead = true;
+            change_death(true);
             return true;
         }
         x_temp = x_temp / norm;
@@ -114,7 +124,7 @@ bool EasySheep::update_position(float time)
 }
 
 /*MediumSheep*/
-MediumSheep::MediumSheep(Course new_Course) : Sheep (225/*speed*/, 200/*hp*/, 16/*bounty*/, new_Course)
+MediumSheep::MediumSheep(Course new_Course) : Sheep (225/*speed*/, 200/*hp*/, 24/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getMediumSheep());
     set_position(current_position);
@@ -152,7 +162,7 @@ bool MediumSheep::update_position(float time)
         if (next_waypoint == 6)//då har den gått i mål
         {
             Controller::controller.lives();
-            am_i_dead = true;
+            change_death(true);
             return true;
         }
         x_temp = x_temp / norm;
@@ -189,7 +199,7 @@ bool MediumSheep::update_position(float time)
 }
 
 /*HardSheep*/
-HardSheep::HardSheep(Course new_Course) : Sheep (300/*speed*/, 300/*hp*/, 27/*bounty*/, new_Course)
+HardSheep::HardSheep(Course new_Course) : Sheep (300/*speed*/, 300/*hp*/, 36/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getHardSheep());
     set_position(current_position);
@@ -226,7 +236,7 @@ bool HardSheep::update_position(float time)
         if (next_waypoint == 6)//då har den gått i mål
         {
             Controller::controller.lives();
-            am_i_dead = true;
+            change_death(true);
             return true;
         }
         x_temp = x_temp / norm;
@@ -265,7 +275,7 @@ bool HardSheep::update_position(float time)
 }
 
 /*BossSheep*/
-BossSheep::BossSheep(Course new_Course) : Sheep (100/*speed*/, 1337/*hp*/, 1337/*bounty*/, new_Course)
+BossSheep::BossSheep(Course new_Course) : Sheep (100/*speed*/, 20000/*hp*/, 1337/*bounty*/, new_Course)
 {
     Sheep_Sprite.setTexture(TextureHandler::texturehandler.getBossSheep());
     set_position(current_position);
@@ -302,7 +312,7 @@ bool BossSheep::update_position(float time)
         if (next_waypoint == 6)//då har den gått i mål
         {
             Controller::controller.lives();
-            am_i_dead = true;
+            change_death(true);
             return true;
         }
         x_temp = x_temp / norm;

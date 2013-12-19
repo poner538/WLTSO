@@ -100,7 +100,7 @@ void Game::update_Game(float time)
     {
         for (unsigned int i = 0; i < GameBoard->get_Sheep().size(); i++)
         {
-            if (GameBoard->get_Sheep().at(i)->am_i_dead or GameBoard->get_Sheep().at(i)->update_position(time))
+            if (GameBoard->get_Sheep().at(i)->get_death() or GameBoard->get_Sheep().at(i)->update_position(time))
             {
                 for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
                 {

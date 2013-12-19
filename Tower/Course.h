@@ -51,6 +51,7 @@ private:
     sf::Sprite Rect4_Sprite;
     sf::Sprite Rect5_Sprite;
 
+/*Positionerna för varje waypoint*/
     pos wp0{-20, 60}; //-20 är utanför den synliga banan
     pos wp1{120, 60};
     pos wp2{120, 480};

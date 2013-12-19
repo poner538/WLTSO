@@ -1,14 +1,14 @@
 /*
-* FILNAMN:          Tower.h
+* FILNAMN:          Tower.cc
 * PROGRAMMERARE:    Johanna Laidla      910712-5826, Y3a
                     Ema Becirovic       920510-6249, Y3a
                     Karin Lockowandt    910213-3260, Yi3
-                    Daniel Brattgård    900926-3394, Y3a
+                    Daniel BrattgÃ¥rd    900926-3394, Y3a
                     Pontus Erlesand     910117-1172, Y3a
                     Marie Ekbrant       890401-2740, Y3a
 * DATUM:            2013-12-19
 *
-* Headerfill till klassen Tower.
+* 
 *
 *
 */
@@ -105,7 +105,7 @@ pos Tower::get_position()
     return T_pos;
 }
 
-bool Tower::shot_timer(float time) //en funktion som fördröjer skotten i sec-antal sekunder
+bool Tower::shot_timer(float time) //en funktion som fÃ¶rdrÃ¶jer skotten i sec-antal sekunder
 {
     if(temptime >= shooting_speed)
     {

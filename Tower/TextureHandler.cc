@@ -46,11 +46,11 @@ TextureHandler::TextureHandler(int dummy)
     }
     if (!Course_Texture.loadFromFile(filenameCourse))
     {
-        std::cout << "Course laddedes inte! :(" << std::endl;
+        std::cout << "Course laddades inte! :(" << std::endl;
     }
     if (!Board_Texture.loadFromFile(filenameBoard))
     {
-        std::cout << "Board laddedes inte! :(" << std::endl;
+        std::cout << "Board laddades inte! :(" << std::endl;
     }
 }
 
@@ -121,7 +121,7 @@ sf::Texture& TextureHandler::getCourse()
 {
     if (!Course_Texture.loadFromFile(filenameCourse))
     {
-        std::cout << "Course laddedes inte! :(" << std::endl;
+        std::cout << "Course laddades inte! :(" << std::endl;
     }
     return Course_Texture;
 }
@@ -130,7 +130,7 @@ sf::Texture& TextureHandler::getBoard()
 {
     if (!Board_Texture.loadFromFile(filenameBoard))
     {
-        std::cout << "Board laddedes inte! :(" << std::endl;
+        std::cout << "Board laddades inte! :(" << std::endl;
     }
     return Board_Texture;
 }

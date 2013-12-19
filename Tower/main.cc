@@ -81,7 +81,7 @@ void set_High_Score(string name, int score)
 int main()
 {
     sf::RenderWindow* myWindow = new sf::RenderWindow(sf::VideoMode(800,600), "Who let the sheep out?");
-    myWindow->setFramerateLimit(30);
+    myWindow->setFramerateLimit(60);
     Course myCourse;
     Board* myBoard = new Board(myCourse);
     Game myGame(myWindow, myBoard);
@@ -310,11 +310,10 @@ int main()
             {
                 tiden = tiden + myClock.getElapsedTime().asMilliseconds();
                 j = j + 1;
-
-                std::cout << j << std::endl;
             }
             else
             {
+                std::cout << j << std::endl;
                 j = 0;
                 tiden = 0;
             }

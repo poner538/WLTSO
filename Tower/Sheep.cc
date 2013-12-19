@@ -265,9 +265,9 @@ bool HardSheep::update_position(float time)
 }
 
 /*BossSheep*/
-BossSheep::BossSheep(Course new_Course) : Sheep (35/*speed*/, 20000/*hp*/, 1337/*bounty*/, new_Course)
+BossSheep::BossSheep(Course new_Course) : Sheep (100/*speed*/, 1337/*hp*/, 1337/*bounty*/, new_Course)
 {
-    Sheep_Sprite.setTexture(TextureHandler::texturehandler.getHardSheep());
+    Sheep_Sprite.setTexture(TextureHandler::texturehandler.getBossSheep());
     set_position(current_position);
 }
 
@@ -279,7 +279,7 @@ pos BossSheep::get_position()
 void BossSheep::set_position(pos new_position)
 {
     current_position = new_position;
-    Sheep_Sprite.setPosition(new_position.x_pos - 20, new_position.y_pos - 20);
+    Sheep_Sprite.setPosition(new_position.x_pos - 80, new_position.y_pos - 100);
 }
 
 sf::Sprite BossSheep::get_Sheep_Sprite()

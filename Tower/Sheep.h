@@ -87,7 +87,6 @@ public:
 
 
 private:
-    int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
     pos current_position{-20, 60};
     pos next_position{120, 60};
@@ -107,7 +106,6 @@ public:
 
 
 private:
-    int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
     pos current_position{-20, 60};
     pos next_position{120, 60};
@@ -127,7 +125,6 @@ public:
 
 
 private:
-    int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
     pos current_position{-20, 60};
     pos next_position{120, 60};

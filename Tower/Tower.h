@@ -2,9 +2,9 @@
 * FILNAMN:          Tower.h
 * PROGRAMMERARE:    Pontus Erlesand   910117-1172, Y3a
                     Karin Lockowandt  910213-3262, Yi3
-* DATUM:            2013-mm-dd
+* DATUM:            2013-12-19
 *
-* BESKRIVNING
+* Headerfil till klassen Tower
 *
 *
 */
@@ -22,7 +22,7 @@ using namespace std;
 class Board;
 class Sheep;
 /*
-    Basklass för torn
+    Basklass fÃ¶r torn
 */
 class Tower
 {

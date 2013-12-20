@@ -24,7 +24,7 @@ Controller::Controller(int new_gold, int new_lives)
     points = 0;
 }
 
-//Kollar om det finns tillräckligt pengar att köpa
+//Kollar om det finns tillräckligt pengar för att köpa önskat torn
 bool Controller::gold_check(const int value)
 {
     if((gold + value) < 0)

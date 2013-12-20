@@ -48,7 +48,6 @@ protected:
     float shooting_speed; // i sekunder
     int dmg;
     pos T_pos;
-    int current_graphic_state;
     Board* GameBoard;
     bool shot_timer(float);
     float temptime = 0;

@@ -6,6 +6,9 @@
 *
 * BESKRIVNING
 *
+* Classer och subklasser för alla får,
+* med tillhörande funktioner för hur de ska röra sig längs banan och vad
+* de ska göra när de blir träffade och dör.
 *
 */
 
@@ -44,13 +47,13 @@ float Sheep::get_distance()
 /* Kollar om ett får är dött eller ej */
 bool Sheep::get_death()
 {
-    return am_i_dead;
+    return am_I_dead;
 }
 
 /* Ändrar fårets livsstatus till död */
 void Sheep::change_death(bool t)
 {
-    am_i_dead = t;
+    am_I_dead = t;
 }
 
 /*EasySheep*/

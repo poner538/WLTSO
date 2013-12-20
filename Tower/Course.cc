@@ -2,11 +2,12 @@
  * FILNAMN:       Course.cc
  * PROGRAMMERARE: Daniel Brattgård 900926-3394, Y3a
  *                Marie Ekbrant 890401-2740, Y3a
- * DATUM:         2013-12-09
+ * DATUM:         2013-12-19
  *
  * BESKRIVNING
  *
  * Hur fåren ska flytta sig under spelet
+ *
  */
 
 #include "Course.h"

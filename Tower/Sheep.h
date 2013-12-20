@@ -49,13 +49,11 @@ public:
 
 protected:
     //Datamedlemmar
-    int current_graphic_state;
     int hp = 0;
     int speed = 0;
     int bounty = 0;
     Course current_Course;
-    bool drawable = true;
-    bool am_i_dead = false;
+    bool am_I_dead = false;
     float distance = 0;
 
 
@@ -74,12 +72,10 @@ public:
 
 private:
 
-    int current_graphic_state = 1;
     sf::Sprite Sheep_Sprite;
     pos current_position{-20, 60};
     pos next_position{120, 60};
     int next_waypoint = 1;
-
 };
 
 class MediumSheep: public Sheep

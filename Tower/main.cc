@@ -1,12 +1,17 @@
 /*
- * FILNAMN:       main.cc
- * PROGRAMMERARE: Daniel Brattgård 900926-3394, Y3a
- *                Marie Ekbrant 890401-2740, Y3a
- * DATUM:         2013-12-09
+* FILNAMN:          main.cc
+* PROGRAMMERARE:    Johanna Laidla      910712-5826, Y3a
+                    Ema Becirovic       920510-6249, Y3a
+                    Karin Lockowandt    910213-3260, Yi3
+                    Daniel Brattgård    900926-3394, Y3a
+                    Pontus Erlesand     910117-1172, Y3a
+                    Marie Ekbrant       890401-2740, Y3a
+* DATUM:            2013-12-19
  *
  * BESKRIVNING
  *
- * Hur fåren ska flytta sig under spelet
+ * Main innehåller en mainfunktion som styr spelet.
+ *
  */
 
 #include <SFML/Audio.hpp>
@@ -22,13 +27,14 @@
 #include <cstdlib>
 #include <sstream>
 
-
+//strukt som används för att lägga till namn och poäng till highscore.
 struct User
 {
     int  user_score = 0;
     std::string user_name;
 };
 
+//funktion för att lägga till nya namn och score i highscore.
 void set_High_Score(string name, int score)
 {
     std::vector<User> score_list;
@@ -105,16 +111,16 @@ int main()
     myMusic.setVolume(20);
     myMusic.play();
 
-    sf::Music hej;
-    hej.openFromFile("cartoon013.wav");
-    hej.setLoop(false);
+    sf::Music shot_sound;
+    shot_sound.openFromFile("cartoon013.wav");
+    shot_sound.setLoop(false);
 
-    sf::Music san;
-    san.openFromFile("cartoon004.wav");
-    san.setLoop(false);
+    sf::Music death_sound;
+    death_sound.openFromFile("cartoon004.wav");
+    death_sound.setLoop(false);
 
     int j = 0;
-    int32_t tiden = 0;
+    int32_t game_time = 0;
 
     try
     {
@@ -247,12 +253,12 @@ int main()
 
                 if (myGame.is_sound2())
                 {
-                    san.play();
+                    death_sound.play();
                     myGame.set_sound2(false);
                 }
                 if (myGame.is_sound1())
                 {
-                    hej.play();
+                    shot_sound.play();
                     myGame.set_sound1(false);
                 }
 
@@ -261,10 +267,11 @@ int main()
                 myGame.update_foreground_graphics();
                 myShop.update_scoreboard();
 
-                std::ostringstream result4;
-                result4 << level;
-                std::string tvan4 = result4.str();
-                sf::Text lev {tvan4, arial};
+                //här skriver vi ut vilken nivå som användaren kommit till.
+                std::ostringstream lvl_stream;
+                lvl_stream << level;
+                std::string lvl_text = lvl_stream.str();
+                sf::Text lev {lvl_text, arial};
                 lev.setPosition(570,10);
                 lev.setColor(sf::Color::Black);
                 myWindow->draw(lev);
@@ -277,10 +284,10 @@ int main()
                 {
                     if (!myGame.is_ending())
                     {
-                        sf::Text medelande("Write your name in the terminal: ", arial);
-                        medelande.setPosition(170,40);
-                        medelande.setColor(sf::Color::Black);
-                        myWindow->draw(medelande);
+                        sf::Text term_message("Write your name in the terminal: ", arial);
+                        term_message.setPosition(170,40);
+                        term_message.setColor(sf::Color::Black);
+                        myWindow->draw(term_message);
                         myWindow->display();
                         std::cin >> name;
                         myClock.restart();
@@ -288,10 +295,10 @@ int main()
                     }
                     else if(Controller::controller.get_lives() > 0 and !won)
                     {
-                        sf::Text medelande("Write your name in the terminal: ", arial);
-                        medelande.setPosition(170,40);
-                        medelande.setColor(sf::Color::Black);
-                        myWindow->draw(medelande);
+                        sf::Text term_message("Write your name in the terminal: ", arial);
+                        term_message.setPosition(170,40);
+                        term_message.setColor(sf::Color::Black);
+                        myWindow->draw(term_message);
                         myWindow->display();
                         std::cin >> name;
                         won = true;
@@ -306,16 +313,17 @@ int main()
                 myWindow->clear();
             }
 
-            if (tiden < 1000)
+            if (game_time < 1000)
             {
-                tiden = tiden + myClock.getElapsedTime().asMilliseconds();
+                game_time = game_time + myClock.getElapsedTime().asMilliseconds();
                 j = j + 1;
+
             }
             else
             {
-                std::cout << j << std::endl;
+                std::cout << j << std::endl; //spårutskrift för att kolla framerate
                 j = 0;
-                tiden = 0;
+                game_time = 0;
             }
         }
     }

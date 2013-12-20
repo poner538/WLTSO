@@ -43,7 +43,7 @@ public:
     int get_dmg();
     void hunt_sheep(float);
     sf::Sprite get_Shot_Sprite();
-    bool get_did_i_hit();
+    bool get_did_I_hit();
 
 private:
     /*Datamedlemmar*/
@@ -52,7 +52,7 @@ private:
     Sheep* target;
     sf::Sprite Shot_Sprite;
     int speed = 450;
-    bool did_i_hit = false;
+    bool did_I_hit = false;
 
     /*Privat medlemmsfunktion*/
     void hit_sheep();

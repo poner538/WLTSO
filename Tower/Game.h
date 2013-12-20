@@ -79,8 +79,7 @@ private:
         {1,2,2,2,2,1,2,2,2,2,3},
         {1,2,1,2,3,1,2,1,2,3,1,2,1,2,3},
         {2,2,3,1,3,2,2,2,1,3,2,2,3,1,3},
-        //{3,3,3,3,3,3,3,3,3,3,3,3,3,3,3},
-        {1337}}; //Boss
+        {1337}}; //allt som inte är 1,2,3 generear en Boss
     bool start_stop = true;
     int current_level = 0;
     bool can_I_shop = true;

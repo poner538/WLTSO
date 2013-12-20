@@ -2,10 +2,11 @@
 * FILNAMN:          Shot.cc
 * PROGRAMMERARE:    Pontus Erlesand   910117-1172, Y3a
                     Karin Lockowandt  910213-3262, Yi3
-* DATUM:            2013-mm-dd
+* DATUM:            2013-12-19
 *
 * BESKRIVNING
 *
+* Skotten blir tilldelade ett får som de ska jaga (målsökande skott). När de träffar fåren ska fåret skadas.
 *
 */
 
@@ -40,7 +41,7 @@ sf::Sprite Shot::get_Shot_Sprite()
 {
     return Shot_Sprite;
 }
-
+//funktion som tar skottet till fåret steg för steg
 void Shot::hunt_sheep(float time)
 {
    if(not(target->get_death()))
@@ -67,7 +68,7 @@ void Shot::hunt_sheep(float time)
         }
     }
     else
-    did_i_hit = true;
+    did_I_hit = true;
 }
 
 
@@ -76,10 +77,10 @@ void Shot::hunt_sheep(float time)
 void Shot::hit_sheep()
 {
     target->hit(dmg);
-    did_i_hit = true;
+    did_I_hit = true;
 }
 
-bool Shot::get_did_i_hit()
+bool Shot::get_did_I_hit()
 {
-    return did_i_hit;
+    return did_I_hit;
 }

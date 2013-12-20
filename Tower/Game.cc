@@ -6,8 +6,10 @@
 *
 * BESKRIVNING
 *
-*
+* Klassen Game används för att uppdatera och skapa objekt och styra spelet.
+* det finns också medlemmar som innehåller sekvenser av hur fåren ska komma ut.
 */
+
 #include <SFML/Audio.hpp>
 #include "Game.h"
 #include "Board.h"
@@ -49,26 +51,19 @@ void Game::feed_Sheep(float time_passed)
                 GameBoard->set_Sheep(tempHardSheep);
                 feeding_time = 20;
             }
-            else if (sheep_number == 1337)
+            else
             {
                 BossSheep* tempBossSheep = new BossSheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempBossSheep);
                 feeding_time = 20;
             }
-            else
-            {
-                //Ska inte hända
-            }
+
             current_sheep = current_sheep + 1;
             if (current_wave.size() == current_sheep) //slutet på waven, har kan man kalla på pause
             {
                 shall_feed = false;
                 current_level = current_level + 1; //nästa wave då
-                if (current_level >= wave.size())
-                {
-                    //slut på får
-                }
-                else
+                if (current_level < wave.size())
                 {
                     current_sheep = 0;
                     current_wave = wave.at(current_level);
@@ -123,7 +118,7 @@ void Game::update_Game(float time)
 
     for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
     {
-        if (GameBoard->get_Shot().at(i)->get_did_i_hit())
+        if (GameBoard->get_Shot().at(i)->get_did_I_hit())
         {
             delete GameBoard->get_Shot().at(i);
             GameBoard->get_Shot().erase(GameBoard->get_Shot().begin()+i);
@@ -249,11 +244,7 @@ bool Game::is_shopping()
 
 void Game::new_wave()
 {
-    if (current_level >= wave.size()) // år vågorna slut?
-    {
-        //då är det slut
-    }
-    else
+    if (current_level < wave.size()) // år vågorna slut?
     {
         current_sheep = 0;
         current_wave =  wave.at(current_level);

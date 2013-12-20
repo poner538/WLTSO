@@ -4,8 +4,9 @@
                     Karin Lockowandt  910213-3262, Yi3
 * DATUM:            2013-12-19
 *
-* 
+* Beskrivning:
 *
+* Tower ska kunna placeras ut på en plats på kartan och därifrån lokalisera får och skapa skott som skjuts på dom.
 *
 */
 #include <SFML/Graphics.hpp>
@@ -34,7 +35,7 @@ Tower::~Tower()
     GameBoard = nullptr;
     delete GameBoard;
 }
-
+//skapande av Cat-a-pult torn
 Catapult_tower::Catapult_tower(pos new_pos,Board* new_Board)
 
     : Tower(200,0.15,300,new_pos,new_Board)
@@ -48,7 +49,7 @@ sf::Sprite Catapult_tower::get_Tower_Sprite()
 {
     return Tower_Sprite;
 }
-
+//skapande av Shooting torn
 Shooting_tower::Shooting_tower(pos new_pos,Board* new_Board)
     : Tower(150,0.05,50,new_pos,new_Board)
 {
@@ -60,7 +61,7 @@ sf::Sprite Shooting_tower::get_Tower_Sprite()
 {
     return Tower_Sprite;
 }
-
+//Funktiuon för att lokalisera får
 void Tower::locate_sheep(vector<Sheep*>& vec_sheep,float time)
 {
     if(shot_timer(time))
@@ -100,8 +101,8 @@ pos Tower::get_position()
 {
     return T_pos;
 }
-
-bool Tower::shot_timer(float time) //en funktion som fördröjer skotten i sec-antal sekunder
+//en funktion som fördröjer skotten i sec-antal sekunder
+bool Tower::shot_timer(float time_sec)
 {
     if(temptime >= shooting_speed)
     {
@@ -111,7 +112,7 @@ bool Tower::shot_timer(float time) //en funktion som fördröjer skotten i sec-a
     else
     {
 
-        temptime = temptime + time/10;
+        temptime = temptime + time_sec/10;
         return false;
     }
 }

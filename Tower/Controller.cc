@@ -2,10 +2,11 @@
 * FILNAMN:          Controller.cc
 * PROGRAMMERARE:    Johanna Laidla  910712-5826, Y3a
                     Ema Becirovic   920510-6249, Y3a
-* DATUM:            2013-mm-dd
+* DATUM:            2013-12-19
 *
 * BESKRIVNING
 *
+* Controller ska hålla räkningen på poäng, guld och antal liv.
 *
 */
 

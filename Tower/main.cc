@@ -26,6 +26,7 @@
 #include <vector>
 #include <cstdlib>
 #include <sstream>
+#include <iomanip>
 
 //strukt som används för att lägga till namn och poäng till highscore.
 struct User
@@ -59,17 +60,16 @@ void set_High_Score(string name, int score)
     User new_user;
     new_user.user_score = score;
     new_user.user_name = name;
+    score_list.push_back(new_user);
     for(int i = 0; i < score_list.size(); i++)
     {
         if(score_list.at(i).user_score < score)
         {
             score_list.insert (score_list.begin() + i, new_user);
             i = score_list.size();
+            score_list.pop_back();
         }
-    }
-    if (score_list.empty())
-    {
-        score_list.push_back(new_user);
+
     }
     if(score_list.size() > 10)
     {
@@ -77,9 +77,11 @@ void set_High_Score(string name, int score)
     }
     std::ofstream Writefile;
     Writefile.open("High_Score.txt");
+    cout << setw(50) << "High Score List:" << endl;
     for(int i = 0 ; i < score_list.size(); i++)
     {
         Writefile << score_list.at(i).user_name << " " << score_list.at(i).user_score << endl;
+        std::cout << setw(50) << score_list.at(i).user_name << " " << score_list.at(i).user_score << endl;
     }
     Writefile.close();
 }

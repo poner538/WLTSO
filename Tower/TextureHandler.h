@@ -61,6 +61,8 @@ private:
     sf::Texture Shot_Texture;
     sf::Texture Course_Texture;
     sf::Texture Board_Texture;
+
+    std::vector<sf::Texture> TextureList;
 };
 
 #endif // TEXTUREHANDLER_H

@@ -35,25 +35,25 @@ void Game::feed_Sheep(float time_passed)
             {
                 EasySheep* tempEasySheep = new EasySheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempEasySheep);
-                feeding_time = 6;
+                feeding_time = 20;
             }
             else if (sheep_number == 2)
             {
                 MediumSheep* tempMediumSheep = new MediumSheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempMediumSheep);
-                feeding_time = 6;
+                feeding_time = 20;
             }
             else if (sheep_number == 3)
             {
                 HardSheep* tempHardSheep = new HardSheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempHardSheep);
-                feeding_time = 6;
+                feeding_time = 20;
             }
             else if (sheep_number == 1337)
             {
                 BossSheep* tempBossSheep = new BossSheep(GameBoard->get_Course());
                 GameBoard->set_Sheep(tempBossSheep);
-                feeding_time = 6;
+                feeding_time = 20;
             }
             else
             {
@@ -159,8 +159,8 @@ void Game::game_over(std::string name)
     std::ostringstream pointinput;
     pointinput << Controller::controller.get_points();
     std::string pointstring = pointinput.str();
-    std::string gameoverstring = "GAME OVER! \nPo�ng: ";
-    std::string namestring = "Namn: ";
+    std::string gameoverstring = "GAME OVER! \nScore: ";
+    std::string namestring = "Name: ";
 
     gameoverstring = gameoverstring + pointstring + "\n" + namestring + name;
     sf::Font arial;

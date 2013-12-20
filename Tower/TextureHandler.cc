@@ -46,91 +46,65 @@ TextureHandler::TextureHandler(int dummy)
     }
     if (!Course_Texture.loadFromFile(filenameCourse))
     {
-        std::cout << "Course laddades inte! :(" << std::endl;
+        std::cout << "Course laddedes inte! :(" << std::endl;
     }
     if (!Board_Texture.loadFromFile(filenameBoard))
     {
-        std::cout << "Board laddades inte! :(" << std::endl;
+        std::cout << "Board laddedes inte! :(" << std::endl;
     }
+
+    TextureList.push_back(EasySheep_Texture);
+    TextureList.push_back(MediumSheep_Texture);
+    TextureList.push_back(HardSheep_Texture);
+    TextureList.push_back(BossSheep_Texture);
+    TextureList.push_back(Catapult_tower_Texture);
+    TextureList.push_back(Shooting_tower_Texture);
+    TextureList.push_back(Shot_Texture);
+    TextureList.push_back(Course_Texture);
+    TextureList.push_back(Board_Texture);
 }
 
 sf::Texture& TextureHandler::getEasySheep()
 {
-    if (!EasySheep_Texture.loadFromFile(filenameEasySheep))
-    {
-        std::cout << "EasySheep laddades inte! :(" << std::endl;
-    }
-    return EasySheep_Texture;
+    return TextureList.at(0);
 }
 
 sf::Texture& TextureHandler::getMediumSheep()
 {
-    if (!MediumSheep_Texture.loadFromFile(filenameMediumSheep))
-    {
-        std::cout << "MediumSheep laddades inte! :(" << std::endl;
-    }
-    return MediumSheep_Texture;
+    return TextureList.at(1);
 }
 
 sf::Texture& TextureHandler::getHardSheep()
 {
-    if (!HardSheep_Texture.loadFromFile(filenameHardSheep))
-    {
-        std::cout << "HardSheep laddades inte! :(" << std::endl;
-    }
-    return HardSheep_Texture;
+    return TextureList.at(2);
 }
 
 sf::Texture& TextureHandler::getBossSheep()
 {
-    if (!BossSheep_Texture.loadFromFile(filenameBossSheep))
-    {
-        std::cout << "BossSheep laddades inte! :(" << std::endl;
-    }
-    return BossSheep_Texture;
+    return TextureList.at(3);
 }
 
 sf::Texture& TextureHandler::getCatapult_tower()
 {
-    if (!Catapult_tower_Texture.loadFromFile(filenameCatapult_tower))
-    {
-        std::cout << "Catapult Tower laddades inte! :(" << std::endl;
-    }
-    return Catapult_tower_Texture;
+    return TextureList.at(4);
 }
 
 sf::Texture& TextureHandler::getShooting_tower()
 {
-    if (!Shooting_tower_Texture.loadFromFile(filenameShooting_tower))
-    {
-        std::cout << "Shooting Tower laddades inte! :(" << std::endl;
-    }
-    return Shooting_tower_Texture;
+    return TextureList.at(5);
 }
 
 sf::Texture& TextureHandler::getShot()
 {
-    if (!Shot_Texture.loadFromFile(filenameShot))
-    {
-        std::cout << "Shot laddades inte! :(" << std::endl;
-    }
-    return Shot_Texture;
+    return TextureList.at(6);
 }
 
 sf::Texture& TextureHandler::getCourse()
 {
-    if (!Course_Texture.loadFromFile(filenameCourse))
-    {
-        std::cout << "Course laddades inte! :(" << std::endl;
-    }
-    return Course_Texture;
+    return TextureList.at(7);
 }
 
 sf::Texture& TextureHandler::getBoard()
 {
-    if (!Board_Texture.loadFromFile(filenameBoard))
-    {
-        std::cout << "Board laddades inte! :(" << std::endl;
-    }
-    return Board_Texture;
+    return TextureList.at(8);
 }

@@ -6,7 +6,7 @@
 *
 * BESKRIVNING
 *
-* Classer och subklasser för alla får,
+* Klasser och subklasser för alla får,
 * med tillhörande funktioner för hur de ska röra sig längs banan och vad
 * de ska göra när de blir träffade och dör.
 *
@@ -250,7 +250,7 @@ bool HardSheep::update_position(float time)
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint == 6)//d� har den g�tt i m�l
+        if (next_waypoint == 6)//då har den gått i mål
         {
             Controller::controller.lives();
             change_death(true);
@@ -266,7 +266,7 @@ bool HardSheep::update_position(float time)
 
         set_position(temp_pos);
 
-        //H�r har den kommit till waypointens position och ska vidare
+        //Här har den kommit till waypointens position och ska vidare
         x_temp = next_position.x_pos - current_position.x_pos;
         y_temp = next_position.y_pos - current_position.y_pos;
         norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
@@ -326,7 +326,7 @@ bool BossSheep::update_position(float time)
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
     if(time*speed >= norm)
     {
-        if (next_waypoint == 6)//d� har den g�tt i m�l
+        if (next_waypoint == 6)//då har den gått i mål
         {
             Controller::controller.lives();
             change_death(true);
@@ -342,7 +342,7 @@ bool BossSheep::update_position(float time)
 
         set_position(temp_pos);
 
-        //H�r har den kommit till waypointens position och ska vidare
+        //Här har den kommit till waypointens position och ska vidare
         x_temp = next_position.x_pos - current_position.x_pos;
         y_temp = next_position.y_pos - current_position.y_pos;
         norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));

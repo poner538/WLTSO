@@ -16,6 +16,7 @@
 #include <iostream>
 #include <math.h>
 
+//Konstruktor
 Shot::Shot(Sheep*& sheep_target,const int new_dmg,pos start_pos)
 {
     target = sheep_target;
@@ -26,12 +27,14 @@ Shot::Shot(Sheep*& sheep_target,const int new_dmg,pos start_pos)
 
 }
 
+//Destruktor
 Shot::~Shot()
 {
     target = nullptr;
     delete target;
 }
 
+//Är fåret skottet är påväg till dött?
 bool Shot::is_target()
 {
     return target->get_death();
@@ -41,7 +44,8 @@ sf::Sprite Shot::get_Shot_Sprite()
 {
     return Shot_Sprite;
 }
-//funktion som tar skottet till fåret steg för steg
+
+//funktion som tar skottet till fåret steg för steg, fungerar i princip likadant som fårens uppdate_position
 void Shot::hunt_sheep(float time)
 {
    if(not(target->get_death()))
@@ -71,14 +75,13 @@ void Shot::hunt_sheep(float time)
     did_I_hit = true;
 }
 
-
-
-
+//När skottet träffar fåret så dras hälsa från den
 void Shot::hit_sheep()
 {
     target->hit(dmg);
     did_I_hit = true;
 }
+
 
 bool Shot::get_did_I_hit()
 {

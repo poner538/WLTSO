@@ -38,7 +38,7 @@ void Sheep::hit(int damage)
     }
 }
 
-/* */
+//Returnerar längden ett får har gått
 float Sheep::get_distance()
 {
     return distance;
@@ -82,6 +82,7 @@ sf::Sprite EasySheep::get_Sheep_Sprite()
     return Sheep_Sprite;
 }
 
+//Uppdaterar fårets position
 bool EasySheep::update_position(float time)
 {
     float x_temp = 0;
@@ -89,9 +90,12 @@ bool EasySheep::update_position(float time)
     float norm = 0;
     float way_to_next = 0;
     pos temp_pos;
+    //Får ut riktningen till näsa waypoing
     x_temp = next_position.x_pos - current_position.x_pos;
     y_temp = next_position.y_pos - current_position.y_pos;
+    //Räknar ut normalen
     norm = sqrt(pow(x_temp, 2) + pow(y_temp, 2));
+    //Om längden är längre än hastigheten gånger tiden så går man förbi waypointen
     if(time*speed >= norm)
     {
         if (next_waypoint == 6)//då har den gått i mål
@@ -100,8 +104,10 @@ bool EasySheep::update_position(float time)
             change_death(true);
             return true;
         }
+        //Normaliserar så att en riktningsvektor skapas
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
+        //Gå vägen fram till waypointen
         temp_pos.x_pos = current_position.x_pos + x_temp*(time*speed-norm);
         temp_pos.y_pos = current_position.y_pos + y_temp*(time*speed-norm);
         way_to_next = 2*norm - time*speed;
@@ -122,6 +128,7 @@ bool EasySheep::update_position(float time)
     }
     else
     {
+        //Annars går den bara så långt den ska
         x_temp = x_temp / norm;
         y_temp = y_temp / norm;
         temp_pos.x_pos = current_position.x_pos + x_temp*time*speed;

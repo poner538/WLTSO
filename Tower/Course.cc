@@ -14,6 +14,7 @@
 #include <vector>
 #include <iostream>
 
+//Konstruktor
 Course::Course()
 {
     initiate_rectangles();
@@ -63,8 +64,8 @@ sf::Sprite Course::get_Course_Sprite(int number)
 //Definierar de rektanglar som banan består av
 void Course::initiate_rectangles()
 {
-    int spread = 30; //T.ex.
-    r0 = sf::Rect<int>{sf::Rect<int>(wp0.x_pos - spread, wp0.y_pos - spread, wp1.x_pos - wp0.x_pos + 2*spread, 2*spread)}; //Hårdkodat med riktningar och sånt +- ema
+    int spread = 30; //Hälften av bredden på Coursen.
+    r0 = sf::Rect<int>{sf::Rect<int>(wp0.x_pos - spread, wp0.y_pos - spread, wp1.x_pos - wp0.x_pos + 2*spread, 2*spread)}; //Hårdkodat med riktningar
     r1 = sf::Rect<int>{sf::Rect<int>(wp1.x_pos - spread, wp1.y_pos - spread, 2*spread, wp2.y_pos - wp1.y_pos + 2*spread)};
     r2 = sf::Rect<int>{sf::Rect<int>(wp2.x_pos - spread, wp2.y_pos - spread, wp3.x_pos - wp2.x_pos + 2*spread, 2*spread)};
     r3 = sf::Rect<int>{sf::Rect<int>(wp4.x_pos - spread, wp4.y_pos - spread, 2*spread, wp3.y_pos - wp4.y_pos + 2*spread)};

@@ -35,7 +35,6 @@ public:
 
     /*Medlemsfunktioner*/
     void feed_Sheep(float);
-    void game_on(); //Uppdatera grafik, skapa board, konstruktor?
     void game_over(std::string);
     void update_Game(float);
     void update_background_graphics();

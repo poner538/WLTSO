@@ -12,9 +12,10 @@
 
 #include <iostream>
 #include "TextureHandler.h"
-
+//Initierar statisk klass
 TextureHandler TextureHandler::texturehandler(1);
 
+//Konstruktor, dummy krävs så att initieringen ska gå bra
 TextureHandler::TextureHandler(int dummy)
 {
     if (!EasySheep_Texture.loadFromFile(filenameEasySheep))
@@ -54,6 +55,8 @@ TextureHandler::TextureHandler(int dummy)
         std::cout << "Board laddedes inte! :(" << std::endl;
     }
 
+    //Laddar in texturerna i en vektor så att varje klass kan hämta sin respektive
+    //Detta fanns inte med under demon.
     TextureList.push_back(EasySheep_Texture);
     TextureList.push_back(MediumSheep_Texture);
     TextureList.push_back(HardSheep_Texture);
@@ -65,6 +68,7 @@ TextureHandler::TextureHandler(int dummy)
     TextureList.push_back(Board_Texture);
 }
 
+//Returnerar varje klass specificika Texture
 sf::Texture& TextureHandler::getEasySheep()
 {
     return TextureList.at(0);

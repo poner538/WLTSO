@@ -18,6 +18,7 @@
 #include <ostream>
 #include <sstream>
 
+//Konstruktor
 Game::Game(sf::RenderWindow*& new_Window, Board*& new_Board)
 {
     GameWindow = new_Window;
@@ -25,9 +26,10 @@ Game::Game(sf::RenderWindow*& new_Window, Board*& new_Board)
     current_wave = wave.at(current_level);
 }
 
-
+//Matar ut får när det ar aktuellt
 void Game::feed_Sheep(float time_passed)
 {
+    //Fåren får inte komma för ofta
     if (feeding_time - time_passed <= 0)
     {
         if(current_sheep < current_wave.size()) //är vi inne?
@@ -59,10 +61,10 @@ void Game::feed_Sheep(float time_passed)
             }
 
             current_sheep = current_sheep + 1;
-            if (current_wave.size() == current_sheep) //slutet på waven, har kan man kalla på pause
+            if (current_wave.size() == current_sheep) //Waven är slut
             {
                 shall_feed = false;
-                current_level = current_level + 1; //nästa wave då
+                current_level = current_level + 1; //Nästa wave
                 if (current_level < wave.size())
                 {
                     current_sheep = 0;
@@ -79,18 +81,20 @@ void Game::feed_Sheep(float time_passed)
     }
 }
 
-
-
+//En uppdateringsloop
 void Game::update_Game(float time)
 {
+    //Kan jag handla den här uppdateringen?
     if((!shall_feed) and (GameBoard->get_Sheep().size()==0))
     {
         can_I_shop = true;
     }
+    //Är spelet slut
     if ((GameBoard->get_Sheep().size()==0) and (current_level >= wave.size()))
     {
         ending = true;
     }
+    //Uppdaterar fårens position och skjuter på dessa
     if (GameBoard->get_Sheep().size() > 0)
     {
         for (unsigned int i = 0; i < GameBoard->get_Sheep().size(); i++)
@@ -99,6 +103,7 @@ void Game::update_Game(float time)
             {
                 for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
                 {
+                    //Om skottets får har dött så ska skottet raderas
                     if (GameBoard->get_Shot().at(i)->is_target())
                     {
                         delete GameBoard->get_Shot().at(i);
@@ -106,18 +111,18 @@ void Game::update_Game(float time)
                         i = i - 1;
                     }
                 }
+                //Efter att skottet har raderats ska fåret raderas
                 delete GameBoard->get_Sheep().at(i);
                 GameBoard->get_Sheep().erase(GameBoard->get_Sheep().begin()+i);
                 set_sound1(true);
             }
         }
     }
-    else if (current_wave.size() <= current_sheep)
-    {
-    }
 
+    //Uppdaterar skottens position
     for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
     {
+        //Men tar bort dem om de har träffat ett får
         if (GameBoard->get_Shot().at(i)->get_did_I_hit())
         {
             delete GameBoard->get_Shot().at(i);
@@ -129,6 +134,7 @@ void Game::update_Game(float time)
         }
     }
 
+    //Tornen letar upp får att skjuta på
     if(GameBoard->get_Tower().size() != 0 and GameBoard->get_Sheep().size() != 0)
     {
         for (unsigned int i = 0; i < GameBoard->get_Tower().size(); i++)
@@ -144,13 +150,10 @@ void Game::update_Game(float time)
 
 }
 
-void Game::game_on()
-{
-
-}
-
+//Funktion som körs när spelet är slut
 void Game::game_over(std::string name)
 {
+    //En text med spelarens namn och poäng kommer upp på skärmen
     std::ostringstream pointinput;
     pointinput << Controller::controller.get_points();
     std::string pointstring = pointinput.str();
@@ -165,6 +168,7 @@ void Game::game_over(std::string name)
     gameovertext.setColor(sf::Color::Black);
     GameWindow->draw(gameovertext);
 
+    //Alla skott och torn raderas
     for (unsigned int i = 0; i < GameBoard->get_Shot().size(); i++)
     {
         delete GameBoard->get_Shot().at(i);
@@ -180,6 +184,7 @@ void Game::game_over(std::string name)
     }
 }
 
+//Bakgrundsgrafiken uppdateras
 void Game::update_background_graphics()
 {
     GameWindow->draw(GameBoard->get_Board_Sprite());
@@ -190,6 +195,7 @@ void Game::update_background_graphics()
     }
 }
 
+//Fårens, tornens och skottens grafik uppdateras
 void Game::update_foreground_graphics()
 {
 
@@ -220,6 +226,7 @@ void Game::update_foreground_graphics()
 
 }
 
+//Returnerar sanningsvärde om spelet är igång
 bool Game::is_running()
 {
     return start_stop;
@@ -230,18 +237,20 @@ void Game::change_run(bool t)
     start_stop = t;
 }
 
+//Ändrar möjligheten att shoppa
 void Game::change_shopping(bool ny)
 {
     can_I_shop = ny;
 
 }
 
+//Returnerar sanningsvärde om man får shoppa
 bool Game::is_shopping()
 {
     return can_I_shop;
 }
 
-
+//Sätter igång en ny våg av får
 void Game::new_wave()
 {
     if (current_level < wave.size()) // år vågorna slut?
@@ -252,7 +261,7 @@ void Game::new_wave()
     }
 }
 
-
+//Funktioner för ljudeffekter
 bool Game::is_sound1()
 {
     return sound1;
@@ -273,11 +282,13 @@ void Game::set_sound2(bool t)
     sound2 = t;
 }
 
+//Returnerar vilken nivå spelaren är på
 int Game::get_level()
 {
     return current_level + 1;
 }
 
+//Returnerar/ändrar om får skall matas
 bool Game::is_feeed()
 {
     return shall_feed;
@@ -288,6 +299,7 @@ void Game::change_feed(bool t)
     shall_feed = t;
 }
 
+//Returnerar/ändrar om spelet är slut
 bool Game::is_ending()
 {
     return ending;

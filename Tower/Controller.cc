@@ -13,8 +13,10 @@
 #include "Controller.h"
 #include <iostream>
 
+//Initierar den statiska klassen
 Controller Controller::controller(100,3);
 
+//Konstruktor
 Controller::Controller(int new_gold, int new_lives)
 {
     gold = new_gold;
@@ -22,7 +24,7 @@ Controller::Controller(int new_gold, int new_lives)
     points = 0;
 }
 
-
+//Kollar om det finns tillräckligt pengar att köpa
 bool Controller::gold_check(const int value)
 {
     if((gold + value) < 0)
@@ -67,11 +69,13 @@ int Controller::get_points()
     return points;
 }
 
+//Returnerar ett sanningsvärde när ett skott skapas
 bool Controller::get_made_shot()
 {
     return made_shot;
 }
 
+//Byter sanningsvärde på skottskapningen
 void Controller::change_made_shot(bool t)
 {
     made_shot = t;

@@ -86,6 +86,7 @@ void set_High_Score(string name, int score)
 
 int main()
 {
+    //Initiering av variabler
     sf::RenderWindow* myWindow = new sf::RenderWindow(sf::VideoMode(800,600), "Who let the sheep out?");
     myWindow->setFramerateLimit(60);
     Course myCourse;
@@ -119,8 +120,6 @@ int main()
     death_sound.openFromFile("cartoon004.wav");
     death_sound.setLoop(false);
 
-    int j = 0;
-    int32_t game_time = 0;
 
     try
     {
@@ -158,6 +157,7 @@ int main()
                         towerplacement.y_pos = event.mouseButton.y;
                         int xplus = towerplacement.x_pos + tower_width;
                         int yplus = towerplacement.y_pos + tower_width;
+                        //Får alla tornens hörn placeras
                         if((!myBoard->exist(towerplacement)) and (!myBoard->exist(pos {xplus, towerplacement.y_pos})) and (!myBoard->exist(pos {towerplacement.x_pos, yplus})) and (!myBoard->exist(pos {xplus,yplus})))
                         {
                             Tower* myTower = new Catapult_tower(towerplacement, myBoard);
@@ -182,6 +182,7 @@ int main()
                         towerplacement.y_pos = event.mouseButton.y;
                         int xplus = towerplacement.x_pos + tower_width;
                         int yplus = towerplacement.y_pos + tower_width;
+                        //Får alla tornens hörn placeras?
                         if((!myBoard->exist(towerplacement)) and (!myBoard->exist(pos {xplus, towerplacement.y_pos})) and (!myBoard->exist(pos {towerplacement.x_pos, yplus})) and (!myBoard->exist(pos {xplus,yplus})))
                         {
                             Tower* myTower = new Shooting_tower(towerplacement, myBoard);
@@ -244,13 +245,14 @@ int main()
             //Här börjar spelkoden
             if(myGame.is_running())
             {
+                //Om spelet tillåter att får ska matas ska detta göras
                 if(myGame.is_feeed())
                 {
                     myGame.feed_Sheep(myClock.getElapsedTime().asSeconds());
                 }
-
+                //Uppdatera spelen genom uppdateringsloopen
                 myGame.update_Game(myClock.getElapsedTime().asSeconds());
-
+                //Ljudeffekter spelas upp
                 if (myGame.is_sound2())
                 {
                     death_sound.play();
@@ -261,7 +263,7 @@ int main()
                     shot_sound.play();
                     myGame.set_sound1(false);
                 }
-
+                //För att få ett korrekt tidsvärde nästa gång spelet uppdateras så startar klockan om
                 myClock.restart();
                 myGame.update_background_graphics();
                 myGame.update_foreground_graphics();
@@ -310,20 +312,8 @@ int main()
                     myGame.change_ending(true);
                 }
                 myWindow->display();
+                //Cleara fönstret efter varje uppdatering
                 myWindow->clear();
-            }
-
-            if (game_time < 1000)
-            {
-                game_time = game_time + myClock.getElapsedTime().asMilliseconds();
-                j = j + 1;
-
-            }
-            else
-            {
-                std::cout << j << std::endl; //spårutskrift för att kolla framerate
-                j = 0;
-                game_time = 0;
             }
         }
     }

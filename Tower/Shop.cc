@@ -17,13 +17,14 @@
 #include "Tower.h"
 #include <sstream>
 
-
+//Konstruktor
 Shop::Shop(Board* new_board, sf::RenderWindow*& new_window)
 {
     GameBoard = new_board;
     GameWindow = new_window;
 }
 
+//Destruktor
 Shop::~Shop()
 {
     GameWindow = nullptr;

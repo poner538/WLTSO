@@ -21,6 +21,7 @@
 
 using namespace std;
 
+//Konstruktor
 Tower::Tower(int new_range,float new_shooting_speed,int new_dmg,pos new_pos,Board* new_Board)
 {
     dmg = new_dmg;
@@ -30,6 +31,7 @@ Tower::Tower(int new_range,float new_shooting_speed,int new_dmg,pos new_pos,Boar
     GameBoard = new_Board;
 }
 
+//Destruktor
 Tower::~Tower()
 {
     GameBoard = nullptr;
@@ -49,6 +51,7 @@ sf::Sprite Catapult_tower::get_Tower_Sprite()
 {
     return Tower_Sprite;
 }
+
 //skapande av Shooting torn
 Shooting_tower::Shooting_tower(pos new_pos,Board* new_Board)
     : Tower(150,0.05,50,new_pos,new_Board)
@@ -91,6 +94,7 @@ void Tower::locate_sheep(vector<Sheep*>& vec_sheep,float time)
     }
 }
 
+//Skjuter(Skapar) ett skott som ska till ett får
 void Tower::shoot(Sheep*& sheep_target)
 {
     Shot* a_shot = new Shot(sheep_target, dmg, T_pos);
@@ -101,6 +105,7 @@ pos Tower::get_position()
 {
     return T_pos;
 }
+
 //en funktion som fördröjer skotten i sec-antal sekunder
 bool Tower::shot_timer(float time_sec)
 {

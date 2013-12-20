@@ -18,7 +18,6 @@ Board::Board(Course& new_Board_Course)
 {
     Board_Course = new_Board_Course;
     Board_Sprite.setTexture(TextureHandler::texturehandler.getBoard());
-
 }
 
 //Hämtar alla Shots på banan

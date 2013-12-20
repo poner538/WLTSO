@@ -40,7 +40,7 @@ Tower::~Tower()
 //skapande av Cat-a-pult torn
 Catapult_tower::Catapult_tower(pos new_pos,Board* new_Board)
 
-    : Tower(200,0.15,300,new_pos,new_Board)
+    : Tower(200,0.01,400,new_pos,new_Board)
 
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getCatapult_tower());
@@ -54,7 +54,7 @@ sf::Sprite Catapult_tower::get_Tower_Sprite()
 
 //skapande av Shooting torn
 Shooting_tower::Shooting_tower(pos new_pos,Board* new_Board)
-    : Tower(150,0.05,50,new_pos,new_Board)
+    : Tower(150,0.01,400,new_pos,new_Board)
 {
     Tower_Sprite.setTexture(TextureHandler::texturehandler.getShooting_tower());
     Tower_Sprite.setPosition(new_pos.x_pos,new_pos.y_pos);
@@ -64,6 +64,7 @@ sf::Sprite Shooting_tower::get_Tower_Sprite()
 {
     return Tower_Sprite;
 }
+
 //Funktiuon för att lokalisera får
 void Tower::locate_sheep(vector<Sheep*>& vec_sheep,float time)
 {
@@ -73,26 +74,28 @@ void Tower::locate_sheep(vector<Sheep*>& vec_sheep,float time)
         int x = 0;
         for(int i = 0 ; i < vec_sheep.size() ; i++)
         {
-            for(int i = 0 ; i < vec_sheep.size() ; i++)
+            if (! vec_sheep.at(i)->get_death())
             {
-                if (! vec_sheep.at(i)->get_death())
+                if(( pow(range, 2) >= pow((vec_sheep.at(i)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(i)->get_position().y_pos - T_pos.y_pos),2)))
                 {
-                    if (vec_sheep.at(i)->get_distance() > temp_Sheep->get_distance())
+                    if ((vec_sheep.at(i)->get_distance() > temp_Sheep->get_distance()))
                     {
                         temp_Sheep = vec_sheep.at(i);
                         x = i;
                     }
                 }
             }
-            if ( pow(range, 2) >= pow((vec_sheep.at(x)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(x)->get_position().y_pos - T_pos.y_pos),2)) //and x = sheep_posx and y = sheep_posy)
-            {
-                shoot(vec_sheep.at(x));
-                Controller::controller.change_made_shot(true);
-                return;
-            }
+        }
+        if(( pow(range, 2) >= pow((vec_sheep.at(x)->get_position().x_pos - T_pos.x_pos),2) + pow((vec_sheep.at(x)->get_position().y_pos - T_pos.y_pos),2)))
+        {
+            shoot(vec_sheep.at(x));
+            Controller::controller.change_made_shot(true);
+            return;
         }
     }
 }
+
+
 
 //Skjuter(Skapar) ett skott som ska till ett får
 void Tower::shoot(Sheep*& sheep_target)
